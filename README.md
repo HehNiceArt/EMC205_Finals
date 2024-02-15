@@ -61,15 +61,15 @@ Create a sub folder when you have multiple scenes!
 .
 ├── ...
 ├── Scripts Folder                  # Only scripts folder!
-│   ├── Andrei_Scripts              # Scripts made by Andrei
+│   ├── Scripts_Andrei              # Scripts made by Andrei
 |   |   ├── Camera Folder             # Folder that contains camera related scripts
 |   |   └── Player Folder             # Folder that contains player related scripts 
-│   ├── Kyle_Scripts                # Scripts made by Kyle
+│   ├── Scripts_Kyle                # Scripts made by Kyle
 |   |   ├── Inventory Folder          # Folder that contains inventory related scripts
 |   |   └── Items Folder              # Folder that contains items related scripts 
-│   ├── Kriz_Scripts                # Scripts made by Kriz
+│   ├── Scripts_Kriz                # Scripts made by Kriz
 |   |   └── ...                       # Folder that ...
-│   └── Maxi_Scripts                # Scripts made by Maxi
+│   └── Scripts_Maxi                # Scripts made by Maxi
 |       └── ...                       # Folder that ...
 │   
 └── ...
