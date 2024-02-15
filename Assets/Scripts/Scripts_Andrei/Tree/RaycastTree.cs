@@ -18,7 +18,7 @@ public class RaycastTree : MonoBehaviour
     {
         RaycastHit _hit;
         Ray _ray = new Ray(transform.position, transform.forward);
-        if (Input.GetMouseButton(0))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             if (Physics.Raycast(_ray, out _hit, _raycastDistance, _layerMask))
             {

@@ -316,7 +316,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _treeScale: {fileID: 871606568}
-  timeToGrow: 5
+  timeToGrow: 50
   TreeGrowthItems:
   - {fileID: 11400000, guid: a5280e510c6e9ae4a895266134cbcf21, type: 2}
 --- !u!54 &871606574

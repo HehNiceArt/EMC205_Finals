@@ -29,7 +29,7 @@ public class TreeGrow : MonoBehaviour
     {
         float _fertilizer = TreeGrowthItems[0].ItemValue;
         Vector3 _fertilizerScaleIncrease = new Vector3(_fertilizer, _fertilizer, _fertilizer);
-        _treeScale.transform.localScale = Vector3.MoveTowards(_treeScale.transform.localScale, _fertilizerScaleIncrease, Time.deltaTime * timeToGrow);
+        _treeScale.transform.localScale = Vector3.MoveTowards(_treeScale.transform.localScale, _fertilizerScaleIncrease, timeToGrow);
         Debug.Log("Grow");
     }
 }

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Fertilizer
   m_EditorClassIdentifier: 
   ItemName: Fertilizer
-  ItemValue: 100
   ItemID: 0
+  ItemValue: 10
