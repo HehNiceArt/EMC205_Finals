@@ -6,9 +6,15 @@ using UnityEngine;
 public class EnemyStats : ScriptableObject
 {
     public string EnemyName;
+    public int EnemyID;
+    [Header("Health")]
     public int CurrentHealth;
     public int MaxHealth;
+
+    [Tooltip("To reduce the scale of the tree")]
+    [Header("Attack Stats")]
     public float AttackDamage;
     public float AttackSpeed;
-    public int EnemyID;
+    [Header("Movement")]
+    public float MovementSpeed;
 }

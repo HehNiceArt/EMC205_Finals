@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Giant Ant
   m_EditorClassIdentifier: 
   EnemyName: Giant Ant
+  EnemyID: 0
   CurrentHealth: 0
   MaxHealth: 100
   AttackDamage: 10
   AttackSpeed: 3
-  EnemyID: 5
+  MovementSpeed: 0

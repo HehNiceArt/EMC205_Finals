@@ -6,6 +6,9 @@ using UnityEngine;
 public class TreeGrowthItems : ScriptableObject
 {
     public string ItemName;
-    public float ItemValue;
     public int ItemID;
+
+    [Tooltip("To increase the scale of the tree")]
+    [Header("Item Value")]
+    public float ItemValue;
 }

@@ -6,8 +6,10 @@ using UnityEngine;
 public class PlayerItems : ScriptableObject
 {
     public string ItemName;
+    public int ItemID;
+
+    [Header("Attack Stats")]    
     public int ItemAttackDamage;
     public int ItemRange;
     public int ItemAttackSpeed;
-    public int ItemID;
 }
