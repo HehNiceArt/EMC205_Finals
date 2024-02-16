@@ -13,4 +13,14 @@ public class HandItems : MonoBehaviour
             item.SetActive(false);
         }
     }
+
+    public void ItemCheck()
+    {
+        foreach (var item in TreeItems)
+        {
+           if(item.activeInHierarchy == true)
+            {
+            } 
+        }
+    }
 }

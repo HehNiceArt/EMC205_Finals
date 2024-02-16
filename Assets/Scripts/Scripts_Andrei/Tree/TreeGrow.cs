@@ -9,6 +9,7 @@ public class TreeGrow : MonoBehaviour
     public GameObject TreeScale;
     public float TimeToGrow;
 
+    public HandItems HandItems;
     [Header("Scriptable Object")]
     public TreeGrowthItems[] TreeGrowthItems;
     //Singleton
@@ -47,8 +48,10 @@ public class TreeGrow : MonoBehaviour
         {
             if (Input.GetKeyDown(_keyCodes[i]))
             {
+                HandItems.TreeItems[i].SetActive(true);
                 _growthItems = TreeGrowthItems[i].ItemValue;
-                Debug.Log(_keyCodes[i] + "\n\r" + TreeGrowthItems[i].ItemName + " " + TreeGrowthItems[i].ItemID);
+                HandItems.ItemCheck();
+                Debug.Log(HandItems.TreeItems[i].gameObject.name + "\n\r" + TreeGrowthItems[i].ItemName + " " + TreeGrowthItems[i].ItemID);
             }
         }
     }
