@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Pesticide
   m_EditorClassIdentifier: 
   ItemName: Pesticide
-  ItemID: 3
+  ItemID: 2
   ItemValue: 5

@@ -1020,6 +1020,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TreeScale: {fileID: 871606568}
   TimeToGrow: 10
+  HandItems: {fileID: 2089814869}
   TreeGrowthItems:
   - {fileID: 11400000, guid: a5280e510c6e9ae4a895266134cbcf21, type: 2}
   - {fileID: 11400000, guid: 5a375a8702407834e969f289a75f7758, type: 2}

@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Sprinkler
   m_EditorClassIdentifier: 
   ItemName: Sprinkler
-  ItemID: 4
+  ItemID: 3
   ItemValue: 3
