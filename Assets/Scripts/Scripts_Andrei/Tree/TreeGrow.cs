@@ -15,6 +15,16 @@ public class TreeGrow : MonoBehaviour
     private static TreeGrow _instance;
     public static TreeGrow _Instance { get { return _instance; } }
 
+
+    private float _num;
+    private KeyCode[] _keyCodes =
+    {
+        KeyCode.Alpha1,
+        KeyCode.Alpha2,
+        KeyCode.Alpha3,
+        KeyCode.Alpha4
+    };
+
     private void Awake()
     {
         if( _instance != null && _instance != this)
@@ -26,10 +36,29 @@ public class TreeGrow : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    private void Update()
+    {
+        SwapItems();
+    }
+    float _growthItems;
+    private void SwapItems()
+    {
+        for(int i = 0; i < _keyCodes.Length; i++)
+        {
+            if (Input.GetKeyDown(_keyCodes[i]))
+            {
+                _growthItems = TreeGrowthItems[i].ItemValue;
+                Debug.Log(_keyCodes[i] + "\n\r" + TreeGrowthItems[i].ItemName + " " + TreeGrowthItems[i].ItemID);
+            }
+        }
+    }
     public void GrowTreeScale()
     {
-        float _fertilizer = TreeGrowthItems[0].ItemValue;
-        Vector3 _fertilizerScaleIncrease = new Vector3(_fertilizer, _fertilizer, _fertilizer);
-        TreeScale.transform.localScale = Vector3.MoveTowards(TreeScale.transform.localScale, _fertilizerScaleIncrease / 2, Time.deltaTime * TimeToGrow);
+       //scale still doesn't sum up
+       //need to fix
+        Vector3 _growth = new Vector3(_growthItems, _growthItems, _growthItems);
+
+        TreeScale.transform.localScale = Vector3.MoveTowards(TreeScale.transform.localScale, _growth, Time.deltaTime * TimeToGrow);
     }
+
 }
