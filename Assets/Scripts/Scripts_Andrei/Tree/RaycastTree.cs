@@ -13,13 +13,13 @@ public class RaycastTree : MonoBehaviour
 
     private Vector3 _collision = Vector3.zero;
 
-    public TreeDebugs TreeDebugTexts;
     public TreeGrow TreeGrowScale;
 
     private void Update()
     {
-        RaycastTreeDetection();
+        //RaycastTreeDetection();
     }
+    #region deprcated
     private void RaycastTreeDetection()
     {
         Ray _ray = new Ray(transform.position, transform.forward);
@@ -42,15 +42,9 @@ public class RaycastTree : MonoBehaviour
         if(Physics.Raycast(_ray, out _hit,_raycastDistance, _layerMask))
         {
             _collision = _hit.point;
-            TreeDebugTexts.TreeDetection = "Tree detected! "+ TreeGrowScale.TreeScale.transform.localScale;
         }
-        else if (Physics.Raycast(_ray, out _hit, _raycastDistance, _enemyMask))
-        {
-            _collision = _hit.point;
-            TreeDebugTexts.TreeDetection = "Enemy detected! " + _hit.collider.gameObject.name;
-        }
-        else { TreeDebugTexts.TreeDetection = "No tree!"; }
     }
+    #endregion
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;

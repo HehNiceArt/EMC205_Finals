@@ -20,16 +20,61 @@ public class EnemyController : MonoBehaviour
 
     public NavMeshAgent[] Agent;
     public NavMeshSurface NavSurface;
-    private void Update()
+
+
+    private bool _isTimerRunning;
+    private float _startTime = 10f;
+     private float _currenTime;
+    private void Start()
     {
-        FollowTree();
+        _currenTime = _startTime;
+        _isTimerRunning = true;
         NavmeshSurfaceUpdate();
     }
 
+    private void Update()
+    {
+        FollowTree();
+
+        #region Timer
+        //if (_isTimerRunning)
+        //{
+        //    NavMeshTimer();
+        //}
+        #endregion
+    }
+
+    #region Timer Logic
+    /// <summary>
+    /// Timer is set at 60 seconds
+    /// Every 60 seconds, the NavMeshSurfaceUpdate gets triggered
+    /// NavMeshSurface updates
+    /// </summary>
+    void NavMeshTimer()
+    {
+        _currenTime -= Time.deltaTime;
+
+        if(_currenTime <= 0f)
+        {
+            _currenTime = 0f;
+            _isTimerRunning = false;
+
+            NavmeshSurfaceUpdate();
+        }
+    }
+    void NavMeshResetTimer()
+    {
+        _currenTime = _startTime;
+        _isTimerRunning = true;
+    }
+    #endregion
     void NavmeshSurfaceUpdate()
     {
-        NavSurface.BuildNavMesh(); 
+        //After the discussion whether the enemy spawns per wave or not
+        //implement this
+        NavSurface.BuildNavMesh();
     }
+
     void FollowTree()
     {
         foreach (var enemy in _enemies)

@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-public class PlauerRaycast : MonoBehaviour
+public class PlayerRaycast : MonoBehaviour
 {
     [SerializeField] private float _raycastDistance;
     // layer mask only contains tree layer
     [SerializeField] private LayerMask _layerMask;
+
+    public TreeGrow TreeScale;
 
     Camera _cam;
 
@@ -24,6 +26,7 @@ public class PlauerRaycast : MonoBehaviour
             if (hit.collider.CompareTag("Tree") && Input.GetKey(KeyCode.E))
             { 
                 TreeGrow._Instance.GrowTreeScale();
+                Debug.Log(hit.collider.gameObject.name);
             }
         }
     }
