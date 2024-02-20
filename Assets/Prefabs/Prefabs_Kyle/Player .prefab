@@ -341,7 +341,7 @@ MonoBehaviour:
   _playerCamera: {fileID: 7334923781532704765}
   _playerBody: {fileID: 5910075090236885456}
   _speed: 10
-  _sprintSpeedMultiplier: 5
+  _sprintSpeedMultiplier: 2
   _sensitivity: 3
   _jumpForce: 10
   _stamina: 100
