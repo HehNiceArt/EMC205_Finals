@@ -10,31 +10,30 @@ public class EnemyController : MonoBehaviour
 {
     [Header("Enemies")]
     [SerializeField] private GameObject[] _enemies;
+    public EnemyAgent[] EnemyAgent;
 
     [Header("Tree")]
-    [SerializeField] private GameObject _tree;
+    public GameObject Tree;
 
     [Header("AI")]
     [SerializeField] private GameObject _attackPoint;
     [SerializeField] private float _minimumRange;
 
-    public NavMeshAgent[] Agent;
     public NavMeshSurface NavSurface;
 
 
     private bool _isTimerRunning;
     private float _startTime = 10f;
-     private float _currenTime;
+    private float _currentTime;
     private void Start()
     {
-        _currenTime = _startTime;
+        _currentTime = _startTime;
         _isTimerRunning = true;
         NavmeshSurfaceUpdate();
     }
 
     private void Update()
     {
-        FollowTree();
 
         #region Timer
         //if (_isTimerRunning)
@@ -52,11 +51,11 @@ public class EnemyController : MonoBehaviour
     /// </summary>
     void NavMeshTimer()
     {
-        _currenTime -= Time.deltaTime;
+        _currentTime -= Time.deltaTime;
 
-        if(_currenTime <= 0f)
+        if(_currentTime <= 0f)
         {
-            _currenTime = 0f;
+            _currentTime = 0f;
             _isTimerRunning = false;
 
             NavmeshSurfaceUpdate();
@@ -64,7 +63,7 @@ public class EnemyController : MonoBehaviour
     }
     void NavMeshResetTimer()
     {
-        _currenTime = _startTime;
+        _currentTime = _startTime;
         _isTimerRunning = true;
     }
     #endregion
@@ -75,19 +74,4 @@ public class EnemyController : MonoBehaviour
         NavSurface.BuildNavMesh();
     }
 
-    void FollowTree()
-    {
-        foreach (var enemy in _enemies)
-        {
-            EnemiesFollow();
-        }
-    }
-
-    void EnemiesFollow()
-    {
-        foreach (var agent in Agent) 
-        {
-            agent.destination = _tree.transform.position;
-        }
-    }
 }
