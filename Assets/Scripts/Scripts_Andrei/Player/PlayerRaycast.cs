@@ -32,7 +32,6 @@ public class PlayerRaycast : MonoBehaviour
                 for(int i = 0; i < Enemy.Length; i++)
                 {
                     Enemy[i].TakeDamage(_damage);
-                    Debug.Log("enemy hit!");
                 }
             }
                 Debug.Log(hit.collider.gameObject.name);

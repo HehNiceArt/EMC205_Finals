@@ -13,10 +13,6 @@ public class AreaSpawner : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     private void OnDrawGizmos()
     {

@@ -1,61 +1,85 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Pool;
 using UnityEngine.Rendering;
 
+[System.Serializable]
+public class EnemyType
+{
+    public string Name;
+    public GameObject EnemyPrefab;
+    [Tooltip("The amount of enemies that will spawn")]
+    public int PoolSize;
+}
 public class EnemyPoolManager : MonoBehaviour
 {
     public static EnemyPoolManager SharedInstance;
-    public List<GameObject> EnemyPoolObjects;
-    public GameObject GiantAnt;
-    public GameObject IllegalCutter;
+    public List<EnemyType> EnemyTypes = new List<EnemyType>();
+    public List<List<GameObject>> EnemyPoolObjects = new List<List<GameObject>>();
     public Transform[] SpawnAreas;
-    public int AmountToPool;
+
+    [Header("Enemies Prefabs")]
+    public GameObject[] EnemiesPrefab;
+
+    [Header("Spawn Parameters")]
+    public float SpawnRate;
     private void Awake()
     {
         SharedInstance = this;
     }
     private void Start()
     {
-        EnemyPoolObjects = new List<GameObject>();
-        GameObject _giantAnt;
-        GameObject _illegalCutter;
-        
-        for(int i = 0; i < AmountToPool; i++)
-        {
-            _giantAnt = Instantiate(GiantAnt);
-            _giantAnt.SetActive(false);
-            _illegalCutter = Instantiate(IllegalCutter);
-            _illegalCutter.SetActive(false);
-            EnemyPoolObjects.Add(_giantAnt);
-            EnemyPoolObjects.Add(_illegalCutter);
-        }
+        InitializePools();
         StartCoroutine(SpawnEnemiesRandomly());
     }
+
+    void InitializePools()
+    {
+        foreach (var enemyType  in EnemyTypes)
+        {
+            List<GameObject> _enemyPool = new List<GameObject>();
+            for(int i = 0; i < enemyType.PoolSize; i++)
+            {
+                GameObject _enemy = Instantiate(enemyType.EnemyPrefab);
+                _enemy.SetActive(false);
+                _enemyPool.Add(_enemy);
+            }
+            EnemyPoolObjects.Add(_enemyPool);
+        }
+    }
+    /// <summary>
+    /// This spawns enemies from random spawn areas
+    /// </summary>
+    /// <returns></returns>
     IEnumerator SpawnEnemiesRandomly()
     {
         while (true)
         {
-            yield return new WaitForSeconds(1f);
-            GameObject _temp = GetPooledObject();
-            if (_temp != null)
+            yield return new WaitForSeconds(SpawnRate);
+            for(int i = 0; i < EnemyTypes.Count; i++)
             {
-                Vector3 spawnPosition = new Vector3(Random.Range(-10f, 10f), 0f, Random.Range(-10f, 10f));
-                Debug.Log(spawnPosition);
-                _temp.transform.position = spawnPosition;
-                _temp.SetActive(true);
+                GameObject _temp = GetPooledEnemies(i);
+                if (_temp != null)
+                {
+                    int _rand = Random.Range(0, SpawnAreas.Length);
+                    Transform _spawnPostion = SpawnAreas[_rand];
+                    _temp.transform.position = _spawnPostion.position;
+                    _temp.SetActive(true);
+                }
+
             }
         }
     }
-    public GameObject GetPooledObject()
+    public GameObject GetPooledEnemies(int enemyIndex)
     {
-        for(int j = 0; j < AmountToPool; j++)
+        for(int j = 0; j < EnemyPoolObjects[enemyIndex].Count; j++)
         {
-            if (!EnemyPoolObjects[j].activeInHierarchy)
+            if (!EnemyPoolObjects[enemyIndex][j].activeInHierarchy)
             {
-                return EnemyPoolObjects[j];
+                return EnemyPoolObjects[enemyIndex][j];
             }
         }
         return null;
