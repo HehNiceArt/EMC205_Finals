@@ -11,6 +11,7 @@ public class EnemyController : MonoBehaviour
     [Header("Enemies")]
     [SerializeField] private GameObject[] _enemies;
     public EnemyAgent[] EnemyAgent;
+    public ScriptableObject[] EnemyScriptables;
 
     [Header("Tree")]
     public GameObject Tree;
@@ -53,7 +54,7 @@ public class EnemyController : MonoBehaviour
     {
         _currentTime -= Time.deltaTime;
 
-        if(_currentTime <= 0f)
+        if (_currentTime <= 0f)
         {
             _currentTime = 0f;
             _isTimerRunning = false;

@@ -7,6 +7,7 @@ public class EnemyStats : ScriptableObject
 {
     public string EnemyName;
     public int EnemyID;
+
     [Header("Health")]
     public int CurrentHealth;
     public int MaxHealth;

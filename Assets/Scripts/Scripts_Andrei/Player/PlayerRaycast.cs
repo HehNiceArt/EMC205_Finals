@@ -23,11 +23,11 @@ public class PlayerRaycast : MonoBehaviour
     {
         if (Physics.Raycast(_cam.transform.position, _cam.transform.forward, out RaycastHit hit, _raycastDistance, _layerMask))
         {
-            if (hit.collider.CompareTag("Tree") && Input.GetKey(KeyCode.E))
+            if (hit.collider.CompareTag("Tree") && Input.GetKeyDown(KeyCode.E))
             { 
                 TreeGrow._Instance.GrowTreeScale();
-                Debug.Log(hit.collider.gameObject.name);
             }
+                Debug.Log(hit.collider.gameObject.name);
         }
     }
 }

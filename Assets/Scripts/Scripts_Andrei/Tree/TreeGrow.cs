@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.UIElements;
 
 [System.Serializable]
 public class TreeGrow : MonoBehaviour
@@ -48,20 +50,22 @@ public class TreeGrow : MonoBehaviour
         {
             if (Input.GetKeyDown(_keyCodes[i]))
             {
-                HandItems.TreeItems[i].SetActive(true);
                 _growthItems = TreeGrowthItems[i].ItemValue;
                 HandItems.ItemCheck();
-                Debug.Log(HandItems.TreeItems[i].gameObject.name + "\n\r" + TreeGrowthItems[i].ItemName + " " + TreeGrowthItems[i].ItemID);
+                Debug.Log(HandItems.TreeItems[i].gameObject.name + "\n\r" + TreeGrowthItems[i].ItemName + " " + TreeGrowthItems[i].ItemID + " " + TreeGrowthItems[i].ItemValue);
             }
         }
     }
+    //Still buggy but eh
+    //good enough for now
     public void GrowTreeScale()
     {
-       //scale still doesn't sum up
-       //need to fix
-        Vector3 _growth = new Vector3(_growthItems, _growthItems, _growthItems);
-
-        TreeScale.transform.localScale = Vector3.MoveTowards(TreeScale.transform.localScale, _growth, Time.deltaTime * TimeToGrow);
+        StartCoroutine(IncreaseScale());
     }
-
+    IEnumerator IncreaseScale()
+    {
+            Vector3 _growth = new Vector3(_growthItems, _growthItems, _growthItems);
+            TreeScale.transform.localScale += Vector3.MoveTowards(TreeScale.transform.localScale, _growth / 2, Time.deltaTime * TimeToGrow);
+            yield return null;
+    }
 }
