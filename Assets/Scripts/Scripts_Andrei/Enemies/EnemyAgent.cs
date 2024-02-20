@@ -7,7 +7,6 @@ using UnityEngine.AI;
 public class EnemyAgent : MonoBehaviour
 {
     public NavMeshAgent Agent;
-    public TreeGrow Tree;
 
     [Header("Enemy Parameters")]
     [SerializeField] private float _speed;
@@ -32,7 +31,7 @@ public class EnemyAgent : MonoBehaviour
     
     void FaceTree()
     {
-        Vector3 _direction = (Tree.TreeScale.transform.position - transform.position).normalized;
+        Vector3 _direction = (TreeGrow._Instance.TreeScale.transform.position - transform.position).normalized;
         Quaternion _lookRotation = Quaternion.LookRotation(new Vector3(_direction.x, 0, _direction.z));
         transform.rotation = Quaternion.Slerp(transform.rotation, _lookRotation, Time.deltaTime * 5f);
     }

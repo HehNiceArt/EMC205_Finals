@@ -12,9 +12,6 @@ public class EnemyAttack : MonoBehaviour
 
     [Header("Scripts")]
     public EnemyAgent EnemyNavMeshAgent;
-    public EnemyController EnemyController;
-    public TreeGrow Tree;
-
 
     [Header("Enemy Attack")]
     [SerializeField] private float _enemyAttackRange;
@@ -36,7 +33,7 @@ public class EnemyAttack : MonoBehaviour
         EnemyDestination();
         CheckProximity();
     }
-    void EnemyDestination() => EnemyNavMeshAgent.Agent.destination = Tree.transform.position;
+    void EnemyDestination() => EnemyNavMeshAgent.Agent.destination = TreeGrow._Instance.TreeScale.transform.position;
     void StopAgent()
     {
         EnemyNavMeshAgent.Agent.isStopped = true;
@@ -45,7 +42,7 @@ public class EnemyAttack : MonoBehaviour
 
     void AttackRange()
     {
-        _distanceToTarget = Vector3.Distance(transform.position, Tree.TreeScale.transform.position);
+        _distanceToTarget = Vector3.Distance(transform.position, TreeGrow._Instance.TreeScale.transform.position);
         if( _distanceToTarget < _enemyAttackRange)
         {
             _isWithinRange = true;
@@ -60,28 +57,28 @@ public class EnemyAttack : MonoBehaviour
     }
    IEnumerator Attacking(bool isAttacking)
     {
-        Debug.Log(isAttacking);
+        //Debug.Log(isAttacking);
         if(isAttacking == true)
         {
-            DecreaseScale();
+            //DecreaseScale();
             yield return new WaitForSeconds(EnemyStats.AttackSpeed);
         }
     }
     void DecreaseScale()
     {
         Vector3 decrease = new Vector3(EnemyStats.AttackDamage, EnemyStats.AttackDamage, EnemyStats.AttackDamage);
-        Tree.TreeScale.transform.localScale -= Vector3.ClampMagnitude(Vector3.MoveTowards(Tree.TreeScale.transform.localScale, decrease, Time.deltaTime), 999);
+        TreeGrow._Instance.TreeScale.transform.localScale -= Vector3.ClampMagnitude(Vector3.MoveTowards(TreeGrow._Instance.TreeScale.transform.localScale, decrease, Time.deltaTime), 999);
         Debug.Log(EnemyStats.AttackDamage + " " + decrease);
         CheckScale();
     }
     void CheckScale()
     {
-        Vector3 _treeScale = Tree.TreeScale.transform.localScale;
+        Vector3 _treeScale = TreeGrow._Instance.TreeScale.transform.localScale;
         Vector3 _minimumScale = new Vector3(1, 1, 1);
     }
     void CheckProximity()
     {
-        _distanceToTarget = Vector3.Distance(transform.position, Tree.TreeScale.transform.position);
+        _distanceToTarget = Vector3.Distance(transform.position, TreeGrow._Instance.TreeScale.transform.position);
         if (_distanceToTarget < EnemyNavMeshAgent.StoppingDistance) 
         { 
             StopAgent();

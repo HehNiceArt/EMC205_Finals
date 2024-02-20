@@ -13,12 +13,13 @@ GameObject:
   - component: {fileID: 3922076291415851512}
   - component: {fileID: 3838392046200756157}
   - component: {fileID: 4802162599320644880}
+  - component: {fileID: 7417617226795788311}
   - component: {fileID: 8662896510954125408}
   - component: {fileID: 1039603960826417653}
-  - component: {fileID: 7417617226795788311}
+  - component: {fileID: 5949018394931419256}
   m_Layer: 7
   m_Name: IllegalWoodcutter
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -132,46 +133,6 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &8662896510954125408
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5280700170035968709}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36d86395dcda5784b9a35023ddb6bbc7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _enemyRigidbody: {fileID: 0}
-  _enemyHead: {fileID: 8128900787375405778}
-  EnemyNavMeshAgent: {fileID: 1039603960826417653}
-  EnemyController: {fileID: 0}
-  Tree: {fileID: 0}
-  _enemyAttackSpeed: 0
-  _enemyAttackRange: 4
-  _isWithinRange: 0
-  _isAttacking: 0
---- !u!114 &1039603960826417653
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5280700170035968709}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd95d66083579e246a1e2359fad37be8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Agent: {fileID: 0}
-  Tree: {fileID: 0}
-  _speed: 5
-  _angularSpeed: 100
-  _acceleration: 3
-  StoppingDistance: 3
-  IsOvershooting: 1
 --- !u!54 &7417617226795788311
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -199,6 +160,56 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &8662896510954125408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5280700170035968709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36d86395dcda5784b9a35023ddb6bbc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemyRigidbody: {fileID: 0}
+  _enemyHead: {fileID: 8128900787375405778}
+  EnemyStats: {fileID: 11400000, guid: 6994a81b46d235547b2044ce08869fce, type: 2}
+  EnemyNavMeshAgent: {fileID: 1039603960826417653}
+  _enemyAttackRange: 10
+  _isWithinRange: 0
+  _isAttacking: 0
+--- !u!114 &1039603960826417653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5280700170035968709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd95d66083579e246a1e2359fad37be8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Agent: {fileID: 0}
+  _speed: 5
+  _angularSpeed: 100
+  _acceleration: 3
+  StoppingDistance: 2
+  IsOvershooting: 1
+--- !u!114 &5949018394931419256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5280700170035968709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbcd26663ba291e4284c7e11dd779d9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnemyStats: {fileID: 11400000, guid: 6994a81b46d235547b2044ce08869fce, type: 2}
 --- !u!1 &8128900787375405778
 GameObject:
   m_ObjectHideFlags: 0
