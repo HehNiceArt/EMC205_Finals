@@ -1,4 +1,3 @@
-//@Kyle Chester Rafael 
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,25 +5,22 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerFirstPersonMovement : MonoBehaviour
 {
-    public Camera _playerCamera;
-    public float _walkSpeed = 6f;
-    public float _runSpeed = 12f;
-    public float _jumpPower = 7f;
-    public float _gravity = 10f;
-    public float _stamina = 100f; 
-    public float _maxStamina = 100f; 
-    public float _staminaDepletionRate = 10f; 
-    public float _staminaRecoveryRate = 5f; 
-    public float _staminaThreshold = 20f; 
-
-    public float _lookSpeed = 2f;
-    public float _lookXLimit = 45f;
+    public Camera playerCamera;
+    public float WalkSpeed = 6f;
+    public float RunSpeed = 12f;
+    public float JumpPower = 7f;
+    public float gravity = 10f;
+    public float stamina = 100f;
+    public float MaxStamina = 100f;
+    public float StaminaDepletionRate = 10f;
+    public float StaminaRecoveryRate = 5f;
+    public float StaminaThreshold = 20f;
+    public float LookSpeed = 2f;
+    public float LookXLimit = 45f;
+    public bool CanMove = true;
 
     private Vector3 _moveDirection = Vector3.zero;
     private float _rotationX = 0;
-
-    public bool _canMove = true;
-
     private CharacterController _characterController;
 
     private void Start()
@@ -38,56 +34,47 @@ public class PlayerFirstPersonMovement : MonoBehaviour
     {
         Vector3 _forward = transform.TransformDirection(Vector3.forward);
         Vector3 _right = transform.TransformDirection(Vector3.right);
+        bool _isRunning = Input.GetKey(KeyCode.LeftShift) && stamina > StaminaThreshold;
+        float _speedMultiplier = stamina > StaminaThreshold ? (_isRunning ? RunSpeed : WalkSpeed) : WalkSpeed;
+        float _curSpeedX = CanMove ? _speedMultiplier * Input.GetAxis("Vertical") : 0;
+        float _curSpeedY = CanMove ? _speedMultiplier * Input.GetAxis("Horizontal") : 0;
 
-        
-        bool _isRunning = Input.GetKey(KeyCode.LeftShift) && _stamina > _staminaThreshold;
-
-        
-        if (_isRunning && _canMove)
+        if (_isRunning && CanMove)
         {
-            _stamina -= _staminaDepletionRate * Time.deltaTime;
-            _stamina = Mathf.Clamp(_stamina, 0f, _maxStamina);
+            stamina -= StaminaDepletionRate * Time.deltaTime;
+            stamina = Mathf.Clamp(stamina, 0f, MaxStamina);
         }
-        else if (!_isRunning && _stamina < _maxStamina)
+        else if (!_isRunning && stamina < MaxStamina)
         {
-            _stamina += _staminaRecoveryRate * Time.deltaTime;
-            _stamina = Mathf.Clamp(_stamina, 0f, _maxStamina);
+            stamina += StaminaRecoveryRate * Time.deltaTime;
+            stamina = Mathf.Clamp(stamina, 0f, MaxStamina);
         }
-
-        
-        float _speedMultiplier = _stamina > _staminaThreshold ? (_isRunning ? _runSpeed : _walkSpeed) : _walkSpeed;
-        float _curSpeedX = _canMove ? _speedMultiplier * Input.GetAxis("Vertical") : 0;
-        float _curSpeedY = _canMove ? _speedMultiplier * Input.GetAxis("Horizontal") : 0;
 
         float _movementDirectionY = _moveDirection.y;
         _moveDirection = (_forward * _curSpeedX) + (_right * _curSpeedY);
 
-        
-        if (Input.GetButton("Jump") && _canMove && _characterController.isGrounded)
+        if (Input.GetButton("Jump") && CanMove && _characterController.isGrounded)
         {
-            _moveDirection.y = _jumpPower;
+            _moveDirection.y = JumpPower;
         }
         else
         {
             _moveDirection.y = _movementDirectionY;
         }
 
-       
         if (!_characterController.isGrounded)
         {
-            _moveDirection.y -= _gravity * Time.deltaTime;
+            _moveDirection.y -= gravity * Time.deltaTime;
         }
 
-      
         _characterController.Move(_moveDirection * Time.deltaTime);
 
-       
-        if (_canMove)
+        if (CanMove)
         {
-            _rotationX += -Input.GetAxis("Mouse Y") * _lookSpeed;
-            _rotationX = Mathf.Clamp(_rotationX, -_lookXLimit, _lookXLimit);
-            _playerCamera.transform.localRotation = Quaternion.Euler(_rotationX, 0, 0);
-            transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * _lookSpeed, 0);
+            _rotationX += -Input.GetAxis("Mouse Y") * LookSpeed;
+            _rotationX = Mathf.Clamp(_rotationX, -LookXLimit, LookXLimit);
+            playerCamera.transform.localRotation = Quaternion.Euler(_rotationX, 0, 0);
+            transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * LookSpeed, 0);
         }
     }
 }
