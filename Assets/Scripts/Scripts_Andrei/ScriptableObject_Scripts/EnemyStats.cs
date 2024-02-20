@@ -7,8 +7,9 @@ public class EnemyStats : ScriptableObject
 {
     public string EnemyName;
     public int EnemyID;
+
     [Header("Health")]
-    public int CurrentHealth;
+    public int CurrentHealth = 0;
     public int MaxHealth;
 
     [Tooltip("To reduce the scale of the tree")]

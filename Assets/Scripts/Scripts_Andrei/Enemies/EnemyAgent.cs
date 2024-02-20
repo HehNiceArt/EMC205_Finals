@@ -7,7 +7,6 @@ using UnityEngine.AI;
 public class EnemyAgent : MonoBehaviour
 {
     public NavMeshAgent Agent;
-    public TreeGrow Tree;
 
     [Header("Enemy Parameters")]
     [SerializeField] private float _speed;
@@ -16,6 +15,7 @@ public class EnemyAgent : MonoBehaviour
     public float StoppingDistance;
 
     [Space(20f)]
+    [Tooltip("If the enemy is overshooting the tree, tick this!")]
     public bool IsOvershooting = false;
     private void Start()
     {
@@ -23,13 +23,18 @@ public class EnemyAgent : MonoBehaviour
     }
     private void Update()
     {
-        transform.LookAt(Tree.transform.position);
+        FaceTree();
         EnemyParameters();
-        //Agent.velocity = Agent.desiredVelocity;
         if (IsOvershooting == true) { Agent.velocity = Agent.desiredVelocity; }
         else { IsOvershooting = false; }
     }
     
+    void FaceTree()
+    {
+        Vector3 _direction = (TreeGrow._Instance.TreeScale.transform.position - transform.position).normalized;
+        Quaternion _lookRotation = Quaternion.LookRotation(new Vector3(_direction.x, 0, _direction.z));
+        transform.rotation = Quaternion.Slerp(transform.rotation, _lookRotation, Time.deltaTime * 5f);
+    }
     void EnemyParameters()
     {
         Agent.speed = _speed;

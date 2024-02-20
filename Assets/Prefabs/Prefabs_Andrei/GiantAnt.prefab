@@ -118,12 +118,13 @@ GameObject:
   - component: {fileID: 4501608290253655612}
   - component: {fileID: 8439755710895903257}
   - component: {fileID: 747799223734922288}
-  - component: {fileID: 7139840600651784147}
   - component: {fileID: 8012825712801679760}
+  - component: {fileID: 7139840600651784147}
   - component: {fileID: 7801930881079143972}
+  - component: {fileID: 8931503066590591686}
   m_Layer: 7
   m_Name: GiantAnt
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -237,27 +238,6 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &7139840600651784147
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5983312471446211322}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36d86395dcda5784b9a35023ddb6bbc7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _enemyRigidbody: {fileID: 8012825712801679760}
-  _enemyHead: {fileID: 3249020724247676764}
-  EnemyNavMeshAgent: {fileID: 7801930881079143972}
-  EnemyController: {fileID: 0}
-  Tree: {fileID: 0}
-  _enemyAttackSpeed: 0
-  _enemyAttackRange: 4
-  _isWithinRange: 0
-  _isAttacking: 0
 --- !u!54 &8012825712801679760
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -285,6 +265,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7139840600651784147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5983312471446211322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36d86395dcda5784b9a35023ddb6bbc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _enemyRigidbody: {fileID: 8012825712801679760}
+  _enemyHead: {fileID: 3249020724247676764}
+  EnemyStats: {fileID: 11400000, guid: 4497e3d56c10d2841a1d45c3bb981934, type: 2}
+  EnemyNavMeshAgent: {fileID: 7801930881079143972}
+  _enemyAttackRange: 10
+  _isWithinRange: 0
+  _isAttacking: 0
 --- !u!114 &7801930881079143972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -298,9 +297,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Agent: {fileID: 0}
-  Tree: {fileID: 0}
   _speed: 3
   _angularSpeed: 80
   _acceleration: 3
   StoppingDistance: 3
   IsOvershooting: 0
+--- !u!114 &8931503066590591686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5983312471446211322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbcd26663ba291e4284c7e11dd779d9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnemyStats: {fileID: 11400000, guid: 4497e3d56c10d2841a1d45c3bb981934, type: 2}
