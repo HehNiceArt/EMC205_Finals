@@ -16,11 +16,11 @@ public class TransformInfo
 public class TreeRuleParsing : MonoBehaviour
 {
     [Range(0, 10)]
-    [SerializeField] private int _iteration = 4;
-    [SerializeField] private float _angle = 30f;
+    [SerializeField] private int _iteration;
+    [SerializeField] private float _angle = 30f; //Angle rotation
 
-    [SerializeField] private float _width = 1f;
-    [SerializeField] private float _length = 2f;
+    [SerializeField] private float _width = 1f; //Width of the tree
+    [SerializeField] private float _length = 2f; //Length of the tree
     [SerializeField] private float _roll = 30f; // (\ roll left) (/ roll right)
 
     [Header("Axiom and Production Rules")]
