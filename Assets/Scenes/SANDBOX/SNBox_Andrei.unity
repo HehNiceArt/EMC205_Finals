@@ -1575,10 +1575,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _iteration: 5
-  _width: 0.1
+  _angle: 35
+  _width: 0.05
   _length: 0.5
-  _angle: 30
   _roll: 30
+  _initial: F
+  _productionRule: F[+FF][-FF]F[-F][+F]F
   _branch: {fileID: 3726824344769354391, guid: 61ad98a6a798931448659e9801d912bd, type: 3}
   _leaf: {fileID: 7427288336781129455, guid: 5cda14d529d5e04488467d51147bdebf, type: 3}
   _flower: {fileID: 8221275225043484541, guid: 9451691d96a9bd04199fe07c03a1f19b, type: 3}

@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Data;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
+using Unity.Collections;
+using UnityEditor;
 using UnityEngine;
 
 public class TransformInfo
@@ -13,12 +15,17 @@ public class TransformInfo
 }
 public class TreeRuleParsing : MonoBehaviour
 {
+    [Range(0, 10)]
     [SerializeField] private int _iteration = 4;
+    [SerializeField] private float _angle = 30f;
 
     [SerializeField] private float _width = 1f;
     [SerializeField] private float _length = 2f;
-    [SerializeField] private float _angle = 30f;
     [SerializeField] private float _roll = 30f; // (\ roll left) (/ roll right)
+
+    [Header("Axiom and Production Rules")]
+    public string _initial;
+    public string _productionRule;
 
     [Header("Tree Parts")]
     [SerializeField] private GameObject _branch;
@@ -37,9 +44,10 @@ public class TreeRuleParsing : MonoBehaviour
 
         _rules = new Dictionary<char, string>
         {
-            //this should be the one to be edited
-            {'X', "F" },
-            {'F', "F[-F]F[+F][F]" }
+            //axiom
+            {'X', _initial },
+            //production rule
+            {'F', _productionRule }
         };
         Generate();
     }
@@ -60,7 +68,7 @@ public class TreeRuleParsing : MonoBehaviour
             _currentString = stringBuilder.ToString();
             stringBuilder = new StringBuilder();
         }
-
+        print(_currentString);
         for (int i = 0; i < _currentString.Length; i++)
         {
             //Rules
