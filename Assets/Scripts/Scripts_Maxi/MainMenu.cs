@@ -5,33 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public CanvasGroup SettingsPanel;
-    public CanvasGroup CreditsPanel;
-
-    public void PlayGame()
+    /**public canvasGroup StartMenu;   
+    
+    public void SettingsT()
     {
-        SceneManager.LoadScene("MASTER_MainLevel");
-    }
+        StartMenu.SetActive(false);
+        Settings.SetActive(true);
+    }**/
 
-    public void Option()
-    {
-        SettingsPanel.alpha = 1;
-        SettingsPanel.blockRaycast = true;
-    }
-
-    public void Credits()
-    {
-        
-    }
-
-    public void Back()
-    {
-        SettingsPanel.alpha = 0;
-        SettingsPanel.blockRaycast = false;
-    }
-
-    public void Quit()
-    {
-        
-    }
+    
 }
