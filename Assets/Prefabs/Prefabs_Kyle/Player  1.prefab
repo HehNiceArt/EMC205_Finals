@@ -56,7 +56,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91f4c475b2a4fe644a83f387316cc018, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sensitivity: 5
+  Sensitivity: 0
 --- !u!20 &7229160340118701294
 Camera:
   m_ObjectHideFlags: 0
@@ -211,8 +211,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 750bb60f334a5ec43bef12d5191c7de8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distanceThreshold: 0.15
-  isGrounded: 1
+  DistanceThreshold: 0.15
+  IsGrounded: 1
 --- !u!1 &8739899121037297002
 GameObject:
   m_ObjectHideFlags: 0
@@ -366,16 +366,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4930daac2c1c86a4c902b23d2fe5e1b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  Speed: 0
   canRun: 1
-  runSpeed: 9
+  RunSpeed: 9
   runningKey: 304
-  stamina: 100
-  maxStamina: 100
-  staminaDepletionRate: 10
-  staminaRecoveryRate: 5
-  staminaThreshold: 20
-  isInterrupted: 0
+  Stamina: 100
+  MaxStamina: 100
+  StaminaDepletionRate: 10
+  StaminaRecoveryRate: 5
+  StaminaThreshold: 20
+  IsInterrupted: 0
 --- !u!114 &6351087416388239123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -388,10 +388,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b913e741796eba546b2a554d4f7ac17a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemLayer:
+  ItemLayer:
     serializedVersion: 2
-    m_Bits: 1024
-  txt_HoveredItem: {fileID: 0}
+    m_Bits: 0
+  TextHoveredItem: {fileID: 0}
 --- !u!114 &2530067409550003613
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -404,7 +404,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9416a745e6f21b446ac914f8e86449b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slots:
+  Slots:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -422,5 +422,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06608a7b9816edd468282da891969e5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpStrength: 2
-  groundCheck: {fileID: 668678495652478001}
+  JumpStrength: 2
+  _groundCheck: {fileID: 668678495652478001}

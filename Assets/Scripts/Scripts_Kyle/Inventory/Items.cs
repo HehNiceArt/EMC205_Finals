@@ -1,3 +1,4 @@
+//@Kyle Rafael
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Item", menuName = "Create new Item")]
@@ -7,15 +8,15 @@ public class Items : ScriptableObject
     #region test
 
     #endregion
-    public int id;
+    public int Id;
 
-    public string itemName;
+    public string ItemName;
 
-    [TextArea(3, 3)] public string description;
+    [TextArea(3, 3)] public string Description;
 
 
-    public GameObject prefab;
-    public Texture icon;
+    public GameObject Prefab;
+    public Texture Icon;
 
-    public int maxStack;
+    public int MaxStack;
 }

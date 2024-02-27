@@ -1,3 +1,4 @@
+//@Kyle Rafael 
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,8 +12,8 @@ public class Slot : MonoBehaviour, IDropHandler
     public Items ItemInSlot;
     public int AmountInSlot;
 
-    RawImage icon;
-    TextMeshProUGUI txt_amount;
+    RawImage _icon;
+    TextMeshProUGUI _textAmount;
 
 
 
@@ -23,8 +24,8 @@ public class Slot : MonoBehaviour, IDropHandler
             transform.GetChild(i).gameObject.SetActive(true);
         }
 
-        icon = GetComponentInChildren<RawImage>();
-        txt_amount = GetComponentInChildren<TextMeshProUGUI>();
+        _icon = GetComponentInChildren<RawImage>();
+        _textAmount = GetComponentInChildren<TextMeshProUGUI>();
 
         if (ItemInSlot == null)
         {
@@ -36,14 +37,14 @@ public class Slot : MonoBehaviour, IDropHandler
         }
 
 
-        icon.texture = ItemInSlot.icon;
-        txt_amount.text = $"{AmountInSlot}x";
+        _icon.texture = ItemInSlot.Icon;
+        _textAmount.text = $"{AmountInSlot}x";
     }
     public void OnDrop(PointerEventData eventData)
     {
         GameObject dropped = eventData.pointerDrag;
         InventoryUIInteraction draggableItem = dropped.GetComponent<InventoryUIInteraction>();
-        Slot slot = draggableItem.draggedItemParent.GetComponent<Slot>();
+        Slot slot = draggableItem.DraggedItemParent.GetComponent<Slot>();
 
         if (slot == this)
             return;

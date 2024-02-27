@@ -1,3 +1,4 @@
+//@Kyle Rafael
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,10 +7,10 @@ using UnityEditor.Rendering;
 public class ItemInteraction : MonoBehaviour
 {
     Transform cam;
-    [SerializeField] LayerMask itemLayer;
+    [SerializeField] LayerMask ItemLayer;
     InventorySystem inventorySystem;
 
-    [SerializeField] TextMeshProUGUI txt_HoveredItem;
+    [SerializeField] TextMeshProUGUI TextHoveredItem;
     void Start()
     {
         cam = Camera.main.transform;
@@ -21,11 +22,11 @@ public class ItemInteraction : MonoBehaviour
     {
         RaycastHit hit;
 
-        if (Physics.Raycast(cam.position, cam.forward, out hit, 2, itemLayer))
+        if (Physics.Raycast(cam.position, cam.forward, out hit, 2, ItemLayer))
         {
             if (!hit.collider.GetComponent<ItemObject>())
                 return;
-            txt_HoveredItem.text = $"Press 'F' to pick up {hit.collider.GetComponent<ItemObject>().amount}x {hit.collider.GetComponent<ItemObject>().itemStats.name}";
+            TextHoveredItem.text = $"Press 'F' to pick up {hit.collider.GetComponent<ItemObject>().Amount}x {hit.collider.GetComponent<ItemObject>().ItemStats.name}";
 
             if (Input.GetKeyDown(KeyCode.F))
             {
@@ -37,7 +38,7 @@ public class ItemInteraction : MonoBehaviour
         }
         else
         {
-            txt_HoveredItem.text = string.Empty;
+            TextHoveredItem.text = string.Empty;
         }
     }
 }

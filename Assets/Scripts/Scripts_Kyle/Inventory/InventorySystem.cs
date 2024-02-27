@@ -1,3 +1,4 @@
+//@Kyle Rafael
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,7 +7,7 @@ using UnityEngine;
 public class InventorySystem : MonoBehaviour
 {
 
-    [SerializeField] public Slot[] slots = new Slot[40];
+    [SerializeField] public Slot[] Slots = new Slot[40];
     [SerializeField] GameObject InventoryUI;
 
     PlayerMovement pm;
@@ -14,13 +15,13 @@ public class InventorySystem : MonoBehaviour
     private void Awake()
     {
         pm = GetComponent<PlayerMovement>();
-        for (int i = 0; i < slots.Length; i++)
+        for (int i = 0; i < Slots.Length; i++)
         {
-            if (slots[i].ItemInSlot == null)
+            if (Slots[i].ItemInSlot == null)
             {
-                for (int k = 0; k < slots[i].transform.childCount; k++)
+                for (int k = 0; k < Slots[i].transform.childCount; k++)
                 {
-                    slots[i].transform.GetChild(k).gameObject.SetActive(false);
+                    Slots[i].transform.GetChild(k).gameObject.SetActive(false);
                 }
             }
         }
@@ -30,12 +31,12 @@ public class InventorySystem : MonoBehaviour
     {
         if (!InventoryUI.activeInHierarchy && Input.GetKeyDown(KeyCode.E))
         {
-            pm.isInterrupted = true;
+            pm.IsInterrupted = true;
             InventoryUI.SetActive(true);
         }
         else if (InventoryUI.activeInHierarchy && Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Escape))
         {
-            pm.isInterrupted = false;
+            pm.IsInterrupted = false;
             InventoryUI.SetActive(false);
         }
     }
@@ -44,33 +45,33 @@ public class InventorySystem : MonoBehaviour
     public void PickUpItem(ItemObject obj)
     {
 
-        for (int i = 0; i < slots.Length; i++)
+        for (int i = 0; i < Slots.Length; i++)
         {
-            if (slots[i].ItemInSlot != null && slots[i].ItemInSlot.id == obj.itemStats.id && slots[i].AmountInSlot != slots[i].ItemInSlot.maxStack)
+            if (Slots[i].ItemInSlot != null && Slots[i].ItemInSlot.Id == obj.ItemStats.Id && Slots[i].AmountInSlot != Slots[i].ItemInSlot.MaxStack)
             {
-                if (!WillHitMaxStack(i, obj.amount))
+                if (!WillHitMaxStack(i, obj.Amount))
                 {
-                    slots[i].AmountInSlot += obj.amount;
+                    Slots[i].AmountInSlot += obj.Amount;
                     Destroy(obj.gameObject);
-                    slots[i].SetStats();
+                    Slots[i].SetStats();
                     return;
                 }
                 else
                 {
                     int result = NeededToFill(i);
-                    obj.amount = RemainingAmount(i, obj.amount);
-                    slots[i].AmountInSlot += result;
-                    slots[i].SetStats();
+                    obj.Amount = RemainingAmount(i, obj.Amount);
+                    Slots[i].AmountInSlot += result;
+                    Slots[i].SetStats();
                     PickUpItem(obj);
                     return;
                 }
             }
-            else if (slots[i].ItemInSlot == null)
+            else if (Slots[i].ItemInSlot == null)
             {
-                slots[i].ItemInSlot = obj.itemStats;
-                slots[i].AmountInSlot += obj.amount;
+                Slots[i].ItemInSlot = obj.ItemStats;
+                Slots[i].AmountInSlot += obj.Amount;
                 Destroy(obj.gameObject);
-                slots[i].SetStats();
+                Slots[i].SetStats();
                 return;
 
             }
@@ -79,7 +80,7 @@ public class InventorySystem : MonoBehaviour
 
     bool WillHitMaxStack(int index, int amount)
     {
-        if (slots[index].ItemInSlot.maxStack <= slots[index].AmountInSlot + amount)
+        if (Slots[index].ItemInSlot.MaxStack <= Slots[index].AmountInSlot + amount)
             return true;
         else
             return false;
@@ -87,10 +88,10 @@ public class InventorySystem : MonoBehaviour
 
     int NeededToFill(int index)
     {
-        return slots[index].ItemInSlot.maxStack - slots[index].AmountInSlot;
+        return Slots[index].ItemInSlot.MaxStack - Slots[index].AmountInSlot;
     }
     int RemainingAmount(int index, int amount)
     {
-        return (slots[index].AmountInSlot + amount) - slots[index].ItemInSlot.maxStack;
+        return (Slots[index].AmountInSlot + amount) - Slots[index].ItemInSlot.MaxStack;
     }
 }

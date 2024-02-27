@@ -10,11 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc36099a6db96c044ae1dda606f334ef, type: 3}
-  m_Name: Pesticide
+  m_Name: Fertilizer
   m_EditorClassIdentifier: 
-  id: 3
-  itemName: Pesticide
-  description: Can kill a insect
-  prefab: {fileID: 1037223283721720901, guid: e7ba494c5484ada41920be83d1ad8daf, type: 3}
-  icon: {fileID: 2800000, guid: 54bdfe07337e25942b876e7400e10a88, type: 3}
-  maxStack: 20
+  Id: 1
+  ItemName: Fertilizer
+  Description: 'Can boost the plant growth
+
+'
+  Prefab: {fileID: 4124522000404084410, guid: 74b3cffac6034b54fa9310ff3b00cea0, type: 3}
+  Icon: {fileID: 2800000, guid: 5e09f488c4068fe40b2bc6802bb3a408, type: 3}
+  MaxStack: 20

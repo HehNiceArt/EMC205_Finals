@@ -1,16 +1,17 @@
+//@Kyle Rafael
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class FPSCam : MonoBehaviour
 {
-    public float sensitivity;
+    public float Sensitivity;
 
-    float targetXRotation;
-    float targetYRotation;
+    float _targetXRotation;
+    float _targetYRotation;
 
-    Transform parent;
-    Transform cam;
+    Transform _parent;
+    Transform _cam;
 
     PlayerMovement pm;
     void Start()
@@ -18,19 +19,19 @@ public class FPSCam : MonoBehaviour
         pm = FindObjectOfType<PlayerMovement>();
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        cam = Camera.main.transform;
-        parent = transform.parent;
+        _cam = Camera.main.transform;
+        _parent = transform.parent;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (pm.isInterrupted)
+        if (pm.IsInterrupted)
             return;
-        targetXRotation -= Input.GetAxisRaw("Mouse Y");
-        targetYRotation += Input.GetAxisRaw("Mouse X");
+        _targetXRotation -= Input.GetAxisRaw("Mouse Y");
+        _targetYRotation += Input.GetAxisRaw("Mouse X");
 
-        parent.eulerAngles = new Vector3(0, targetYRotation, 0);
-        cam.localEulerAngles = new Vector3(targetXRotation, 0, 0);
+        _parent.eulerAngles = new Vector3(0, _targetYRotation, 0);
+        _cam.localEulerAngles = new Vector3(_targetXRotation, 0, 0);
     }
 }

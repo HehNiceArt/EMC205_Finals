@@ -1,3 +1,4 @@
+//@Kyle Rafael
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,22 +8,22 @@ public class PlayerMovement : MonoBehaviour
 {
     Rigidbody rb;
 
-    public float speed;
+    public float Speed;
     public bool canRun = true;
     public bool IsRunning { get; private set; }
-    public float runSpeed = 9;
+    public float RunSpeed = 9;
     public KeyCode runningKey = KeyCode.LeftShift;
 
-    public float stamina = 100f;
-    public float maxStamina = 100f;
-    public float staminaDepletionRate = 10f;
-    public float staminaRecoveryRate = 5f;
-    public float staminaThreshold = 20f;
+    public float Stamina = 100f;
+    public float MaxStamina = 100f;
+    public float StaminaDepletionRate = 10f;
+    public float StaminaRecoveryRate = 5f;
+    public float StaminaThreshold = 20f;
 
-    float xAxis;
-    float zAxis;
+    float _xAxis;
+    float _zAxis;
 
-    public bool isInterrupted;
+    public bool IsInterrupted;
 
     void Start()
     {
@@ -31,22 +32,22 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        if (isInterrupted && !Cursor.visible)
+        if (IsInterrupted && !Cursor.visible)
         {
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
         }
-        else if (!isInterrupted && Cursor.visible)
+        else if (!IsInterrupted && Cursor.visible)
         {
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
         }
 
-        if (isInterrupted)
+        if (IsInterrupted)
             return;
 
-        xAxis = Input.GetAxisRaw("Horizontal");
-        zAxis = Input.GetAxisRaw("Vertical");
+        _xAxis = Input.GetAxisRaw("Horizontal");
+        _zAxis = Input.GetAxisRaw("Vertical");
 
         // Check for running input
         IsRunning = canRun && Input.GetKey(runningKey);
@@ -57,7 +58,7 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (isInterrupted)
+        if (IsInterrupted)
             return;
 
         Movement();
@@ -66,19 +67,19 @@ public class PlayerMovement : MonoBehaviour
     void Movement()
     {
         // Calculate movement direction based on input
-        Vector3 movement = transform.forward * zAxis + transform.right * xAxis;
+        Vector3 movement = transform.forward * _zAxis + transform.right * _xAxis;
         movement.Normalize();
 
         // Apply speed based on whether running or walking
-        if (IsRunning && stamina > staminaThreshold)
+        if (IsRunning && Stamina > StaminaThreshold)
         {
-            movement *= runSpeed;
-            stamina -= staminaDepletionRate * Time.deltaTime; // Reduce stamina while running
-            stamina = Mathf.Clamp(stamina, 0f, maxStamina);
+            movement *= RunSpeed;
+            Stamina -= StaminaDepletionRate * Time.deltaTime; // Reduce stamina while running
+            Stamina = Mathf.Clamp(Stamina, 0f, MaxStamina);
         }
         else
         {
-            movement *= speed;
+            movement *= Speed;
         }
 
         // Maintain vertical velocity
@@ -90,10 +91,10 @@ public class PlayerMovement : MonoBehaviour
 
     void UpdateStamina()
     {
-        if (!IsRunning && stamina < maxStamina)
+        if (!IsRunning && Stamina < MaxStamina)
         {
-            stamina += staminaRecoveryRate * Time.deltaTime;
-            stamina = Mathf.Clamp(stamina, 0f, maxStamina);
+            Stamina += StaminaRecoveryRate * Time.deltaTime;
+            Stamina = Mathf.Clamp(Stamina, 0f, MaxStamina);
         }
     }
 }

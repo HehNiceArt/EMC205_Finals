@@ -1,33 +1,34 @@
+//@Kyle Rafael
 using UnityEngine;
 
 public class Jump : MonoBehaviour
 {
-    Rigidbody rigidbody2;
-    public float jumpStrength = 2;
+    Rigidbody Rigidbody;
+    public float JumpStrength = 2;
     public event System.Action Jumped;
 
     [SerializeField, Tooltip("Prevents jumping when the transform is in mid-air.")]
-    GroundCheck groundCheck;
+    GroundCheck _groundCheck;
 
 
     void Reset()
     {
         // Try to get groundCheck.
-        groundCheck = GetComponentInChildren<GroundCheck>();
+        _groundCheck = GetComponentInChildren<GroundCheck>();
     }
 
     void Awake()
     {
         // Get rigidbody.
-        rigidbody2 = GetComponent<Rigidbody>();
+        Rigidbody = GetComponent<Rigidbody>();
     }
 
     void LateUpdate()
     {
         // Jump when the Jump button is pressed and we are on the ground.
-        if (Input.GetButtonDown("Jump") && (!groundCheck || groundCheck.isGrounded))
+        if (Input.GetButtonDown("Jump") && (!_groundCheck || _groundCheck.IsGrounded))
         {
-            rigidbody2.AddForce(Vector3.up * 100 * jumpStrength);
+            Rigidbody.AddForce(Vector3.up * 100 * JumpStrength);
             Jumped?.Invoke();
         }
     }
