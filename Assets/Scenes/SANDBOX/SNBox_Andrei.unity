@@ -1027,22 +1027,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea9f461572a48cb4ca6a1da713fa6320, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _iteration: 2
-  _rotation: 32
-  _radius: 0.03
-  _width: 0
-  _length: 0.5
-  _variance: 0
-  _flowerRate: 0
-  _tree: {fileID: 0}
-  _anglePitch: 28
-  _angleRoll: 28
-  _initialState: F-F
-  _productionRule: '[-<F]F[+^F]F[&F][>F[+&F][-^F][<+F]]'
-  _parent: {fileID: 1391229743}
-  _branch: {fileID: 1399170857385858428, guid: dbf1e7d15aee53e4e9a5e0bc43ccc55f, type: 3}
-  _leaf: {fileID: 0}
-  _flower: {fileID: 0}
+  _iteration: 3
+  _treeBranch: {fileID: 1399170857385858428, guid: dbf1e7d15aee53e4e9a5e0bc43ccc55f,
+    type: 3}
+  _treeLeaf: {fileID: 0}
+  _treeFlower: {fileID: 0}
+  _initialState: F
+  _productionRule: F
 --- !u!1 &713970166
 GameObject:
   m_ObjectHideFlags: 0
@@ -1697,12 +1688,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1374643346}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fa77e2b08917bc44b9f8e5756d0dd29e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _iteration: 1
+  _iteration: 4
   _angle: 20
   _width: 0.05
   _length: 0.5
@@ -1745,12 +1736,6 @@ Transform:
   - {fileID: 1784451870}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1391229743 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4894754182484813005, guid: 1553e02e91dc1524b9facb0bcebef999,
-    type: 3}
-  m_PrefabInstance: {fileID: 1069082364}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1391229744 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7716063263560831722, guid: 1553e02e91dc1524b9facb0bcebef999,
