@@ -29,10 +29,10 @@ public class MainMenu : MonoBehaviour
     public void Back()
     {
 
-    }
-    
-    public void Quit()
-    {
-        
     }**/
+    
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }
