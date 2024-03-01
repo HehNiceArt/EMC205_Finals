@@ -8,6 +8,7 @@ using UnityEditorInternal;
 using System.Linq;
 using UnityEngine.Rendering.Universal;
 
+//author: @HehNice
 public class TransformInfo3D
 {
     public Vector3 Position3D;
@@ -15,7 +16,7 @@ public class TransformInfo3D
 }
 public class TreeLSystem3D : MonoBehaviour
 {
-    [SerializeField][Range(0, 5)] private int _iteration = 0;
+    [SerializeField][Range(0, 5)] private int _iteration = 1;
 
     [Header("Tree Values")]
     [SerializeField] [Range(0, 2)] private float _maxLength;
@@ -27,7 +28,6 @@ public class TreeLSystem3D : MonoBehaviour
     [Header("Tree Parents")]
     [SerializeField] private GameObject _treeParentBranch;
     [SerializeField] private GameObject _treeParentLeaf;
-    [SerializeField] private GameObject _treeParentFlower;
 
     [Header("Tree Parts")]
     public GameObject _treeBranch;
@@ -70,6 +70,7 @@ public class TreeLSystem3D : MonoBehaviour
             {'X', _initialState },
             {'F', _productionRule }
         };
+        Generate(_iteration);
     }
 
     private void Update()

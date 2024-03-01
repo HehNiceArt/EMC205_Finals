@@ -13,8 +13,6 @@ public class EnemyController : MonoBehaviour
     public EnemyAgent[] EnemyAgent;
     public EnemyHealth[] EnemyHealth;
 
-    [Header("Tree")]
-    public TreeGrow Tree;
 
     [Header("AI")]
     [SerializeField] private float _minimumRange;

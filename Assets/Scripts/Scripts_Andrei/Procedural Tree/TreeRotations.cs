@@ -111,3 +111,4 @@ public class TreeRotations : MonoBehaviour
         return _rotationHeading;
     }
 }
+//Source: https://www.researchgate.net/profile/Noppadon-Khiripet/publication/268380530_Real-time_3D_Plant_Structure_Modeling_by_L-System_with_Actual_Measurement_Parameters/links/551b9d030cf2fdce8438a1bd/Real-time-3D-Plant-Structure-Modeling-by-L-System-with-Actual-Measurement-Parameters.pdf
