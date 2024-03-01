@@ -10,6 +10,7 @@ using System.Linq;
 using UnityEngine.Rendering.Universal;
 using TMPro;
 using TreeEditor;
+using Unity.VisualScripting;
 
 public class TransformInfo3D
 {
@@ -21,20 +22,21 @@ public class TreeLSystem3D : MonoBehaviour
     [SerializeField][Range(0, 5)] private int _iteration = 0;
 
     [Header("Tree Values")]
-    [SerializeField] [Range(0, 1)] private float _age;
     [SerializeField] [Range(0, 2)] private float _maxLength;
     [SerializeField] [Range(0, 1)] private float _diameter;
-    [SerializeField] [Range(0, 1)] private float _flowerVariance;
-    [SerializeField] [Range(0, 1)] private float _leafVariance;
+    [SerializeField] [Range(0, 5)] private float _leafVariance;
     [SerializeField] private float _angle;
+    public float LeafProbability = 0.5f;
 
-    [Header("Tree Parts")]
+    [Header("Tree Parents")]
     [SerializeField] private GameObject _treeParentBranch;
     [SerializeField] private GameObject _treeParentLeaf;
     [SerializeField] private GameObject _treeParentFlower;
-    [SerializeField] private GameObject _treeBranch;
-    [SerializeField] private GameObject _treeLeaf;
-    [SerializeField] private GameObject _treeFlower;
+
+    [Header("Tree Parts")]
+    public GameObject _treeBranch;
+    public GameObject _treeLeaf;
+    public GameObject _treeFlower;
 
     [Header("Rules")]
     [SerializeField] private string _initialState;
@@ -46,12 +48,24 @@ public class TreeLSystem3D : MonoBehaviour
     private Stack<TransformInfo3D> _transformStack;
     private string _currentString = string.Empty;
 
-
-    //FF[&+F]F[-<F][->F][+^FF]
-    //[-<F]F[+^F]F[&F][>F[+&F][-^F][<+F]]
+    //F[-F[a]aa][+&[a]F[a][^FFa]]a
+    //F[-F[a]aa][+&[a]F[a][-Fa]]a
+    //F[-F[a]aa][^F[a][&Fa]]a
     private void Start()
     {
         _transformStack = new Stack<TransformInfo3D>();
+
+        Renderer _treeBranchColor = _treeBranch.GetComponent<Renderer>();
+        Renderer _treeLeafColor = _treeLeaf.GetComponent<Renderer>();
+
+        if (_treeBranchColor != null && _treeBranchColor.sharedMaterial != null)
+        {
+            _treeBranchColor.sharedMaterial.enableInstancing = true;
+        }
+        if (_treeLeafColor != null && _treeLeafColor.sharedMaterial != null)
+        { 
+            _treeLeafColor.sharedMaterial.enableInstancing = true;
+        }
 
         _rules = new Dictionary<char, string>
         {
@@ -62,14 +76,14 @@ public class TreeLSystem3D : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && _iteration <= 5)
         {
-            if(_iteration <= 5)
+            if(_iteration > 5)
             {
+                return;
+            }
             _iteration++;
             Generate(_iteration);
-            }
-
         }
     }
 
@@ -121,9 +135,6 @@ public class TreeLSystem3D : MonoBehaviour
                 case '/':
                     RollRight();
                     break;
-                case 'h':
-                    Flower();
-                    break;
                 case 'a':
                     Leaf();
                     break;
@@ -161,25 +172,29 @@ public class TreeLSystem3D : MonoBehaviour
         _branch.transform.parent = _treeParentBranch.transform;
 
         _maxLength -= UnityEngine.Random.Range(0, 0.5f);
+        _diameter -= 0.01f;
         if(_maxLength <= 0)
         {
             _maxLength = 2;
         }
+        if(_diameter <= 0.1f)
+        {
+            _diameter = 0.5f;
+        }
         //Debug.Log("Position: " + _branch.transform.position + " Scale: " + _branch.transform.localScale);
-    }
-    void Flower()
-    {
-        float _rand = UnityEngine.Random.Range(0, _flowerVariance);
-        GameObject _flower = Instantiate(_treeFlower, transform.position, transform.rotation);
-        _flower.transform.localScale = new Vector3(_rand, _rand, _rand);
-        _flower.transform.parent = _treeParentFlower.transform;
     }
     void Leaf()
     {
-        float _rand = UnityEngine.Random.Range(0, _leafVariance);
-        GameObject _leaf = Instantiate(_treeLeaf, transform.position, transform.rotation);
-        _leaf.transform.localScale = new Vector3(_rand, _rand, _rand);  
-        _leaf.transform.parent = _treeParentLeaf.transform;
+        float _randomValue = UnityEngine.Random.value;
+        float _rand = UnityEngine.Random.Range(1, _leafVariance);
+
+        float _randomRange = UnityEngine.Random.Range(-90, 90);
+        if(_randomValue < LeafProbability)
+        {
+            GameObject _leaf = Instantiate(_treeLeaf, transform.position, Quaternion.Euler(_randomRange, _randomRange, _randomRange));
+            _leaf.transform.localScale = new Vector3(_rand, _rand, _rand);  
+            _leaf.transform.parent = _treeParentLeaf.transform;
+        }
     }
 
     void ResetRotation()   //Move the postion upwards without instantiating a branch
@@ -309,7 +324,6 @@ public class TreeLSystem3D : MonoBehaviour
 
         transform.rotation = _rotation;
     }
-
     void PitchUp()                      // ^
     {
         Quaternion _currentRotation = transform.rotation;
@@ -330,7 +344,7 @@ public class TreeLSystem3D : MonoBehaviour
     {
         Quaternion _currentRotation = transform.rotation;
         Matrix4x4 _rollLeft = Matrix4x4.TRS(Vector3.zero, _currentRotation, Vector3.one) * RotationHeading(_angle);
-        Quaternion _rotation = Quaternion.LookRotation(_rollLeft.GetColumn(0), _rollLeft.GetColumn(1));
+        Quaternion _rotation = Quaternion.LookRotation(_rollLeft.GetColumn(2), _rollLeft.GetColumn(1));
 
         transform.rotation = _rotation;
     }
@@ -339,7 +353,7 @@ public class TreeLSystem3D : MonoBehaviour
     {
         Quaternion _currentRotation = transform.rotation;
         Matrix4x4 _rollRight = Matrix4x4.TRS(Vector3.zero, _currentRotation, Vector3.one)* RotationHeading(-_angle);
-        Quaternion _rotation = Quaternion.LookRotation(_rollRight.GetColumn(0), _rollRight.GetColumn(1));
+        Quaternion _rotation = Quaternion.LookRotation(_rollRight.GetColumn(2), _rollRight.GetColumn(1));
 
         transform.rotation = _rotation;
     }
