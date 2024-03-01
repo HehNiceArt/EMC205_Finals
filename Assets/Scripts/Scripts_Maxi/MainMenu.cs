@@ -15,20 +15,19 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("MASTER_MainLevel");
     }
 
-    /**public void Settings()
+    public void Settings()
     {
-        StartMenu.SetActive(false);
-        SettingsMenu.SetActive(true);
+        SceneManager.LoadScene("Settings");
     }
 
-    public void Credits()
+    /**public void Credits()
     {
 
     }
 
     public void Back()
     {
-
+        SceneManager.LoadScene("MainMenu");
     }**/
     
     public void QuitGame()
