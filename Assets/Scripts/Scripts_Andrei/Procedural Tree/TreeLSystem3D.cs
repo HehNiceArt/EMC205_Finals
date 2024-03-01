@@ -5,12 +5,8 @@ using UnityEngine;
 using System;
 using UnityEngine.UIElements;
 using UnityEditorInternal;
-using UnityEngine.ProBuilder;
 using System.Linq;
 using UnityEngine.Rendering.Universal;
-using TMPro;
-using TreeEditor;
-using Unity.VisualScripting;
 
 public class TransformInfo3D
 {
@@ -42,6 +38,8 @@ public class TreeLSystem3D : MonoBehaviour
     [SerializeField] private string _initialState;
     [SerializeField] private string _productionRule;
 
+    [Space(10f)]
+    public TreeRotations _treeRotations;
     private const string _axiom = "X";
 
     private Dictionary<char, string> _rules;
@@ -181,7 +179,6 @@ public class TreeLSystem3D : MonoBehaviour
         {
             _diameter = 0.5f;
         }
-        //Debug.Log("Position: " + _branch.transform.position + " Scale: " + _branch.transform.localScale);
     }
     void Leaf()
     {
@@ -203,123 +200,18 @@ public class TreeLSystem3D : MonoBehaviour
         transform.rotation = Quaternion.Euler(0f, 0f, _random);
     }
 
-    /// <summary> 3x3 RotationUp
-    ///   Row             0             1          2    Column 
-    ///             |  Cos(angle) ,  Sin(angle) ,  0  |   0
-    /// Ru(angle) = | -Sin(angle) ,  Cos(angle) ,  0  |   1
-    ///             |     0       ,     0       ,  1  |   2
-    /// </summary>
-    /// <param name="angle">Rotation 3x3</param>
-    /// <returns>Gets the 3x3 rotation</returns>
-    Matrix4x4 RotationUp(float angle)
-    {
-        Matrix4x4 _rotationUp = Matrix4x4.zero;
-
-        //First row
-        _rotationUp[0, 0] = Mathf.Cos(angle);
-        _rotationUp[0, 1] = Mathf.Sin(angle);
-        _rotationUp[0, 2] = 0f;
-        _rotationUp[0, 3] = 0f;
-        //Second row
-        _rotationUp[1, 0] = -Mathf.Sin(angle);
-        _rotationUp[1, 1] = Mathf.Cos(angle);
-        _rotationUp[1, 2] = 0f;
-        _rotationUp[1, 3] = 0f;
-        //Third row
-        _rotationUp[2, 0] = 0f;
-        _rotationUp[2, 1] = 0f;
-        _rotationUp[2, 2] = 1;
-        _rotationUp[2, 3] = 0f;
-        // Fourth row
-        _rotationUp[3, 0] = 0f;
-        _rotationUp[3, 1] = 0f;
-        _rotationUp[3, 2] = 0f;
-        _rotationUp[3, 3] = 1f;
-        return _rotationUp;
-    } 
-
-    /// <summary> 3x3 RotationPitch
-    ///     Row         0        1             2         Column  
-    ///             |   1   ,    0       ,     0       |   0
-    /// Rl(angle) = |   0   , Cos(angle) , -Sin(angle) |   1
-    ///             |   0   , Sin(angle) ,  Cos(angle) |   2
-    /// </summary>
-    /// <param name="angle">Parameter value to pass</param>
-    /// <returns></returns>
-    Matrix4x4 RotationPitch(float angle)
-    {
-        Matrix4x4 _rotationPitch = Matrix4x4.zero;
-
-        //First row
-        _rotationPitch[0, 0] = 1f;
-        _rotationPitch[0, 1] = 0f;
-        _rotationPitch[0, 2] = 0f;
-        _rotationPitch[0, 3] = 0f;
-        //Second row
-        _rotationPitch[1, 0] = 0f;
-        _rotationPitch[1, 1] = Mathf.Cos(angle);
-        _rotationPitch[1, 2] = -Mathf.Sin(angle);
-        _rotationPitch[1, 3] = 0f;
-        //Third row
-        _rotationPitch[2, 0] = 0f;
-        _rotationPitch[2, 1] = Mathf.Sin(angle);
-        _rotationPitch[2, 2] = Mathf.Cos(angle);
-        _rotationPitch[2, 3] = 0f;
-        // Fourth row
-        _rotationPitch[3, 0] = 0f;
-        _rotationPitch[3, 1] = 0f;
-        _rotationPitch[3, 2] = 0f;
-        _rotationPitch[3, 3] = 1f;
-
-        return _rotationPitch;
-    }
-    /// <summary>
-    /// 3x3 RotationRoll
-    ///     Row          0          1        2          Column
-    ///             | Cos(angle) ,  0  , -Sin(angle) |    0
-    /// Rh(angle) = |    0       ,  1  ,     0       |    1
-    ///             | Sin(angle) ,  0  ,  Cos(angle) |    2
-    /// </summary>
-    /// <param name="angle"></param>
-    /// <returns></returns>
-    Matrix4x4 RotationHeading(float angle)
-    {
-        Matrix4x4 _rotationHeading = Matrix4x4.zero;
-
-        //First row
-        _rotationHeading[0, 0] = Mathf.Cos(angle);
-        _rotationHeading[0, 1] = 0f;
-        _rotationHeading[0, 2] = -Mathf.Sin(angle);
-        _rotationHeading[0, 3] = 0f;
-        //Second row
-        _rotationHeading[1, 0] = 0f;
-        _rotationHeading[1, 1] = 1f;
-        _rotationHeading[1, 2] = 0f;
-        _rotationHeading[1, 3] = 0f;
-        //Third row
-        _rotationHeading[2, 0] = Mathf.Sin(angle);
-        _rotationHeading[2, 1] = 0f;
-        _rotationHeading[2, 2] = Mathf.Cos(angle);
-        _rotationHeading[2, 3] = 0f;
-        // Fourth row
-        _rotationHeading[3, 0] = 0f;
-        _rotationHeading[3, 1] = 0f;
-        _rotationHeading[3, 2] = 0f;
-        _rotationHeading[3, 3] = 1f;
-        return _rotationHeading;
-    }
     void TurnLeft()                     // +
     {
         Quaternion _currentRotation = transform.rotation;
-        Matrix4x4 _rotationUp = Matrix4x4.TRS(Vector3.zero, _currentRotation, Vector3.one) * RotationUp(_angle);
+        Matrix4x4 _rotationUp = Matrix4x4.TRS(Vector3.zero, _currentRotation, Vector3.one) * _treeRotations.RotationUp(_angle);
         Quaternion _rotation = Quaternion.LookRotation(_rotationUp.GetColumn(2), _rotationUp.GetColumn(1));
 
         transform.rotation = _rotation;
     }
-    void TurnRight()                    // -
+    void TurnRight()                    // -        
     {
         Quaternion _currentRotation = transform.rotation;
-        Matrix4x4 _rotationDown = Matrix4x4.TRS(Vector3.zero, _currentRotation, Vector3.one) * RotationUp(-_angle);
+        Matrix4x4 _rotationDown = Matrix4x4.TRS(Vector3.zero, _currentRotation, Vector3.one) * _treeRotations.RotationUp(-_angle);
         Quaternion _rotation = Quaternion.LookRotation(_rotationDown.GetColumn(2), _rotationDown.GetColumn(1));
 
         transform.rotation = _rotation;
@@ -327,7 +219,7 @@ public class TreeLSystem3D : MonoBehaviour
     void PitchUp()                      // ^
     {
         Quaternion _currentRotation = transform.rotation;
-        Matrix4x4 _pitchUp =  Matrix4x4.TRS(Vector3.zero, _currentRotation, Vector3.one) * RotationPitch(_angle);
+        Matrix4x4 _pitchUp =  Matrix4x4.TRS(Vector3.zero, _currentRotation, Vector3.one) * _treeRotations.RotationPitch(_angle);
         Quaternion _rotation = Quaternion.LookRotation(_pitchUp.GetColumn(0), _pitchUp.GetColumn(1));
 
         transform.rotation = _rotation;
@@ -335,7 +227,7 @@ public class TreeLSystem3D : MonoBehaviour
     void PitchDown()                    // &
     {
         Quaternion _currentRotation = transform.rotation;
-        Matrix4x4 _pitchDown = Matrix4x4.TRS(Vector3.zero, _currentRotation, Vector3.one) * RotationPitch(-_angle);
+        Matrix4x4 _pitchDown = Matrix4x4.TRS(Vector3.zero, _currentRotation, Vector3.one) * _treeRotations.RotationPitch(-_angle);
         Quaternion _rotation = Quaternion.LookRotation(_pitchDown.GetColumn(0), _pitchDown.GetColumn(1));
 
         transform.rotation = _rotation;
@@ -343,7 +235,7 @@ public class TreeLSystem3D : MonoBehaviour
     void RollLeft()                     // l
     {
         Quaternion _currentRotation = transform.rotation;
-        Matrix4x4 _rollLeft = Matrix4x4.TRS(Vector3.zero, _currentRotation, Vector3.one) * RotationHeading(_angle);
+        Matrix4x4 _rollLeft = Matrix4x4.TRS(Vector3.zero, _currentRotation, Vector3.one) * _treeRotations.RotationHeading(_angle);
         Quaternion _rotation = Quaternion.LookRotation(_rollLeft.GetColumn(2), _rollLeft.GetColumn(1));
 
         transform.rotation = _rotation;
@@ -352,7 +244,7 @@ public class TreeLSystem3D : MonoBehaviour
     void RollRight()                    // /
     {
         Quaternion _currentRotation = transform.rotation;
-        Matrix4x4 _rollRight = Matrix4x4.TRS(Vector3.zero, _currentRotation, Vector3.one)* RotationHeading(-_angle);
+        Matrix4x4 _rollRight = Matrix4x4.TRS(Vector3.zero, _currentRotation, Vector3.one)* _treeRotations.RotationHeading(-_angle);
         Quaternion _rotation = Quaternion.LookRotation(_rollRight.GetColumn(2), _rollRight.GetColumn(1));
 
         transform.rotation = _rotation;
