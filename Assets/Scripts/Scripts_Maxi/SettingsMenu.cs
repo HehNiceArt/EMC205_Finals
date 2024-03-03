@@ -7,8 +7,11 @@ using TMPro;
 
 public class SettingsMenu : MonoBehaviour
 {
+    //resolution
     public TMP_Dropdown resolutionDropdown;
     private Resolution[] resolutions;
+
+    
 
     private void Start()
     {
@@ -32,10 +35,6 @@ public class SettingsMenu : MonoBehaviour
         resolutionDropdown.value = currentResolutionIndex;
         resolutionDropdown.RefreshShownValue();
     }
-    public void SetFullScreen(bool isFullscreen)
-    {
-        Screen.fullScreen = isFullscreen;
-    }
 
     public void SetResolution(int resolutionIndex)
     {
@@ -43,16 +42,21 @@ public class SettingsMenu : MonoBehaviour
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
     }
 
-    public void SetVolume(float volume)
+    //fullscreen
+    public void SetFullScreen(bool isFullscreen)
     {
-        AudioListener.volume = volume;
+        Screen.fullScreen = isFullscreen;
     }
 
-    public void VolumeSetting()
+    //volume
+    public AudioMixer audioMixer;
+    
+    public void VolumeSetting(float volume)
     {
-        PlayerPrefs.SetFloat("masterVolume", AudioListener.volume);
+        audioMixer.SetFloat("volume", volume);
     }
 
+    //back button
     public void Back()
     {
         SceneManager.LoadScene("MainMenu");
