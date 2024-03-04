@@ -5,26 +5,38 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     public EnemyStats EnemyStats;
+    public int Health = 0;
+    public GameObject Self;
 
-    private void Start()
+    private int _initialHealth;
+    private void Awake()
     {
-        EnemyStats.CurrentHealth = EnemyStats.MaxHealth;
+        _initialHealth = EnemyStats.Health;
+        ResetHealth();
     }
 
     public void TakeDamage(int damage)
     {
-        EnemyStats.CurrentHealth -= damage;
-
-        Debug.Log(EnemyStats.CurrentHealth);
-        if(EnemyStats.CurrentHealth <= 0 )
+        Health -= damage;
+        Debug.Log($"Enemy {EnemyStats.EnemyName} took {damage} damage.");
+        Debug.Log($"Current {EnemyStats.EnemyName} Health: {Health}");
+        if(Health <= 0 )
         {
-            EnemyStats.CurrentHealth = 0;
-            Die();
+            Die(Self);
         }
     }
 
-    protected virtual void Die()
+    public void Die(GameObject enemy)
     {
-        gameObject.SetActive(false);
+        if(EnemyPoolManager.Instance != null)
+        {
+            EnemyPoolManager.Instance.DeactivateEnemy(enemy);
+            ResetHealth();
+        }
+    }
+
+    void ResetHealth()
+    {
+        Health = _initialHealth;
     }
 }

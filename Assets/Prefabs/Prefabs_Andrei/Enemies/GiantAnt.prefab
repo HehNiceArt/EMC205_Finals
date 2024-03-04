@@ -128,7 +128,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3012009500607997140
 Transform:
   m_ObjectHideFlags: 0
@@ -237,7 +237,7 @@ NavMeshAgent:
   m_Height: 1
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_ObstacleAvoidanceType: 1
 --- !u!54 &8012825712801679760
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -315,3 +315,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   EnemyStats: {fileID: 11400000, guid: 4497e3d56c10d2841a1d45c3bb981934, type: 2}
+  Health: 0
+  Self: {fileID: 5983312471446211322}

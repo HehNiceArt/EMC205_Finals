@@ -32,7 +32,6 @@ public class TreeLSystem3D : MonoBehaviour
     [Header("Tree Parts")]
     public GameObject _treeBranch;
     public GameObject _treeLeaf;
-    public GameObject _treeFlower;
 
     [Header("Rules")]
     [SerializeField] private string _initialState;
@@ -77,7 +76,7 @@ public class TreeLSystem3D : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && _iteration <= 5)
         {
-            if(_iteration > 5)
+            if(_iteration > 4)
             {
                 return;
             }
@@ -102,15 +101,12 @@ public class TreeLSystem3D : MonoBehaviour
             _currentString = sb.ToString();
             sb = new StringBuilder();
         }
-        print(_currentString);
+        //print(_currentString);
 
         for (int i = 0; i < _currentString.Length; i++)
         {
             switch (_currentString[i])
             {
-                case 'f':
-                    ResetRotation();
-                    break;
                 case 'F':   // Move forward a step of length d. A line segment between points (X,Y,Z) and (X', Y', Z') is drawn;
                     CreateBranch();
                     break;
@@ -195,12 +191,6 @@ public class TreeLSystem3D : MonoBehaviour
         }
     }
 
-    void ResetRotation()   //Move the postion upwards without instantiating a branch
-    {
-        float _random = UnityEngine.Random.Range(-90, 90);
-        transform.rotation = Quaternion.Euler(0f, 0f, _random);
-    }
-
     void TurnLeft()                     // +
     {
         Quaternion _currentRotation = transform.rotation;
@@ -241,7 +231,6 @@ public class TreeLSystem3D : MonoBehaviour
 
         transform.rotation = _rotation;
     }
-
     void RollRight()                    // /
     {
         Quaternion _currentRotation = transform.rotation;

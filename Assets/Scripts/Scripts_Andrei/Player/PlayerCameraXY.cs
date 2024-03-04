@@ -30,5 +30,23 @@ public class PlayerCameraXY : MonoBehaviour
 
         transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
         orientation.rotation = Quaternion.Euler(0, yRotation, 0);
+        PauseGame();
+    }
+    private void PauseGame() 
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            EnemyWaveSystem.Instance.ActivateNextWaveUI();
+            Time.timeScale = 0;
+        }
+        else if(Input.GetKeyDown(KeyCode.Tab))
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            EnemyWaveSystem.Instance.HideNextWaveUI();
+            Time.timeScale = 1;
+        }
     }
 }

@@ -9,8 +9,7 @@ public class PlayerRaycast : MonoBehaviour
     // layer mask only contains tree layer
     [SerializeField] private LayerMask _layerMask;
     [SerializeField] private int _damage;
-    public TreeGrow TreeScale;
-    public EnemyHealth[] Enemy;
+    [SerializeField] private EnemyPoolManager _enemyPoolManager;
     Camera _cam;
 
     void Start()
@@ -18,23 +17,16 @@ public class PlayerRaycast : MonoBehaviour
         _cam = Camera.main;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Physics.Raycast(_cam.transform.position, _cam.transform.forward, out RaycastHit hit, _raycastDistance, _layerMask))
         {
-            if (hit.collider.CompareTag("Tree") && Input.GetKeyDown(KeyCode.E))
-            { 
-                TreeGrow._Instance.GrowTreeScale();
-            }
             if(hit.collider.CompareTag("Enemy") && Input.GetMouseButtonDown(0))
             {
-                for(int i = 0; i < Enemy.Length; i++)
-                {
-                    Enemy[i].TakeDamage(_damage);
-                }
+                GameObject _hitEnemy = hit.collider.gameObject;
+                EnemyHealth _enemyHP = _hitEnemy.GetComponent<EnemyHealth>(); 
+                _enemyHP.TakeDamage(_damage);
             }
-                Debug.Log(hit.collider.gameObject.name);
         }
     }
 }

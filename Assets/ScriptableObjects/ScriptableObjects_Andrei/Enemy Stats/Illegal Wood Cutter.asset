@@ -14,8 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyName: Illegal Wood Cutter
   EnemyID: 1
-  CurrentHealth: 100
-  MaxHealth: 100
+  Health: 100
   AttackDamage: 15
   AttackSpeed: 5
   MovementSpeed: 80

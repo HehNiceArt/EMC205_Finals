@@ -18,12 +18,12 @@ GameObject:
   - component: {fileID: 1039603960826417653}
   - component: {fileID: 5949018394931419256}
   m_Layer: 7
-  m_Name: IllegalWoodcutter
+  m_Name: Caterpillar
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8261103507147400467
 Transform:
   m_ObjectHideFlags: 0
@@ -132,7 +132,7 @@ NavMeshAgent:
   m_Height: 1
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_ObstacleAvoidanceType: 1
 --- !u!54 &7417617226795788311
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -177,7 +177,6 @@ MonoBehaviour:
   EnemyStats: {fileID: 11400000, guid: 6994a81b46d235547b2044ce08869fce, type: 2}
   EnemyNavMeshAgent: {fileID: 1039603960826417653}
   _enemyAttackRange: 10
-  _isWithinRange: 0
   _isAttacking: 0
 --- !u!114 &1039603960826417653
 MonoBehaviour:
@@ -209,7 +208,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbcd26663ba291e4284c7e11dd779d9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyStats: {fileID: 11400000, guid: 6994a81b46d235547b2044ce08869fce, type: 2}
+  EnemyStats: {fileID: 11400000, guid: bf7df7c0e7f47724bba174e025455e7d, type: 2}
+  Health: 0
+  Self: {fileID: 5280700170035968709}
 --- !u!1 &8128900787375405778
 GameObject:
   m_ObjectHideFlags: 0
@@ -223,7 +224,7 @@ GameObject:
   - component: {fileID: 790325790094293465}
   - component: {fileID: 1886798897079575483}
   m_Layer: 7
-  m_Name: IllegalWoodcutteHead
+  m_Name: CatterpillarHead
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
