@@ -12,7 +12,6 @@ public class PlayerItems : ScriptableObject
     public Texture Icon;
 
     [Header("Quantity")]
-    public int CurrentQuantity;
     public int MaxQuantity;
 
     [Header("Attack Stats")]    

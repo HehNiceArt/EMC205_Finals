@@ -47,7 +47,7 @@ public class InventorySystem : MonoBehaviour
 
         for (int i = 0; i < Slots.Length; i++)
         {
-            if (Slots[i].ItemInSlot != null && Slots[i].ItemInSlot.Id == obj.ItemStats.Id && Slots[i].AmountInSlot != Slots[i].ItemInSlot.MaxStack)
+            if (Slots[i].ItemInSlot != null && Slots[i].ItemInSlot.ItemID == obj.ItemStats.ItemID && Slots[i].AmountInSlot != Slots[i].ItemInSlot.MaxQuantity)
             {
                 if (!WillHitMaxStack(i, obj.Amount))
                 {
@@ -80,7 +80,7 @@ public class InventorySystem : MonoBehaviour
 
     bool WillHitMaxStack(int index, int amount)
     {
-        if (Slots[index].ItemInSlot.MaxStack <= Slots[index].AmountInSlot + amount)
+        if (Slots[index].ItemInSlot.MaxQuantity <= Slots[index].AmountInSlot + amount)
             return true;
         else
             return false;
@@ -88,10 +88,10 @@ public class InventorySystem : MonoBehaviour
 
     int NeededToFill(int index)
     {
-        return Slots[index].ItemInSlot.MaxStack - Slots[index].AmountInSlot;
+        return Slots[index].ItemInSlot.MaxQuantity - Slots[index].AmountInSlot;
     }
     int RemainingAmount(int index, int amount)
     {
-        return (Slots[index].AmountInSlot + amount) - Slots[index].ItemInSlot.MaxStack;
+        return (Slots[index].AmountInSlot + amount) - Slots[index].ItemInSlot.MaxQuantity;
     }
 }

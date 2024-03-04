@@ -366,6 +366,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4930daac2c1c86a4c902b23d2fe5e1b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  walkSound: {fileID: 8300000, guid: e7015fc5f2ebf0945a667fdd5a66feb1, type: 3}
+  runSound: {fileID: 8300000, guid: e7015fc5f2ebf0945a667fdd5a66feb1, type: 3}
   Speed: 0
   canRun: 1
   RunSpeed: 9

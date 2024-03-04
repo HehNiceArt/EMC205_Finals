@@ -146,5 +146,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 427313eb69ae0e941839058c51bbf25a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemStats: {fileID: 11400000, guid: aa4e211b580e0d84fbd7d1dd7816359c, type: 2}
-  Amount: 10
+  ItemStats: {fileID: 11400000, guid: 530329eb0c019154db8d24cdcabb81fc, type: 2}
+  Amount: 0

@@ -9,14 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc36099a6db96c044ae1dda606f334ef, type: 3}
-  m_Name: LightOrb
+  m_Script: {fileID: 11500000, guid: 1b622952a2d52454ba1d031ed04f9e54, type: 3}
+  m_Name: Light Orb
   m_EditorClassIdentifier: 
-  Id: 2
   ItemName: Light Orb
-  Description: 'Can increase the nutrition of the plant
-
-'
-  Prefab: {fileID: 8492492918245099080, guid: 2ab9a1f3f7444dd4094a36b2591f7b53, type: 3}
+  ItemID: 3
+  ItemPrefab: {fileID: 8492492918245099080, guid: 2ab9a1f3f7444dd4094a36b2591f7b53,
+    type: 3}
   Icon: {fileID: 2800000, guid: 69cf593f8711c454aac1e3fbfb83193c, type: 3}
-  MaxStack: 20
+  MaxQuantity: 1000
+  ItemAttackDamage: 0
+  ItemRange: 0
+  ItemAttackSpeed: 0

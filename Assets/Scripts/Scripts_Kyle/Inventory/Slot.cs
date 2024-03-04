@@ -1,21 +1,24 @@
-//@Kyle Rafael 
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
+using UnityEngine;
 using UnityEngine.EventSystems;
-using static UnityEditor.Progress;
+using UnityEngine.UI;
 
-public class Slot : MonoBehaviour, IDropHandler
+public class Slot : MonoBehaviour, IPointerClickHandler
 {
-    public Items ItemInSlot;
+    public PlayerItems ItemInSlot;
     public int AmountInSlot;
 
     RawImage _icon;
     TextMeshProUGUI _textAmount;
 
+    InventorySystem inventorySystem; // Reference to the InventorySystem script
 
+    private void Start()
+    {
+        inventorySystem = FindObjectOfType<InventorySystem>(); // Find the InventorySystem script in the scene
+    }
 
     public void SetStats()
     {
@@ -27,7 +30,7 @@ public class Slot : MonoBehaviour, IDropHandler
         _icon = GetComponentInChildren<RawImage>();
         _textAmount = GetComponentInChildren<TextMeshProUGUI>();
 
-        if (ItemInSlot == null)
+        if (ItemInSlot == null || AmountInSlot <= 0) // Check if ItemInSlot is null or amount is zero
         {
             for (int i = 0; i < transform.childCount; i++)
             {
@@ -36,25 +39,22 @@ public class Slot : MonoBehaviour, IDropHandler
             return;
         }
 
-
         _icon.texture = ItemInSlot.Icon;
         _textAmount.text = $"{AmountInSlot}x";
     }
-    public void OnDrop(PointerEventData eventData)
+
+    public void OnPointerClick(PointerEventData eventData)
     {
-        GameObject dropped = eventData.pointerDrag;
-        InventoryUIInteraction draggableItem = dropped.GetComponent<InventoryUIInteraction>();
-        Slot slot = draggableItem.DraggedItemParent.GetComponent<Slot>();
+        if (eventData.button == PointerEventData.InputButton.Left)
+        {
+            if (ItemInSlot != null && AmountInSlot > 0)
+            {
+                // Decrease the amount of the item
+                AmountInSlot--;
 
-        if (slot == this)
-            return;
-
-        ItemInSlot = slot.ItemInSlot;
-        AmountInSlot = slot.AmountInSlot;
-
-        slot.ItemInSlot = null;
-        slot.AmountInSlot = 0;
-
-        SetStats();
+                // Update the UI
+                SetStats();
+            }
+        }
     }
 }

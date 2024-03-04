@@ -116,7 +116,6 @@ GameObject:
   - component: {fileID: 199269220076968825}
   - component: {fileID: 2380063706300949702}
   - component: {fileID: 3536155302674949963}
-  - component: {fileID: 3633438162007190110}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -197,21 +196,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemInSlot: {fileID: 0}
   AmountInSlot: 0
---- !u!114 &3633438162007190110
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 421860811366940171}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b15667652649e6b41b93c720070a8879, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ClickedItemUI: {fileID: 4135257046562052169}
-  draggedItemParent: {fileID: 0}
-  draggedItem: {fileID: 0}
 --- !u!1 &1043907720766240504
 GameObject:
   m_ObjectHideFlags: 0
@@ -926,7 +910,6 @@ GameObject:
   - component: {fileID: 5323986895425040364}
   - component: {fileID: 1425860005482689241}
   - component: {fileID: 849532851096154298}
-  - component: {fileID: 6371350113348720965}
   m_Layer: 5
   m_Name: Image (1)
   m_TagString: Untagged
@@ -1007,21 +990,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemInSlot: {fileID: 0}
   AmountInSlot: 0
---- !u!114 &6371350113348720965
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3447837609545916997}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b15667652649e6b41b93c720070a8879, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ClickedItemUI: {fileID: 4135257046562052169}
-  draggedItemParent: {fileID: 0}
-  draggedItem: {fileID: 0}
 --- !u!1 &3534703934725827463
 GameObject:
   m_ObjectHideFlags: 0
@@ -1244,10 +1212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b753aaead20347342a515beffd897b01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clickedSlot: {fileID: 0}
-  image: {fileID: 6934204312400225769}
-  txt_Name: {fileID: 3953968789118500523}
-  txt_Description: {fileID: 9147357977341962353}
+  ClickedSlot: {fileID: 0}
 --- !u!1 &4778788756518644923
 GameObject:
   m_ObjectHideFlags: 0
@@ -1676,7 +1641,6 @@ GameObject:
   - component: {fileID: 4170093498614415866}
   - component: {fileID: 3310820646468611913}
   - component: {fileID: 7168101597126389800}
-  - component: {fileID: 2072479910072580489}
   m_Layer: 5
   m_Name: Image (3)
   m_TagString: Untagged
@@ -1757,21 +1721,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemInSlot: {fileID: 0}
   AmountInSlot: 0
---- !u!114 &2072479910072580489
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5796698368777625616}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b15667652649e6b41b93c720070a8879, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ClickedItemUI: {fileID: 4135257046562052169}
-  draggedItemParent: {fileID: 0}
-  draggedItem: {fileID: 0}
 --- !u!1 &5939301297258167190
 GameObject:
   m_ObjectHideFlags: 0
@@ -2066,7 +2015,6 @@ GameObject:
   - component: {fileID: 5017014768983140935}
   - component: {fileID: 5023948726885619095}
   - component: {fileID: 435797461179298607}
-  - component: {fileID: 7139943453679086309}
   m_Layer: 5
   m_Name: Image (2)
   m_TagString: Untagged
@@ -2147,21 +2095,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemInSlot: {fileID: 0}
   AmountInSlot: 0
---- !u!114 &7139943453679086309
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6387432274491382123}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b15667652649e6b41b93c720070a8879, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ClickedItemUI: {fileID: 4135257046562052169}
-  draggedItemParent: {fileID: 0}
-  draggedItem: {fileID: 0}
 --- !u!1 &6807730918103277924
 GameObject:
   m_ObjectHideFlags: 0
