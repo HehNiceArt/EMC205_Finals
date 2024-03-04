@@ -8,6 +8,13 @@ public class PlayerItems : ScriptableObject
     public string ItemName;
     public int ItemID;
 
+    public GameObject ItemPrefab;
+    public Texture Icon;
+
+    [Header("Quantity")]
+    public int CurrentQuantity;
+    public int MaxQuantity;
+
     [Header("Attack Stats")]    
     public int ItemAttackDamage;
     public int ItemRange;

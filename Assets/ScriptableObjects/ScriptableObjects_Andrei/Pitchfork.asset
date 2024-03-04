@@ -13,7 +13,11 @@ MonoBehaviour:
   m_Name: Pitchfork
   m_EditorClassIdentifier: 
   ItemName: Pitchfork
+  ItemID: 0
+  ItemPrefab: {fileID: 0}
+  Icon: {fileID: 0}
+  CurrentQuantity: 0
+  MaxQuantity: 0
   ItemAttackDamage: 10
   ItemRange: 3
   ItemAttackSpeed: 4
-  ItemID: 0
