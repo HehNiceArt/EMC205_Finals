@@ -1,11 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.Pool;
-using UnityEngine.Rendering;
-using UnityEngine.UIElements;
 
 [System.Serializable]
 public class EnemyType
@@ -14,6 +9,7 @@ public class EnemyType
     public GameObject EnemyPrefab;
     [Tooltip("The amount of enemies that will spawn")]
     public int PoolSize;
+    public float SpawnRatePerEnemy;
 }
 [System.Serializable]
 public class EnemyPoolList
@@ -27,6 +23,7 @@ public class EnemyPoolManager : MonoBehaviour
     public Transform[] SpawnAreas;
 
     [Header("Enemies Spawn")]
+    [Tooltip("Parent of all the enemies")]
     public GameObject EnemySpawn;
 
     [Header("Spawn Parameters")]
@@ -35,10 +32,6 @@ public class EnemyPoolManager : MonoBehaviour
     [Header("Enemy Pool")]
     [SerializeField]
     private List<EnemyPoolList> EnemyPoolObjects = new List<EnemyPoolList>();
-
-    [Header("Wave")]
-    [SerializeField] private int _currentWave = 0;
-    public bool IsSpawning = false;
 
     public static EnemyPoolManager Instance;
     private void Awake()
@@ -69,63 +62,59 @@ public class EnemyPoolManager : MonoBehaviour
     }
     void StartWave()
     {
-        IsSpawning = true;
         StartCoroutine(SpawnEnemies());
     }
 
-    public void StartNextWaveButtonPress()
-    {
-        foreach(var poolList in EnemyPoolObjects)
-        {
-            foreach(var enemy in poolList.EnemyPool)
-            {
-                if (!IsSpawning && !enemy.activeInHierarchy)
-                {
-                    Debug.Log($"Enemies Active? {enemy.activeInHierarchy}");
-                    StartNextWave();
-                }
-            }
-        }
-    }
     public void StartNextWave()
     {
         StopCoroutine(SpawnEnemies());
-        _currentWave++;
-
-        IsSpawning = true;
+        DeactivateAllEnemies();
         StartCoroutine(SpawnEnemies());
     }
-    /// <summary>
-    /// This spawns enemies from random spawn areas
-    /// </summary>
-    /// <returns></returns>
     IEnumerator SpawnEnemies()
     {
-        while (IsSpawning)
+        while (true)
         {
             yield return new WaitForSeconds(SpawnRate);
             if(AllEnemiesDefeated())
             {
-                Debug.Log($"Current Wave: {_currentWave}");
                 SpawnEnemiesRandomly();
             }
         }
     }
     void SpawnEnemiesRandomly()
     {
-        for (int i = 0; i < EnemyTypes.Count; i++)
+        foreach(var enemyType in EnemyTypes)
         {
-            GameObject _temp = GetPooledEnemies(i);
-            if (_temp != null)
+            StartCoroutine(SpawnEnemiesOfType(enemyType));
+        }
+    }
+
+    IEnumerator SpawnEnemiesOfType(EnemyType enemyType)
+    {
+        int _enemiesToSpawn = enemyType.PoolSize;
+
+        for(int i = 0; i < _enemiesToSpawn; i++)
+        {
+            GameObject _temp = GetPooledEnemies(EnemyTypes.IndexOf(enemyType));
+
+            if(_temp != null )
             {
                 int _rand = Random.Range(0, SpawnAreas.Length);
-                Transform _spawnPostion = SpawnAreas[_rand];
-                _temp.transform.position = _spawnPostion.position;
+                Transform _spawnPosition = SpawnAreas[_rand];
+
+                float _spawnDelay = i * enemyType.SpawnRatePerEnemy;
+
+                yield return new WaitForSeconds(_spawnDelay);
+
+                _temp.transform.position = _spawnPosition.position;
                 _temp.SetActive(true);
                 _temp.transform.parent = EnemySpawn.transform;
             }
         }
     }
+
+    //Checks if all enemies are defeated in the game 
     public bool AllEnemiesDefeated()
     {
         bool _allDefeated = true;
@@ -139,19 +128,12 @@ public class EnemyPoolManager : MonoBehaviour
                     _allDefeated = false;
                     break;
                 }
-                if(!_allDefeated)
-                {
-                    break;
-                }
             }
+            if (!_allDefeated) { break; }
         }
-        if(_allDefeated)
-        {
-            IsSpawning = false;
-        }
-
         return _allDefeated;
     }
+
     public GameObject GetPooledEnemies(int enemyIndex)
     {
         for(int j = 0; j < EnemyPoolObjects[enemyIndex].EnemyPool.Count; j++)
@@ -163,11 +145,18 @@ public class EnemyPoolManager : MonoBehaviour
         }
         return null;
     }
+    void DeactivateAllEnemies()
+    {
+        foreach (var poolList in EnemyPoolObjects)
+        {
+            foreach (var enemy in poolList.EnemyPool)
+            {
+                if (enemy.activeInHierarchy) { DeactivateEnemy(enemy); }
+            }
+        }
+    }
     public void DeactivateEnemy(GameObject enemy)
     {
-        if(enemy != null && enemy.activeInHierarchy)
-        {
-            enemy.SetActive(false);
-        }
+        if(enemy != null && enemy.activeInHierarchy) { enemy.SetActive(false); }
     }
 }

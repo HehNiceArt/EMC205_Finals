@@ -38,14 +38,14 @@ public class PlayerCameraXY : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
-            EnemyWaveSystem.Instance.ActivateNextWaveUI();
+            //EnemyWaveSystem.Instance.ActivateNextWaveUI();
             Time.timeScale = 0;
         }
         else if(Input.GetKeyDown(KeyCode.Tab))
         {
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
-            EnemyWaveSystem.Instance.HideNextWaveUI();
+            //EnemyWaveSystem.Instance.HideNextWaveUI();
             Time.timeScale = 1;
         }
     }
