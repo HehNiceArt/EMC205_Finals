@@ -14,7 +14,8 @@ public class EnemyStats : ScriptableObject
     [Tooltip("To reduce the scale of the tree")]
     [Header("Attack Stats")]
     public float AttackDamage;
-    public float AttackSpeed;
+    [Tooltip("Cooldown of every attack the enemy initiated")]
+    public float AttackCooldown;
     [Header("Movement")]
     public float MovementSpeed;
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
+    public static EnemyHealth Instance { get; private set; }
     public EnemyStats EnemyStats;
     public int Health = 0;
     public GameObject Self;
@@ -11,6 +12,7 @@ public class EnemyHealth : MonoBehaviour
     private int _initialHealth;
     private void Awake()
     {
+        Instance = GetComponent<EnemyHealth>();
         _initialHealth = EnemyStats.Health;
         ResetHealth();
     }
