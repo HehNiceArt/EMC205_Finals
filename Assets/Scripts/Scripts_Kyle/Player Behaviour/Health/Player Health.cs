@@ -1,26 +1,49 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public int maxHealth = 100; 
+    public int maxHealth = 100;
     public int currentHealth;
-
+    public int regenAmountPerSecond = 5; // Amount of health regenerated per second
     public HealthBar healthBar;
-   
 
     void Start()
     {
         currentHealth = maxHealth;
         healthBar.SetHealth(maxHealth);
+
+        // Start the coroutine for passive health regeneration
+        StartCoroutine(RegenerateHealth());
     }
 
-  
-    // Just add a code how the player can inflict damage
-    void TakeDamage(int damage)
+    // Update is called once per frame
+    void Update()
     {
-        currentHealth -= damage;
-        
-        healthBar.SetHealth(currentHealth);
+       // if (Input.GetKeyDown(KeyCode.Space))
+        //{
+            //TakeDamage(20);
+        //}
+    }
+
+    //void TakeDamage(int damage)
+    //{
+        //currentHealth -= damage;
+        //healthBar.SetHealth(currentHealth);
+    //}
+
+    IEnumerator RegenerateHealth()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1f); // Wait for one second
+
+            // Increase currentHealth by regenAmountPerSecond, but not exceeding maxHealth
+            currentHealth = Mathf.Min(currentHealth + regenAmountPerSecond, maxHealth);
+
+            // Update the health bar
+            healthBar.SetHealth(currentHealth);
+        }
     }
 }
