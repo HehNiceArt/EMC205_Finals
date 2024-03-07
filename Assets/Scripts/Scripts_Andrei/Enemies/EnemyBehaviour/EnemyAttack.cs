@@ -7,7 +7,6 @@ using System.Runtime.CompilerServices;
 
 public class EnemyAttack : MonoBehaviour
 {
-    [SerializeField] private Rigidbody _enemyRigidbody;
     [SerializeField] private GameObject _enemyHead;
     public EnemyStats EnemyStats;
 
@@ -40,14 +39,12 @@ public class EnemyAttack : MonoBehaviour
         _attackTime = EnemyStats.AttackTime;
         _enemyAttackRange = EnemyStats.AttackRange;
         _enemyAttackDistance = EnemyStats.AttackDistance;
-        _enemyRigidbody = GetComponent<Rigidbody>();
     }
     void Update()
     {
         _distanceToTree = Vector3.Distance(transform.position, TreePoint.Instance.transform.position); 
         _distanceToPlayer = Vector3.Distance(transform.position, PlayerPoint.Instance.transform.position);
         WithinTreeRange();
-        CheckProximity();
         EnemyBehaviour();
         EnemyGetsAttacked();
     }
@@ -144,16 +141,6 @@ public class EnemyAttack : MonoBehaviour
     /// <summary>
     /// Checks the current distance of the enemy to the tree
     /// </summary>
-    void CheckProximity()
-    {
-        _distanceToTree = Vector3.Distance(transform.position, TreePoint.Instance.Self.transform.position);
-        if (_distanceToTree < EnemyNavMeshAgent.StoppingDistance) 
-        { 
-            EnemyAgent.Instance.StopAgent();
-            _enemyRigidbody.constraints = RigidbodyConstraints.FreezePosition;
-        }
-        else { _enemyRigidbody.constraints = RigidbodyConstraints.None; }
-    }
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;

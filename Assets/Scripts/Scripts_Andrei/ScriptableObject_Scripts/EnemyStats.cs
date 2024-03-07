@@ -18,6 +18,7 @@ public class EnemyStats : ScriptableObject
     public float AttackTime;
     public float AttackRange;
     public float AttackDistance;
+
     [Header("Movement")]
     [Range(0, 10)]
     public float MovementSpeed;
@@ -27,4 +28,7 @@ public class EnemyStats : ScriptableObject
     [Tooltip("Maximum acceleration of the enemy")]
     [Range(0, 10)]
     public float Acceleration;
+    [Space(10)]
+    [Tooltip("If the enemy is overshooting the tree, tick this!")]
+    public bool IsOvershooting;
 }

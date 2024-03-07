@@ -13,10 +13,8 @@ public class EnemyAgent : MonoBehaviour
     private float _angularSpeed;
     private float _acceleration;
     public float StoppingDistance;
-
-    [Space(20f)]
-    [Tooltip("If the enemy is overshooting the tree, tick this!")]
-    public bool IsOvershooting = false;
+    private bool _isOvershooting;
+    private Rigidbody _rigidBody;
 
     public static EnemyAgent Instance { get; private set; }
     private void Awake()
@@ -26,15 +24,18 @@ public class EnemyAgent : MonoBehaviour
     private void Start()
     {
         Agent = GetComponent<NavMeshAgent>();
+        _rigidBody = GetComponent<Rigidbody>();
     }
     private void Update()
     {
         _speed = Stats.MovementSpeed;
         _angularSpeed = Stats.AngularSpeed;
         _acceleration = Stats.Acceleration;
+        _isOvershooting = Stats.IsOvershooting;
         EnemyParameters();
-        if (IsOvershooting == true) { Agent.velocity = Agent.desiredVelocity; }
-        else { IsOvershooting = false; }
+        CheckProximity();
+        if (_isOvershooting == true) { Agent.velocity = Agent.desiredVelocity; }
+        else { _isOvershooting = false; }
     }
     
     public void FaceTree()
@@ -58,4 +59,15 @@ public class EnemyAgent : MonoBehaviour
     }
     public void StopAgent() => Agent.isStopped = true;
     public void ResumeAgent() => Agent.isStopped = false;
+
+    public void CheckProximity()
+    {
+        float _distanceToTree = Vector3.Distance(transform.position, TreePoint.Instance.Self.transform.position);
+        if(_distanceToTree < StoppingDistance)
+        {
+            StopAgent();
+            _rigidBody.constraints = RigidbodyConstraints.FreezePosition;
+        }
+        else { _rigidBody.constraints = RigidbodyConstraints.None; }
+    }
 }
