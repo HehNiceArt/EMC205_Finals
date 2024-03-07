@@ -16,5 +16,9 @@ MonoBehaviour:
   EnemyID: 0
   Health: 100
   AttackDamage: 5
-  AttackSpeed: 3
-  MovementSpeed: 100
+  AttackTime: 5
+  AttackRange: 5
+  AttackDistance: 3
+  MovementSpeed: 1
+  AngularSpeed: 100
+  Acceleration: 3

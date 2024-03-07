@@ -14,7 +14,21 @@ public class EnemyStats : ScriptableObject
     [Tooltip("To reduce the scale of the tree")]
     [Header("Attack Stats")]
     public float AttackDamage;
-    public float AttackSpeed;
+    [Tooltip("Next attack time of the enemy")]
+    public float AttackTime;
+    public float AttackRange;
+    public float AttackDistance;
+
     [Header("Movement")]
+    [Range(0, 10)]
     public float MovementSpeed;
+    [Tooltip("Maximum turning speed while following a path")]
+    [Range(0, 100)]
+    public float AngularSpeed;
+    [Tooltip("Maximum acceleration of the enemy")]
+    [Range(0, 10)]
+    public float Acceleration;
+    [Space(10)]
+    [Tooltip("If the enemy is overshooting the tree, tick this!")]
+    public bool IsOvershooting;
 }
