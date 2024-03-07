@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.ProBuilder.MeshOperations;
 
 public class EnemyAttack : MonoBehaviour
 {
@@ -73,16 +74,33 @@ public class EnemyAttack : MonoBehaviour
             Debug.Log($"Enemy follows player {_isGettingAttacked}");
             EnemyAgent.Instance.FacePlayer();
             EnemyAttacksPlayer();
+            StartCoroutine(Attack());
         }
         else
         {
             Debug.Log($"Enemy follows tree {!_isGettingAttacked}");
             EnemyAgent.Instance.FaceTree();
             EnemyAttacksTree();
+            if(_distanceToTarget < _enemyAttackDistance)
+            {
+                Debug.Log("Start Attack");
+                StartCoroutine(Attack());
+            }
         }
     }
+
+    IEnumerator Attack()
+    {
+        yield return new WaitForSeconds(EnemyStats.AttackCooldown);
+        Debug.Log($"Attacking! Attacking Cooldown{EnemyStats.AttackCooldown}");
+    }
+    #region Which to follow?
     void EnemyAttacksTree() => EnemyNavMeshAgent.Agent.destination = TreePoint.Instance.Self.transform.position;
     void EnemyAttacksPlayer() => EnemyNavMeshAgent.Agent.destination = PlayerPoint.Instance.Self.transform.position;
+    #endregion
+    /// <summary>
+    /// Checks the current distance of the enemy to the tree
+    /// </summary>
     void CheckProximity()
     {
         _distanceToTarget = Vector3.Distance(transform.position, TreePoint.Instance.Self.transform.position);
