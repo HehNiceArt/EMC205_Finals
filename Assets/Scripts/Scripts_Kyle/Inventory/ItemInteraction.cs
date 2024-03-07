@@ -32,9 +32,6 @@ public class ItemInteraction : MonoBehaviour
             {
                 inventorySystem.PickUpItem(hit.collider.GetComponent<ItemObject>());
             }
-
-
-
         }
         else
         {

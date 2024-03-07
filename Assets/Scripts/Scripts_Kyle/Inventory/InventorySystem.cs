@@ -11,10 +11,12 @@ public class InventorySystem : MonoBehaviour
     [SerializeField] GameObject InventoryUI;
 
     PlayerMovement pm;
+   
 
     private void Awake()
     {
         pm = GetComponent<PlayerMovement>();
+        
         for (int i = 0; i < Slots.Length; i++)
         {
             if (Slots[i].ItemInSlot == null)
@@ -29,7 +31,7 @@ public class InventorySystem : MonoBehaviour
 
     private void Update()
     {
-        if (!InventoryUI.activeInHierarchy && Input.GetKeyDown(KeyCode.E))
+        if (!InventoryUI.activeInHierarchy && Input.GetKeyDown(KeyCode.E) )
         {
             pm.IsInterrupted = true;
             InventoryUI.SetActive(true);
