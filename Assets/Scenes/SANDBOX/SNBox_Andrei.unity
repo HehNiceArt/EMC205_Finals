@@ -2041,79 +2041,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1001 &1361237974
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3012009500607997140, guid: 477e86995b4c38d438eb17f5e3f13f54,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3012009500607997140, guid: 477e86995b4c38d438eb17f5e3f13f54,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3012009500607997140, guid: 477e86995b4c38d438eb17f5e3f13f54,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 28.62
-      objectReference: {fileID: 0}
-    - target: {fileID: 3012009500607997140, guid: 477e86995b4c38d438eb17f5e3f13f54,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3012009500607997140, guid: 477e86995b4c38d438eb17f5e3f13f54,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3012009500607997140, guid: 477e86995b4c38d438eb17f5e3f13f54,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3012009500607997140, guid: 477e86995b4c38d438eb17f5e3f13f54,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3012009500607997140, guid: 477e86995b4c38d438eb17f5e3f13f54,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3012009500607997140, guid: 477e86995b4c38d438eb17f5e3f13f54,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3012009500607997140, guid: 477e86995b4c38d438eb17f5e3f13f54,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5983312471446211322, guid: 477e86995b4c38d438eb17f5e3f13f54,
-        type: 3}
-      propertyPath: m_Name
-      value: GiantAnt
-      objectReference: {fileID: 0}
-    - target: {fileID: 7139840600651784147, guid: 477e86995b4c38d438eb17f5e3f13f54,
-        type: 3}
-      propertyPath: _enemyAttackDistance
-      value: 4.5
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 477e86995b4c38d438eb17f5e3f13f54, type: 3}
 --- !u!1 &1387644617
 GameObject:
   m_ObjectHideFlags: 0
@@ -3215,7 +3142,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2067040308}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f40a927e14d805d4aaf67f6b4ecb98e0, type: 3}
   m_Name: 
@@ -3234,7 +3161,7 @@ MonoBehaviour:
   - Name: Caterpillar
     EnemyPrefab: {fileID: 5280700170035968709, guid: de8516826c9cc4e4ea37d6ba140d70f1,
       type: 3}
-    PoolSize: 5
+    PoolSize: 1
     SpawnRatePerEnemy: 1
   - Name: Porcupine
     EnemyPrefab: {fileID: 5280700170035968709, guid: 910c9386a66b0f54cac486f48b2a2184,
@@ -3414,4 +3341,3 @@ SceneRoots:
   - {fileID: 1650983212}
   - {fileID: 1013014196}
   - {fileID: 125629939}
-  - {fileID: 1361237974}

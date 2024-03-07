@@ -17,5 +17,8 @@ MonoBehaviour:
   Health: 100
   AttackDamage: 20
   AttackTime: 5
-  AttackCooldown: 7
-  MovementSpeed: 120
+  AttackRange: 10
+  AttackDistance: 8
+  MovementSpeed: 1
+  AngularSpeed: 100
+  Acceleration: 3

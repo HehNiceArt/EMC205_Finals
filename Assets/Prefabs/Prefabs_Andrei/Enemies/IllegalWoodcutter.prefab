@@ -177,7 +177,11 @@ MonoBehaviour:
   EnemyStats: {fileID: 11400000, guid: 6994a81b46d235547b2044ce08869fce, type: 2}
   EnemyNavMeshAgent: {fileID: 1039603960826417653}
   _enemyAttackRange: 10
-  _isAttacking: 0
+  _enemyAttackDistance: 0
+  _isFollowingTree: 1
+  _isGettingAttacked: 0
+  _isAttackingPlayer: 0
+  _isAttackingTree: 0
 --- !u!114 &1039603960826417653
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,6 +195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Agent: {fileID: 0}
+  Stats: {fileID: 11400000, guid: 6994a81b46d235547b2044ce08869fce, type: 2}
   _speed: 5
   _angularSpeed: 100
   _acceleration: 3

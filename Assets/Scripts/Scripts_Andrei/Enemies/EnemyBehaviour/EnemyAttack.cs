@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.AI;
-using UnityEngine.ProBuilder.MeshOperations;
 
 public class EnemyAttack : MonoBehaviour
 {
@@ -23,7 +22,8 @@ public class EnemyAttack : MonoBehaviour
     //Makes sure to follow the tree from anywhere
     [SerializeField] private bool _isFollowingTree = true;
     [SerializeField] private bool _isGettingAttacked = false;
-    [SerializeField] private bool _isAttacking = false;
+    [SerializeField] private bool _isAttackingPlayer = false;
+    [SerializeField] private bool _isAttackingTree = false;
 
     float _distanceToTree;
     float _distanceToPlayer;
@@ -31,6 +31,8 @@ public class EnemyAttack : MonoBehaviour
     void Start()
     {
         _attackTime = EnemyStats.AttackTime;
+        _enemyAttackRange = EnemyStats.AttackRange;
+        _enemyAttackDistance = EnemyStats.AttackDistance;
         _enemyRigidbody = GetComponent<Rigidbody>();
     }
 
@@ -54,12 +56,12 @@ public class EnemyAttack : MonoBehaviour
     {
         //If enemy is damaged by the player & 
         //Enemy's distance is far away from the attack range
-        if (EnemyHealth.Instance.Health < EnemyHealth.Instance.EnemyStats.Health )
+        if (EnemyHealth.Instance.Health < EnemyHealth.Instance.EnemyStats.Health)
         {
             _isFollowingTree = false;
             _isGettingAttacked = true;
         }
-        else
+        else if (_distanceToTree < _enemyAttackRange)
         {
             _isGettingAttacked = false;
         }
@@ -70,6 +72,8 @@ public class EnemyAttack : MonoBehaviour
         //The enemy will attack the player instead
         if(_distanceToTree > _enemyAttackRange && _isGettingAttacked == true)
         {
+            _isGettingAttacked = true;
+            _isAttackingTree = false;
             Debug.Log($"Enemy follows player {_isGettingAttacked}");
             EnemyAgent.Instance.FacePlayer();
             EnemyAttacksPlayer();
@@ -89,6 +93,7 @@ public class EnemyAttack : MonoBehaviour
     {
         if (_distanceToTree < _enemyAttackDistance)
         {
+            _isAttackingTree = true;
             _attackTime -= Time.deltaTime;
             if (_attackTime <= 0)
             {
@@ -101,6 +106,7 @@ public class EnemyAttack : MonoBehaviour
     {
         if (_distanceToPlayer < _enemyAttackDistance)
         {
+            _isAttackingPlayer = true;
             _attackTime -= Time.deltaTime;
             if (_attackTime <= 0)
             {
@@ -112,7 +118,14 @@ public class EnemyAttack : MonoBehaviour
 
     void Attack()
     {
-        Debug.Log("Attacking!");
+        if( _isAttackingPlayer )
+        {
+            Debug.Log($"Attacking Player {_isAttackingPlayer}");
+        }
+        else if( _isAttackingTree )
+        {
+            Debug.Log($"Attacking Tree {_isAttackingTree}");
+        }
     }
     #region Which to follow?
     void EnemyAttacksTree() => EnemyNavMeshAgent.Agent.destination = TreePoint.Instance.Self.transform.position;

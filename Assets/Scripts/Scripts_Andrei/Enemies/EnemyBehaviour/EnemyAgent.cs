@@ -7,11 +7,11 @@ using UnityEngine.AI;
 public class EnemyAgent : MonoBehaviour
 {
     public NavMeshAgent Agent;
-
+    public EnemyStats Stats;
     [Header("Enemy Parameters")]
-    [SerializeField] private float _speed;
-    [SerializeField] private float _angularSpeed;
-    [SerializeField] private float _acceleration;
+    private float _speed;
+    private float _angularSpeed;
+    private float _acceleration;
     public float StoppingDistance;
 
     [Space(20f)]
@@ -29,6 +29,9 @@ public class EnemyAgent : MonoBehaviour
     }
     private void Update()
     {
+        _speed = Stats.MovementSpeed;
+        _angularSpeed = Stats.AngularSpeed;
+        _acceleration = Stats.Acceleration;
         EnemyParameters();
         if (IsOvershooting == true) { Agent.velocity = Agent.desiredVelocity; }
         else { IsOvershooting = false; }
