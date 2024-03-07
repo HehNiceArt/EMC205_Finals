@@ -25,23 +25,23 @@ public class EnemyAttack : MonoBehaviour
     [SerializeField] private bool _isGettingAttacked = false;
     [SerializeField] private bool _isAttacking = false;
 
-    float _distanceToTarget;
+    float _distanceToTree;
+    float _distanceToPlayer;
+    float _attackTime;
     void Start()
     {
+        _attackTime = EnemyStats.AttackTime;
         _enemyRigidbody = GetComponent<Rigidbody>();
     }
 
     void Update()
     {
-       _distanceToTarget = Vector3.Distance(transform.position, TreePoint.Instance.transform.position); 
+        _distanceToTree = Vector3.Distance(transform.position, TreePoint.Instance.transform.position); 
+        _distanceToPlayer = Vector3.Distance(transform.position, PlayerPoint.Instance.transform.position);
         WithinTreeRange();
         CheckProximity();
         EnemyGetsAttacked();
         EnemyBehaviour();
-    }
-    void StopAgent()
-    {
-        EnemyNavMeshAgent.Agent.isStopped = true;
     }
     void WithinTreeRange()
     {
@@ -50,7 +50,6 @@ public class EnemyAttack : MonoBehaviour
             EnemyAttacksTree();
         }
     }
-
     void EnemyGetsAttacked()
     {
         //If enemy is damaged by the player & 
@@ -69,30 +68,51 @@ public class EnemyAttack : MonoBehaviour
     {
         //If the enemy is far from the tree & gets attacked by the player
         //The enemy will attack the player instead
-        if(_distanceToTarget > _enemyAttackRange && _isGettingAttacked == true)
+        if(_distanceToTree > _enemyAttackRange && _isGettingAttacked == true)
         {
             Debug.Log($"Enemy follows player {_isGettingAttacked}");
             EnemyAgent.Instance.FacePlayer();
             EnemyAttacksPlayer();
-            StartCoroutine(Attack());
+            EnemyAgent.Instance.ResumeAgent();
+            AttackPlayerTime();
         }
         else
         {
             Debug.Log($"Enemy follows tree {!_isGettingAttacked}");
             EnemyAgent.Instance.FaceTree();
             EnemyAttacksTree();
-            if(_distanceToTarget < _enemyAttackDistance)
+            AttackTreeTime();
+        }
+    }
+
+    void AttackTreeTime()
+    {
+        if (_distanceToTree < _enemyAttackDistance)
+        {
+            _attackTime -= Time.deltaTime;
+            if (_attackTime <= 0)
             {
-                Debug.Log("Start Attack");
-                StartCoroutine(Attack());
+                Attack();
+                _attackTime = EnemyStats.AttackTime;
+            }
+        }
+    }
+    void AttackPlayerTime()
+    {
+        if (_distanceToPlayer < _enemyAttackDistance)
+        {
+            _attackTime -= Time.deltaTime;
+            if (_attackTime <= 0)
+            {
+                Attack();
+                _attackTime = EnemyStats.AttackTime;
             }
         }
     }
 
-    IEnumerator Attack()
+    void Attack()
     {
-        yield return new WaitForSeconds(EnemyStats.AttackCooldown);
-        Debug.Log($"Attacking! Attacking Cooldown{EnemyStats.AttackCooldown}");
+        Debug.Log("Attacking!");
     }
     #region Which to follow?
     void EnemyAttacksTree() => EnemyNavMeshAgent.Agent.destination = TreePoint.Instance.Self.transform.position;
@@ -103,10 +123,10 @@ public class EnemyAttack : MonoBehaviour
     /// </summary>
     void CheckProximity()
     {
-        _distanceToTarget = Vector3.Distance(transform.position, TreePoint.Instance.Self.transform.position);
-        if (_distanceToTarget < EnemyNavMeshAgent.StoppingDistance) 
+        _distanceToTree = Vector3.Distance(transform.position, TreePoint.Instance.Self.transform.position);
+        if (_distanceToTree < EnemyNavMeshAgent.StoppingDistance) 
         { 
-            StopAgent();
+            EnemyAgent.Instance.StopAgent();
             _enemyRigidbody.constraints = RigidbodyConstraints.FreezePosition;
         }
         else { _enemyRigidbody.constraints = RigidbodyConstraints.None; }
@@ -115,7 +135,6 @@ public class EnemyAttack : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, _enemyAttackRange);
-
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, _enemyAttackDistance);
     }

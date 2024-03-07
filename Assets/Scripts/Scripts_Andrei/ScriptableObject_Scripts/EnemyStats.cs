@@ -16,8 +16,6 @@ public class EnemyStats : ScriptableObject
     public float AttackDamage;
     [Tooltip("Next attack time of the enemy")]
     public float AttackTime;
-    [Tooltip("Cooldown of every attack the enemy initiated")]
-    public float AttackCooldown;
     [Header("Movement")]
     public float MovementSpeed;
 }
