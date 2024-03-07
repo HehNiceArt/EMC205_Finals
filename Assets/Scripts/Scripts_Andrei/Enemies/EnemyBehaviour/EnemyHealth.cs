@@ -8,8 +8,10 @@ public class EnemyHealth : MonoBehaviour
     public EnemyStats EnemyStats;
     public int Health = 0;
     public GameObject Self;
+    public bool _isGettingAttacked = false;
 
-    private int _initialHealth;
+    [HideInInspector]
+    public int _initialHealth;
     private void Awake()
     {
         Instance = GetComponent<EnemyHealth>();
@@ -20,9 +22,10 @@ public class EnemyHealth : MonoBehaviour
     public void TakeDamage(int damage)
     {
         Health -= damage;
-        Debug.Log($"Enemy {EnemyStats.EnemyName} took {damage} damage.");
+        _isGettingAttacked = true;
+        //Debug.Log($"Enemy {EnemyStats.EnemyName} took {damage} damage.");
         Debug.Log($"Current {EnemyStats.EnemyName} Health: {Health}");
-        if(Health <= 0 )
+        if (Health <= 0 )
         {
             Die(Self);
         }
@@ -39,6 +42,7 @@ public class EnemyHealth : MonoBehaviour
 
     void ResetHealth()
     {
+        _isGettingAttacked = false; 
         Health = _initialHealth;
     }
 }

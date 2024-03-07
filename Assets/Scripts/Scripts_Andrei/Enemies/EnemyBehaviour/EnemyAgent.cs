@@ -58,10 +58,4 @@ public class EnemyAgent : MonoBehaviour
     }
     public void StopAgent() => Agent.isStopped = true;
     public void ResumeAgent() => Agent.isStopped = false;
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, StoppingDistance);
-    }
 }

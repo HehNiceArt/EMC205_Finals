@@ -196,9 +196,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Agent: {fileID: 0}
   Stats: {fileID: 11400000, guid: e5042f0f989b4404d839d88ac68e30c8, type: 2}
-  _speed: 5
-  _angularSpeed: 100
-  _acceleration: 3
   StoppingDistance: 2
   IsOvershooting: 1
 --- !u!114 &5949018394931419256
@@ -216,6 +213,7 @@ MonoBehaviour:
   EnemyStats: {fileID: 11400000, guid: e5042f0f989b4404d839d88ac68e30c8, type: 2}
   Health: 0
   Self: {fileID: 5280700170035968709}
+  _initialHealth: 0
 --- !u!1 &8128900787375405778
 GameObject:
   m_ObjectHideFlags: 0

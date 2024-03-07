@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.AI;
+using System.Runtime.CompilerServices;
 
 public class EnemyAttack : MonoBehaviour
 {
@@ -28,6 +29,12 @@ public class EnemyAttack : MonoBehaviour
     float _distanceToTree;
     float _distanceToPlayer;
     float _attackTime;
+
+    EnemyHealth _health;
+    private void Awake()
+    {
+        _health = GetComponent<EnemyHealth>();
+    }
     void Start()
     {
         _attackTime = EnemyStats.AttackTime;
@@ -35,15 +42,14 @@ public class EnemyAttack : MonoBehaviour
         _enemyAttackDistance = EnemyStats.AttackDistance;
         _enemyRigidbody = GetComponent<Rigidbody>();
     }
-
     void Update()
     {
         _distanceToTree = Vector3.Distance(transform.position, TreePoint.Instance.transform.position); 
         _distanceToPlayer = Vector3.Distance(transform.position, PlayerPoint.Instance.transform.position);
         WithinTreeRange();
         CheckProximity();
-        EnemyGetsAttacked();
         EnemyBehaviour();
+        EnemyGetsAttacked();
     }
     void WithinTreeRange()
     {
@@ -55,15 +61,16 @@ public class EnemyAttack : MonoBehaviour
     void EnemyGetsAttacked()
     {
         //If enemy is damaged by the player & 
-        //Enemy's distance is far away from the attack range
-        if (EnemyHealth.Instance.Health < EnemyHealth.Instance.EnemyStats.Health)
+        if (_health._isGettingAttacked && _distanceToTree > _enemyAttackRange)
         {
+            Debug.Log($"HP: {EnemyHealth.Instance.Health}");
             _isFollowingTree = false;
             _isGettingAttacked = true;
         }
         else if (_distanceToTree < _enemyAttackRange)
         {
             _isGettingAttacked = false;
+            _isFollowingTree = true;
         }
     }
     void EnemyBehaviour()
@@ -72,7 +79,7 @@ public class EnemyAttack : MonoBehaviour
         //The enemy will attack the player instead
         if(_distanceToTree > _enemyAttackRange && _isGettingAttacked == true)
         {
-            _isGettingAttacked = true;
+            _isFollowingTree = false;
             _isAttackingTree = false;
             Debug.Log($"Enemy follows player {_isGettingAttacked}");
             EnemyAgent.Instance.FacePlayer();
@@ -82,11 +89,14 @@ public class EnemyAttack : MonoBehaviour
         }
         else
         {
+            _isAttackingPlayer = false;
+            _isFollowingTree = true;
             Debug.Log($"Enemy follows tree {!_isGettingAttacked}");
             EnemyAgent.Instance.FaceTree();
             EnemyAttacksTree();
             AttackTreeTime();
         }
+        if(_distanceToPlayer > _enemyAttackDistance) { _isAttackingPlayer = false; }
     }
 
     void AttackTreeTime()
@@ -152,4 +162,11 @@ public class EnemyAttack : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, _enemyAttackDistance);
     }
 
+    private void OnDisable()
+    {
+        _isFollowingTree = true;
+        _isGettingAttacked = false;
+        _isAttackingPlayer = false;
+        _isAttackingTree = false;
+    }
 } 
