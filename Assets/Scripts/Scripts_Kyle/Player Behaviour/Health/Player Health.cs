@@ -18,21 +18,6 @@ public class PlayerHealth : MonoBehaviour
         StartCoroutine(RegenerateHealth());
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-       // if (Input.GetKeyDown(KeyCode.Space))
-        //{
-            //TakeDamage(20);
-        //}
-    }
-
-    //void TakeDamage(int damage)
-    //{
-        //currentHealth -= damage;
-        //healthBar.SetHealth(currentHealth);
-    //}
-
     IEnumerator RegenerateHealth()
     {
         while (true)
