@@ -19,6 +19,7 @@ MonoBehaviour:
   AttackTime: 1
   AttackRange: 5
   AttackDistance: 3
+  AttackCount: 3
   MovementSpeed: 3
   AngularSpeed: 100
   Acceleration: 3

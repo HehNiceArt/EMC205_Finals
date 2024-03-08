@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.AI;
 using System.Runtime.CompilerServices;
+using TMPro;
 
 public class EnemyAttack : MonoBehaviour
 {
@@ -97,6 +98,7 @@ public class EnemyAttack : MonoBehaviour
         if(_distanceToPlayer > _enemyAttackDistance) { IsAttackingPlayer = false; }
     }
 
+    int _count = 0;
     void AttackTreeTime()
     {
         if (_distanceToTree < _enemyAttackDistance)
@@ -107,7 +109,17 @@ public class EnemyAttack : MonoBehaviour
             {
                 _enemyDMG.EnemyAttackTree(EnemyStats.AttackDamage);
                 _attackTime = EnemyStats.AttackTime;
+                _count += 1;
+                Perish(_count); 
             }
+        }
+    }
+    void Perish(int _count)
+    {
+        int _currentCount = EnemyStats.AttackCount;
+        if(_count > _currentCount)
+        {
+            _health.TakeDamage(999); 
         }
     }
     void AttackPlayerTime()
