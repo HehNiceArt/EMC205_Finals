@@ -3,10 +3,6 @@ using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 using System;
-using UnityEngine.UIElements;
-using UnityEditorInternal;
-using System.Linq;
-using UnityEngine.Rendering.Universal;
 
 //author: @HehNice
 public class TransformInfo3D
@@ -16,7 +12,7 @@ public class TransformInfo3D
 }
 public class TreeLSystem3D : MonoBehaviour
 {
-    [SerializeField][Range(0, 5)] private int _iteration = 1;
+    [Range(0, 5)] public int _iteration = 1;
 
     [Header("Tree Values")]
     [SerializeField] [Range(0, 2)] private float _maxLength;
@@ -48,6 +44,11 @@ public class TreeLSystem3D : MonoBehaviour
     //F[-F[a]aa][+&[a]F[a][^FFa]]a
     //F[-F[a]aa][+&[a]F[a][-Fa]]a
     //F[-F[a]aa][^F[a][&Fa]]a
+    public static TreeLSystem3D Instance { get; private set; }
+    private void Awake()
+    {
+        Instance = GetComponent<TreeLSystem3D>();
+    }
     private void Start()
     {
         _transformStack = new Stack<TransformInfo3D>();
@@ -74,18 +75,18 @@ public class TreeLSystem3D : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && _iteration <= 5)
-        {
-            if(_iteration > 4)
-            {
-                return;
-            }
-            _iteration++;
-            Generate(_iteration);
-        }
+        //if (_iteration <= 5)
+        //{
+        //    if(_iteration > 4)
+        //    {
+        //        return;
+        //    }
+        //    _iteration++;
+        //    Generate(_iteration);
+        //}
     }
 
-    void Generate(int _updateIteration)
+    public void Generate(int _updateIteration)
     {
         // _tree = _parent;
         _currentString = _axiom;

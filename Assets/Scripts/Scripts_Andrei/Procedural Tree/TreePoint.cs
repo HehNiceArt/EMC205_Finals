@@ -7,15 +7,11 @@ public class TreePoint : MonoBehaviour
     public GameObject Self;
 
     [SerializeField] private Vector3 _firstScale = Vector3.one;
-    [SerializeField] private Vector3 _secondScale;
-    [SerializeField] private Vector3 _thirdScale;
-    [SerializeField] private Vector3 _fourthScale;
-    [SerializeField] private Vector3 _fifthScale;
     [Space(10)]
     public bool DetectEnemies = false;
+    [Space(10)]
     public float _detectionRange;
     [SerializeField] private float _maxDistance;
-    public LayerMask _enemylayer;
 
     [Range(0f, 10f)]
     [SerializeField] private float _time = 1f;
@@ -24,16 +20,6 @@ public class TreePoint : MonoBehaviour
     private void Awake()
     {
         Instance = GetComponent<TreePoint>();
-    }
-    private void Start()
-    {
-        _secondScale = new Vector3(1.5f, 1.5f, 1.5f);
-        _thirdScale = new Vector3(3f, 3f, 3f);
-        _fourthScale = new Vector3(4f, 4f, 4f);
-        _fifthScale = new Vector3(5f, 5f, 5f);
-    }
-    private void Update()
-    {
     }
     public void EnemyAttackTree(int _damage)
     {
@@ -58,7 +44,6 @@ public class TreePoint : MonoBehaviour
             _elapsedTime += Time.deltaTime;
             yield return null;
         }
-       // transform.localScale = _minScale;
     }
     private void OnDrawGizmos()
     {

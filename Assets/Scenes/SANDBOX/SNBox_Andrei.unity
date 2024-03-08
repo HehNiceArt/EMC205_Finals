@@ -1044,7 +1044,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 578232747}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1495,7 +1495,7 @@ PrefabInstance:
     - target: {fileID: 5983312471446211322, guid: 477e86995b4c38d438eb17f5e3f13f54,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1849,6 +1849,7 @@ GameObject:
   - component: {fileID: 1267034424}
   - component: {fileID: 1267034425}
   - component: {fileID: 1267034426}
+  - component: {fileID: 1267034427}
   m_Layer: 0
   m_Name: TreeBranch
   m_TagString: Untagged
@@ -1907,17 +1908,48 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Self: {fileID: 1267034423}
   _firstScale: {x: 1, y: 1, z: 1}
-  _secondScale: {x: 0, y: 0, z: 0}
-  _thirdScale: {x: 0, y: 0, z: 0}
-  _fourthScale: {x: 0, y: 0, z: 0}
-  _fifthScale: {x: 0, y: 0, z: 0}
   DetectEnemies: 0
   _detectionRange: 5
   _maxDistance: 5
-  _enemylayer:
-    serializedVersion: 2
-    m_Bits: 128
   _time: 10
+--- !u!114 &1267034427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1267034423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2cb030ef6637bd469e634c4f7d79397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TreeIterationScale:
+  - Name: Iteration 1
+    Iteration: 1
+    Scale: {x: 1, y: 1, z: 1}
+  - Name: Iteration 2
+    Iteration: 2
+    Scale: {x: 1.5, y: 1.5, z: 1.5}
+  - Name: Iteration 3
+    Iteration: 3
+    Scale: {x: 3, y: 3, z: 3}
+  - Name: Iteration 4
+    Iteration: 4
+    Scale: {x: 4, y: 4, z: 4}
+  - Name: Iteration 5
+    Iteration: 5
+    Scale: {x: 5, y: 5, z: 5}
+  TreeItem:
+  - Name: Fertilizer
+    ItemsSO: {fileID: 11400000, guid: a5280e510c6e9ae4a895266134cbcf21, type: 2}
+  - Name: Light Orb
+    ItemsSO: {fileID: 11400000, guid: 5a375a8702407834e969f289a75f7758, type: 2}
+  - Name: Pesticide
+    ItemsSO: {fileID: 11400000, guid: d3197d71949d0804087732fb520e96f8, type: 2}
+  - Name: Water
+    ItemsSO: {fileID: 11400000, guid: b52baca287fed7b479c900a693e65a5d, type: 2}
+  ScaleCapacity: 0
 --- !u!1 &1310651321
 GameObject:
   m_ObjectHideFlags: 0
@@ -3206,7 +3238,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2067040309
 Transform:
   m_ObjectHideFlags: 0

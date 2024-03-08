@@ -8,7 +8,14 @@ public class TreeGrowthItems : ScriptableObject
     public string ItemName;
     public int ItemID;
 
+    [Space(10)]
+    public GameObject ItemPrefab;
+    public Texture Icon;
+
+    [Header("Quantity")]
+    public int MaxQuantity;
+
     [Tooltip("To increase the scale of the tree")]
     [Header("Item Value")]
-    public float ItemValue;
+    public int ItemValue;
 }
