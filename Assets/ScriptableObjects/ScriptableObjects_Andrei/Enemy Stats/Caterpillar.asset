@@ -15,6 +15,16 @@ MonoBehaviour:
   EnemyName: Caterpillar
   EnemyID: 3
   Health: 100
+<<<<<<< HEAD
   AttackDamage: 0
   AttackSpeed: 1
   MovementSpeed: 60
+=======
+  AttackDamage: 20
+  AttackTime: 5
+  AttackRange: 5
+  AttackDistance: 3
+  MovementSpeed: 1
+  AngularSpeed: 100
+  Acceleration: 3
+>>>>>>> 43fb9d6dd434fb084f48fd32b3f5e0be2ebbf46d
