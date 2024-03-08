@@ -27,7 +27,6 @@ public class PlayerRaycast : MonoBehaviour
                 EnemyHealth _enemyHP = _hitEnemy.GetComponent<EnemyHealth>(); 
                 _enemyHP.TakeDamage(_damage);
             }
-            Debug.Log(hit.collider.name);
         }
     }
 }

@@ -905,6 +905,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Self: {fileID: 487271301}
+  Health: 100
+  PlayerGettingAttacked: 0
 --- !u!1 &549792308 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1643873715583910446, guid: 00cd7ca3230cc82489d9fc4aca4e8786,
@@ -1438,7 +1440,7 @@ PrefabInstance:
     - target: {fileID: 3012009500607997140, guid: 477e86995b4c38d438eb17f5e3f13f54,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -17.53
       objectReference: {fileID: 0}
     - target: {fileID: 3012009500607997140, guid: 477e86995b4c38d438eb17f5e3f13f54,
         type: 3}
@@ -1448,7 +1450,7 @@ PrefabInstance:
     - target: {fileID: 3012009500607997140, guid: 477e86995b4c38d438eb17f5e3f13f54,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 15.38
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 3012009500607997140, guid: 477e86995b4c38d438eb17f5e3f13f54,
         type: 3}
@@ -1493,7 +1495,7 @@ PrefabInstance:
     - target: {fileID: 5983312471446211322, guid: 477e86995b4c38d438eb17f5e3f13f54,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1863,9 +1865,9 @@ Transform:
   m_GameObject: {fileID: 1267034423}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.006406561, y: 0.009710995, z: 0.00012490255}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 676109185}
   m_Father: {fileID: 1784451870}
@@ -1904,6 +1906,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Self: {fileID: 1267034423}
+  _firstScale: {x: 1, y: 1, z: 1}
+  _secondScale: {x: 0, y: 0, z: 0}
+  _thirdScale: {x: 0, y: 0, z: 0}
+  _fourthScale: {x: 0, y: 0, z: 0}
+  _fifthScale: {x: 0, y: 0, z: 0}
+  DetectEnemies: 0
+  _detectionRange: 5
+  _maxDistance: 5
+  _enemylayer:
+    serializedVersion: 2
+    m_Bits: 128
+  _time: 10
 --- !u!1 &1310651321
 GameObject:
   m_ObjectHideFlags: 0

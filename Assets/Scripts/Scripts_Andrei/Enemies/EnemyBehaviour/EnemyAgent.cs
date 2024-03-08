@@ -34,6 +34,7 @@ public class EnemyAgent : MonoBehaviour
         _isOvershooting = Stats.IsOvershooting;
         EnemyParameters();
         CheckProximity();
+        DetectTree();
         if (_isOvershooting == true) { Agent.velocity = Agent.desiredVelocity; }
         else { _isOvershooting = false; }
     }
@@ -69,5 +70,19 @@ public class EnemyAgent : MonoBehaviour
             _rigidBody.constraints = RigidbodyConstraints.FreezePosition;
         }
         else { _rigidBody.constraints = RigidbodyConstraints.None; }
+    }
+    public void DetectTree()
+    {
+        float _distance = Vector3.Distance(transform.position, TreePoint.Instance.Self.transform.position);
+        if(_distance < TreePoint.Instance._detectionRange)
+        {
+            TreePoint.Instance.DetectEnemies = true;
+            Debug.Log($"Detect Tree {TreePoint.Instance.DetectEnemies}");
+        }
+        else
+        {
+            TreePoint.Instance.DetectEnemies= false;
+            Debug.Log($"Detect Tree {TreePoint.Instance.DetectEnemies}");
+        }
     }
 }

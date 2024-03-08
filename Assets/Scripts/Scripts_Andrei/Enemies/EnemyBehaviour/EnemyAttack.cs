@@ -22,17 +22,19 @@ public class EnemyAttack : MonoBehaviour
     //Makes sure to follow the tree from anywhere
     [SerializeField] private bool _isFollowingTree = true;
     [SerializeField] private bool _isGettingAttacked = false;
-    [SerializeField] private bool _isAttackingPlayer = false;
-    [SerializeField] private bool _isAttackingTree = false;
+    public bool IsAttackingPlayer = false;
+    public bool IsAttackingTree = false;
 
     float _distanceToTree;
     float _distanceToPlayer;
     float _attackTime;
 
     EnemyHealth _health;
+    EnemyToTree _enemyDMG;
     private void Awake()
     {
         _health = GetComponent<EnemyHealth>();
+        _enemyDMG = GetComponent<EnemyToTree>();
     }
     void Start()
     {
@@ -76,7 +78,7 @@ public class EnemyAttack : MonoBehaviour
         if(_distanceToTree > _enemyAttackRange && _isGettingAttacked == true)
         {
             _isFollowingTree = false;
-            _isAttackingTree = false;
+            IsAttackingTree = false;
             Debug.Log($"Enemy follows player {_isGettingAttacked}");
             EnemyAgent.Instance.FacePlayer();
             EnemyAttacksPlayer();
@@ -85,25 +87,25 @@ public class EnemyAttack : MonoBehaviour
         }
         else
         {
-            _isAttackingPlayer = false;
+            IsAttackingPlayer = false;
             _isFollowingTree = true;
             Debug.Log($"Enemy follows tree {_isFollowingTree}");
             EnemyAgent.Instance.FaceTree();
             EnemyAttacksTree();
             AttackTreeTime();
         }
-        if(_distanceToPlayer > _enemyAttackDistance) { _isAttackingPlayer = false; }
+        if(_distanceToPlayer > _enemyAttackDistance) { IsAttackingPlayer = false; }
     }
 
     void AttackTreeTime()
     {
         if (_distanceToTree < _enemyAttackDistance)
         {
-            _isAttackingTree = true;
+            IsAttackingTree = true;
             _attackTime -= Time.deltaTime;
             if (_attackTime <= 0)
             {
-                Attack();
+                _enemyDMG.EnemyAttackTree(EnemyStats.AttackDamage);
                 _attackTime = EnemyStats.AttackTime;
             }
         }
@@ -112,26 +114,13 @@ public class EnemyAttack : MonoBehaviour
     {
         if (_distanceToPlayer < _enemyAttackDistance)
         {
-            _isAttackingPlayer = true;
+            IsAttackingPlayer = true;
             _attackTime -= Time.deltaTime;
             if (_attackTime <= 0)
             {
-                Attack();
+                _enemyDMG.EnemyAttackPlayer(EnemyStats.AttackDamage);
                 _attackTime = EnemyStats.AttackTime;
             }
-        }
-    }
-
-    void Attack()
-    {
-        if( _isAttackingPlayer )
-        {
-            Debug.Log($"Attacking Player {_isAttackingPlayer}");
-            PlayerPoint.Instance.PlayerTakesDamage(EnemyStats.AttackDamage);
-        }
-        else if( _isAttackingTree )
-        {
-            Debug.Log($"Attacking Tree {_isAttackingTree}");
         }
     }
     #region Which to follow?
@@ -153,7 +142,7 @@ public class EnemyAttack : MonoBehaviour
     {
         _isFollowingTree = true;
         _isGettingAttacked = false;
-        _isAttackingPlayer = false;
-        _isAttackingTree = false;
+        IsAttackingPlayer = false;
+        IsAttackingTree = false;
     }
 } 

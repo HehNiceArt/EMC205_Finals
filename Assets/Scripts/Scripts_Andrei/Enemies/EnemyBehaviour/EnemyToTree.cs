@@ -4,12 +4,19 @@ using UnityEngine;
 
 public class EnemyToTree : MonoBehaviour
 {
-    public void EnemyAttackPlayer()
+    EnemyAttack _attack;
+    private void Awake()
     {
-
+        _attack = GetComponent<EnemyAttack>();
     }
-    public void EnemyAttackTree()
+    public void EnemyAttackPlayer(int _damage)
     {
-
+        Debug.Log($"Attacking Player {_attack.IsAttackingPlayer}");
+        PlayerPoint.Instance.PlayerTakesDamage(_damage);
+    }
+    public void EnemyAttackTree(int _damage)
+    {
+        Debug.Log($"Attacking Tree {_attack.IsAttackingTree}");
+        TreePoint.Instance.EnemyAttackTree(_damage);
     }
 }

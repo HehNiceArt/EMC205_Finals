@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 8662896510954125408}
   - component: {fileID: 1039603960826417653}
   - component: {fileID: 5949018394931419256}
+  - component: {fileID: 7429595382611471235}
   m_Layer: 7
   m_Name: Porcupine
   m_TagString: Enemy
@@ -172,7 +173,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36d86395dcda5784b9a35023ddb6bbc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyRigidbody: {fileID: 0}
   _enemyHead: {fileID: 8128900787375405778}
   EnemyStats: {fileID: 11400000, guid: e5042f0f989b4404d839d88ac68e30c8, type: 2}
   EnemyNavMeshAgent: {fileID: 1039603960826417653}
@@ -197,7 +197,6 @@ MonoBehaviour:
   Agent: {fileID: 0}
   Stats: {fileID: 11400000, guid: e5042f0f989b4404d839d88ac68e30c8, type: 2}
   StoppingDistance: 2
-  IsOvershooting: 1
 --- !u!114 &5949018394931419256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,7 +212,20 @@ MonoBehaviour:
   EnemyStats: {fileID: 11400000, guid: e5042f0f989b4404d839d88ac68e30c8, type: 2}
   Health: 0
   Self: {fileID: 5280700170035968709}
+  _isGettingAttacked: 0
   _initialHealth: 0
+--- !u!114 &7429595382611471235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5280700170035968709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c219755dc458b864ba78bb1edbafff1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8128900787375405778
 GameObject:
   m_ObjectHideFlags: 0

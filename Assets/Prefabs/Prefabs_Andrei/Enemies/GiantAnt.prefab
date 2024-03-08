@@ -122,6 +122,7 @@ GameObject:
   - component: {fileID: 7139840600651784147}
   - component: {fileID: 7801930881079143972}
   - component: {fileID: 8931503066590591686}
+  - component: {fileID: -5830404672731312372}
   m_Layer: 7
   m_Name: GiantAnt
   m_TagString: Enemy
@@ -277,7 +278,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36d86395dcda5784b9a35023ddb6bbc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyRigidbody: {fileID: 8012825712801679760}
   _enemyHead: {fileID: 3249020724247676764}
   EnemyStats: {fileID: 11400000, guid: 4497e3d56c10d2841a1d45c3bb981934, type: 2}
   EnemyNavMeshAgent: {fileID: 7801930881079143972}
@@ -285,8 +285,8 @@ MonoBehaviour:
   _enemyAttackDistance: 4.5
   _isFollowingTree: 1
   _isGettingAttacked: 0
-  _isAttackingPlayer: 0
-  _isAttackingTree: 0
+  IsAttackingPlayer: 0
+  IsAttackingTree: 0
 --- !u!114 &7801930881079143972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -302,7 +302,6 @@ MonoBehaviour:
   Agent: {fileID: 0}
   Stats: {fileID: 11400000, guid: 4497e3d56c10d2841a1d45c3bb981934, type: 2}
   StoppingDistance: 3
-  IsOvershooting: 0
 --- !u!114 &8931503066590591686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -318,4 +317,17 @@ MonoBehaviour:
   EnemyStats: {fileID: 11400000, guid: 4497e3d56c10d2841a1d45c3bb981934, type: 2}
   Health: 0
   Self: {fileID: 5983312471446211322}
+  _isGettingAttacked: 0
   _initialHealth: 0
+--- !u!114 &-5830404672731312372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5983312471446211322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c219755dc458b864ba78bb1edbafff1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
