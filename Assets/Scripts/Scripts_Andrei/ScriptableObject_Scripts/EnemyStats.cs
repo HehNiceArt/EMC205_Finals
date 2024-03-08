@@ -18,6 +18,8 @@ public class EnemyStats : ScriptableObject
     public float AttackTime;
     public float AttackRange;
     public float AttackDistance;
+    [Tooltip("This is the number of attacks the enemy could have against the tree")]
+    [Range(1, 5)]public int AttackCount;
 
     [Header("Movement")]
     [Range(0, 10)]
