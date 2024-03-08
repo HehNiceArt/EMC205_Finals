@@ -22,3 +22,4 @@ MonoBehaviour:
   MovementSpeed: 1
   AngularSpeed: 100
   Acceleration: 3
+  IsOvershooting: 1

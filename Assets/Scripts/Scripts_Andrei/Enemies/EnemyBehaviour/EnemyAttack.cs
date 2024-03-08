@@ -60,7 +60,6 @@ public class EnemyAttack : MonoBehaviour
         //If enemy is damaged by the player & 
         if (_health._isGettingAttacked && _distanceToTree > _enemyAttackRange)
         {
-            Debug.Log($"HP: {EnemyHealth.Instance.Health}");
             _isFollowingTree = false;
             _isGettingAttacked = true;
         }
@@ -88,7 +87,7 @@ public class EnemyAttack : MonoBehaviour
         {
             _isAttackingPlayer = false;
             _isFollowingTree = true;
-            Debug.Log($"Enemy follows tree {!_isGettingAttacked}");
+            Debug.Log($"Enemy follows tree {_isFollowingTree}");
             EnemyAgent.Instance.FaceTree();
             EnemyAttacksTree();
             AttackTreeTime();
@@ -128,6 +127,7 @@ public class EnemyAttack : MonoBehaviour
         if( _isAttackingPlayer )
         {
             Debug.Log($"Attacking Player {_isAttackingPlayer}");
+            PlayerPoint.Instance.PlayerTakesDamage(EnemyStats.AttackDamage);
         }
         else if( _isAttackingTree )
         {

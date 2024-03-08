@@ -13,7 +13,7 @@ public class EnemyStats : ScriptableObject
 
     [Tooltip("To reduce the scale of the tree")]
     [Header("Attack Stats")]
-    public float AttackDamage;
+    public int AttackDamage;
     [Tooltip("Next attack time of the enemy")]
     public float AttackTime;
     public float AttackRange;

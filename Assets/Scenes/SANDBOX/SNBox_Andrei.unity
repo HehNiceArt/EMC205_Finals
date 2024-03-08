@@ -1165,11 +1165,11 @@ Transform:
   m_GameObject: {fileID: 676109184}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.006406561, y: 0.009710995, z: 0.00012490255}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1784451870}
+  m_Father: {fileID: 1267034424}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &699614008
 GameObject:
@@ -1493,7 +1493,7 @@ PrefabInstance:
     - target: {fileID: 5983312471446211322, guid: 477e86995b4c38d438eb17f5e3f13f54,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1866,7 +1866,8 @@ Transform:
   m_LocalPosition: {x: 0.006406561, y: 0.009710995, z: 0.00012490255}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 676109185}
   m_Father: {fileID: 1784451870}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1267034425
@@ -2773,7 +2774,6 @@ Transform:
   m_Children:
   - {fileID: 578232748}
   - {fileID: 1267034424}
-  - {fileID: 676109185}
   m_Father: {fileID: 1387644618}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1823880259
@@ -3229,17 +3229,17 @@ MonoBehaviour:
   - Name: Illegal Wood Cutter
     EnemyPrefab: {fileID: 5280700170035968709, guid: 2274d3ff0cc4d2547af67288fb89f66f,
       type: 3}
-    PoolSize: 1
+    PoolSize: 0
     SpawnRatePerEnemy: 1
   - Name: Caterpillar
     EnemyPrefab: {fileID: 5280700170035968709, guid: de8516826c9cc4e4ea37d6ba140d70f1,
       type: 3}
-    PoolSize: 1
+    PoolSize: 0
     SpawnRatePerEnemy: 1
   - Name: Porcupine
     EnemyPrefab: {fileID: 5280700170035968709, guid: 910c9386a66b0f54cac486f48b2a2184,
       type: 3}
-    PoolSize: 1
+    PoolSize: 0
     SpawnRatePerEnemy: 1
   SpawnAreas:
   - {fileID: 1310651322}
