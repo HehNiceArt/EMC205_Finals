@@ -9,8 +9,6 @@ public class InventorySystem : MonoBehaviour
 
     [SerializeField] public Slot[] Slots = new Slot[40];
     [SerializeField] GameObject InventoryUI;
-    public GameObject ItemDescription;
-    private bool menuActivated;
 
 
     PlayerMovement pm;

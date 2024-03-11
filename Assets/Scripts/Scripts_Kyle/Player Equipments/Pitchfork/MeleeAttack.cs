@@ -27,7 +27,7 @@ public class MeleeAttack : MonoBehaviour
                     if (enemy != null && !enemiesInRange.Contains(enemy))
                     {
                         enemiesInRange.Add(enemy);
-                        enemy.TakeMeleeDamage(attackDamage); // Apply melee damage
+                        enemy.TakeMeleeDamage(attackDamage); 
                         Debug.Log($"Enemy hit! {hit.collider.name}");
                     }
                 }
@@ -36,7 +36,6 @@ public class MeleeAttack : MonoBehaviour
         else
         {
             animator.SetBool("attacking", false);
-            // Clear the list of enemies in range when not attacking
             enemiesInRange.Clear();
         }
     }

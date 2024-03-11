@@ -20,6 +20,9 @@ public class Slingshot : MonoBehaviour {
     private float pulled;
     private int i;
     private float z;
+    public PlayerItems playerItems;
+    public float attackdamage = 1.0f;
+
 
     void Start ()
     {      
