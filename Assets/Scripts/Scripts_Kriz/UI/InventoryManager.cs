@@ -15,14 +15,14 @@ public class InventoryManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.I) && menuActivated)
+        if (Input.GetKeyUp(KeyCode.E) && menuActivated)
         {
             Time.timeScale = 1;
             InventoryMenu.SetActive(false);
             menuActivated = false;
         }
 
-        else if (Input.GetKeyUp(KeyCode.I) && !menuActivated)
+        else if (Input.GetKeyUp(KeyCode.E) && !menuActivated)
         {
             Time.timeScale = 0;
             InventoryMenu.SetActive(true);
