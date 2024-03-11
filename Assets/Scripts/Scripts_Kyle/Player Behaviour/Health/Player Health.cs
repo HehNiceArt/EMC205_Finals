@@ -18,6 +18,23 @@ public class PlayerHealth : MonoBehaviour
         StartCoroutine(RegenerateHealth());
     }
 
+    
+    
+    
+    void Update()  
+    {
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            TakeDamage(20);
+        }
+    }
+    void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+        healthBar.SetHealth(currentHealth);
+    }
+
+
     IEnumerator RegenerateHealth()
     {
         while (true)

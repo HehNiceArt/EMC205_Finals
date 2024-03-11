@@ -9,6 +9,9 @@ public class InventorySystem : MonoBehaviour
 
     [SerializeField] public Slot[] Slots = new Slot[40];
     [SerializeField] GameObject InventoryUI;
+    public GameObject ItemDescription;
+    private bool menuActivated;
+
 
     PlayerMovement pm;
    
@@ -31,19 +34,25 @@ public class InventorySystem : MonoBehaviour
 
     private void Update()
     {
-        if (!InventoryUI.activeInHierarchy && Input.GetKeyDown(KeyCode.E) )
+        if (!InventoryUI.activeInHierarchy && Input.GetKeyDown(KeyCode.E))
         {
             pm.IsInterrupted = true;
             InventoryUI.SetActive(true);
         }
-        else if (InventoryUI.activeInHierarchy && Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Escape))
+        else if (InventoryUI.activeInHierarchy && (Input.GetKeyDown(KeyCode.E)))
         {
             pm.IsInterrupted = false;
             InventoryUI.SetActive(false);
+           
         }
+        else if (InventoryUI.activeInHierarchy && Input.GetKeyDown(KeyCode.Escape))
+        {
+            pm.IsInterrupted = false;
+            InventoryUI.SetActive(false); 
+        }
+
     }
-
-
+ 
     public void PickUpItem(ItemObject obj)
     {
 

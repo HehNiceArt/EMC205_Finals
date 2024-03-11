@@ -5,6 +5,6 @@ using UnityEngine;
 
 public class ItemObject : MonoBehaviour
 {
-    public PlayerItems ItemStats;
+    public TreeGrowthItems ItemStats;
     public int Amount;
 }

@@ -8,18 +8,19 @@ using UnityEngine.UI;
 
 public class Slot : MonoBehaviour, IPointerClickHandler
 {
-    public PlayerItems ItemInSlot;
+    public TreeGrowthItems ItemInSlot;
     public int AmountInSlot;
 
     RawImage _icon;
     TextMeshProUGUI _textAmount;
 
-    InventorySystem inventorySystem; // Reference to the InventorySystem script
+    InventorySystem inventorySystem; 
 
     private void Start()
     {
-        inventorySystem = FindObjectOfType<InventorySystem>(); // Find the InventorySystem script in the scene
-    }
+        inventorySystem = FindObjectOfType<InventorySystem>();
+        
+}
 
     public void SetStats()
     {
@@ -31,7 +32,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler
         _icon = GetComponentInChildren<RawImage>();
         _textAmount = GetComponentInChildren<TextMeshProUGUI>();
 
-        if (ItemInSlot == null || AmountInSlot <= 0) // Check if ItemInSlot is null or amount is zero
+        if (ItemInSlot == null || AmountInSlot <= 0) 
         {
             for (int i = 0; i < transform.childCount; i++)
             {
@@ -50,10 +51,8 @@ public class Slot : MonoBehaviour, IPointerClickHandler
         {
             if (ItemInSlot != null && AmountInSlot > 0)
             {
-                // Decrease the amount of the item
                 AmountInSlot--;
 
-                // Update the UI
                 SetStats();
             }
         }

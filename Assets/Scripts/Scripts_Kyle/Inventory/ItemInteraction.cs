@@ -17,7 +17,7 @@ public class ItemInteraction : MonoBehaviour
         inventorySystem = GetComponent<InventorySystem>();
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         RaycastHit hit;

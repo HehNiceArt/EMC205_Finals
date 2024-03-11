@@ -9,14 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b622952a2d52454ba1d031ed04f9e54, type: 3}
-  m_Name: Pitchfork
+  m_Script: {fileID: 11500000, guid: 21ada877ed6c0ba4c99643b8904ecea7, type: 3}
+  m_Name: Light Orb
   m_EditorClassIdentifier: 
-  ItemName: Pitchfork
+  ItemName: 
   ItemID: 0
   ItemPrefab: {fileID: 0}
   Icon: {fileID: 0}
   MaxQuantity: 0
-  ItemAttackDamage: 69
-  ItemRange: 126
-  ItemAttackSpeed: 36
+  ItemValue: 0

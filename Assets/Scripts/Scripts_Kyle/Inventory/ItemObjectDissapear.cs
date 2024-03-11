@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameInterface : MonoBehaviour
+public class ItemObjectDissapear : MonoBehaviour
 {
     public GameObject PlayerItems, Inventory;
 
-    private bool playerActive = true; 
-    private bool inventoryActive = false; 
+    private bool playerActive = true;
+    private bool inventoryActive = false;
 
     public void Update()
     {
@@ -21,12 +21,12 @@ public class GameInterface : MonoBehaviour
             playerActive = !playerActive;
             PlayerItems.SetActive(playerActive);
 
-            if (playerActive) 
+            if (playerActive)
             {
                 Inventory.SetActive(true);
                 inventoryActive = false;
             }
-            else 
+            else
             {
                 inventoryActive = !inventoryActive;
                 Inventory.SetActive(inventoryActive);
