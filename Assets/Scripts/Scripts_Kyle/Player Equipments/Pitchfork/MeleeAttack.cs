@@ -1,11 +1,12 @@
 using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
 
 public class MeleeAttack : MonoBehaviour
 {
     public PlayerItems playerItems;
     public float attackRange = 1.5f;
+    public float attackSpeed = 1.7f;
+    public float attackDamage = 25;
     public Camera _cam;
     public LayerMask layerMask;
     public Animator animator;
@@ -26,7 +27,7 @@ public class MeleeAttack : MonoBehaviour
                     if (enemy != null && !enemiesInRange.Contains(enemy))
                     {
                         enemiesInRange.Add(enemy);
-                        enemy.InflictDamage(playerItems.ItemRange);
+                        enemy.TakeMeleeDamage(attackDamage); // Apply melee damage
                         Debug.Log($"Enemy hit! {hit.collider.name}");
                     }
                 }
