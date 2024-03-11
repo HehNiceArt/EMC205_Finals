@@ -6,7 +6,7 @@ public class PlayerHealth : MonoBehaviour
 {
     public int maxHealth = 100;
     public int currentHealth;
-    public int regenAmountPerSecond = 5; // Amount of health regenerated per second
+    public int regenAmountPerSecond = 5; 
     public HealthBar healthBar;
 
     void Start()
@@ -14,13 +14,13 @@ public class PlayerHealth : MonoBehaviour
         currentHealth = maxHealth;
         healthBar.SetHealth(maxHealth);
 
-        // Start the coroutine for passive health regeneration
+       
         StartCoroutine(RegenerateHealth());
     }
 
     
     
-    
+    // Test if the system is working
     void Update()  
     {
         if (Input.GetKeyDown(KeyCode.V))
@@ -39,12 +39,11 @@ public class PlayerHealth : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(1f); // Wait for one second
+            yield return new WaitForSeconds(1f); 
 
-            // Increase currentHealth by regenAmountPerSecond, but not exceeding maxHealth
+           
             currentHealth = Mathf.Min(currentHealth + regenAmountPerSecond, maxHealth);
 
-            // Update the health bar
             healthBar.SetHealth(currentHealth);
         }
     }
