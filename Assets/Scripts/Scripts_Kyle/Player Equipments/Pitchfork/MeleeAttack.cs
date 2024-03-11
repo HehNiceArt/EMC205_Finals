@@ -1,27 +1,42 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class MeleeAttack : MonoBehaviour
 {
     public PlayerItems playerItems;
     public float attackRange = 1.5f;
-    public float attackSpeed = 1.0f; // Adjust as needed
-    public int damageAmount = 20; // Adjust as needed
     public Camera _cam;
     public LayerMask layerMask;
-    public EnemyDamage _enemyHP;
-   
+    public Animator animator;
+
+    private List<EnemyDamage> enemiesInRange = new List<EnemyDamage>();
+
     private void Update()
     {
-
-        if (Physics.Raycast(_cam.transform.position, _cam.transform.forward, out RaycastHit hit, attackRange, layerMask))
+        if (Input.GetMouseButton(0))
         {
-            if (hit.collider.CompareTag("Enemy") && Input.GetMouseButtonDown(0))
+            animator.SetBool("attacking", true);
+
+            if (Physics.Raycast(_cam.transform.position, _cam.transform.forward, out RaycastHit hit, attackRange, layerMask))
             {
-                GameObject _hitEnemy = hit.collider.gameObject;
-                _enemyHP.InflictDamage(playerItems.ItemRange);
-                Debug.Log($"Enemy hit! {hit.collider.name}");
+                if (hit.collider.CompareTag("Enemy"))
+                {
+                    EnemyDamage enemy = hit.collider.GetComponent<EnemyDamage>();
+                    if (enemy != null && !enemiesInRange.Contains(enemy))
+                    {
+                        enemiesInRange.Add(enemy);
+                        enemy.InflictDamage(playerItems.ItemRange);
+                        Debug.Log($"Enemy hit! {hit.collider.name}");
+                    }
+                }
             }
+        }
+        else
+        {
+            animator.SetBool("attacking", false);
+            // Clear the list of enemies in range when not attacking
+            enemiesInRange.Clear();
         }
     }
 }

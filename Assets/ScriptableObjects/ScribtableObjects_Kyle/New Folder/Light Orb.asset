@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21ada877ed6c0ba4c99643b8904ecea7, type: 3}
   m_Name: Light Orb
   m_EditorClassIdentifier: 
-  ItemName: 
-  ItemID: 0
-  ItemPrefab: {fileID: 0}
-  Icon: {fileID: 0}
-  MaxQuantity: 0
+  ItemName: Light Orb
+  ItemID: 3
+  ItemPrefab: {fileID: 8492492918245099080, guid: 2ab9a1f3f7444dd4094a36b2591f7b53,
+    type: 3}
+  Icon: {fileID: 2800000, guid: 69cf593f8711c454aac1e3fbfb83193c, type: 3}
+  MaxQuantity: 1000
   ItemValue: 0
