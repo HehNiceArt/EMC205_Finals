@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class EnemyDamage : MonoBehaviour
 {
-    public int health = 100; // Initial health of the enemy
+    public int health = 100; 
     public EnemyStats EnemyStats;
 
     public void InflictDamage(int damageAmount)
     {
-        health -= damageAmount; // Decrease the enemy's health
+        health -= damageAmount; 
         if (health <= 0)
         {
-            Destroy(gameObject); // Destroy the enemy if health drops to or below 0
+            Destroy(gameObject); 
         }
     }
 }
