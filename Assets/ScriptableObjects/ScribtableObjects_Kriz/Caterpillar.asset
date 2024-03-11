@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5a8bd79bb5add1429fdeccaf85153e4, type: 3}
   m_Name: Caterpillar
   m_EditorClassIdentifier: 
-  EnemyName: 
+  EnemyName: Caterpillar
   EnemyID: 0
-  Health: 0
-  AttackDamage: 0
-  AttackTime: 0
-  AttackRange: 0
-  AttackDistance: 0
-  AttackCount: 0
+  Health: 200
+  AttackDamage: 10
+  AttackTime: 5
+  AttackRange: 10
+  AttackDistance: 5
+  AttackCount: 2
   MovementSpeed: 0
-  AngularSpeed: 0
+  AngularSpeed: 35.6
   Acceleration: 0
-  IsOvershooting: 0
+  IsOvershooting: 1
