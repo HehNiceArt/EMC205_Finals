@@ -1924,22 +1924,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2cb030ef6637bd469e634c4f7d79397, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TreeIterationScale:
-  - Name: Iteration 1
-    Iteration: 1
-    Scale: {x: 1, y: 1, z: 1}
-  - Name: Iteration 2
-    Iteration: 2
-    Scale: {x: 1.5, y: 1.5, z: 1.5}
-  - Name: Iteration 3
-    Iteration: 3
-    Scale: {x: 3, y: 3, z: 3}
-  - Name: Iteration 4
-    Iteration: 4
-    Scale: {x: 4, y: 4, z: 4}
-  - Name: Iteration 5
-    Iteration: 5
-    Scale: {x: 5, y: 5, z: 5}
   TreeItem:
   - Name: Fertilizer
     ItemsSO: {fileID: 11400000, guid: a5280e510c6e9ae4a895266134cbcf21, type: 2}
@@ -1949,6 +1933,12 @@ MonoBehaviour:
     ItemsSO: {fileID: 11400000, guid: d3197d71949d0804087732fb520e96f8, type: 2}
   - Name: Water
     ItemsSO: {fileID: 11400000, guid: b52baca287fed7b479c900a693e65a5d, type: 2}
+  TreeItemIteration:
+  - {x: 1, y: 1, z: 1}
+  - {x: 1.5, y: 1.5, z: 1.5}
+  - {x: 3, y: 3, z: 3}
+  - {x: 4, y: 4, z: 4}
+  - {x: 5, y: 5, z: 5}
   ScaleCapacity: 0
 --- !u!1 &1310651321
 GameObject:
@@ -3261,7 +3251,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2067040308}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f40a927e14d805d4aaf67f6b4ecb98e0, type: 3}
   m_Name: 

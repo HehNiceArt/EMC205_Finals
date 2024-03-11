@@ -1,15 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
 
-[System.Serializable]
-public class TreeIterationScale
-{
-    public string Name;
-    public int Iteration;
-    public Vector3 Scale;
-}
 [System.Serializable]
 public class TreeItems 
 {
@@ -19,26 +13,51 @@ public class TreeItems
 
 public class TreeScaleCalculation : MonoBehaviour
 {
-    public List<TreeIterationScale> TreeIterationScale = new List<TreeIterationScale>();
     public List<TreeItems> TreeItem = new List<TreeItems>();
 
+    public List<Vector3> TreeItemIteration = new List<Vector3>();
     public int ScaleCapacity;
     TreePoint _treePoint;
 
     Vector3 _treeScale = Vector3.one;
-    int _local = 1;
+    public bool _isSecondIteration;
+    public bool _isThirdIteration;
+    public bool _isFourthIteration;
+    public bool _isFifthIteration;
     private void Awake()
     {
         _treePoint = GetComponent<TreePoint>();
     }
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space) && _local <= 5)
-        {
-            _local += 1;
-            CheckIteration(_local);
-        }
+        //Second Iteration
+        CheckScale();
+    }
 
+    void CheckScale()
+    {
+        float _scaleX = transform.localScale.x;
+
+        if(_scaleX >= TreeItemIteration[1].x && _scaleX <= TreeItemIteration[2].x && !_isSecondIteration)
+        {
+            _isSecondIteration = true;
+            CheckIteration(2);
+        }
+        if(_scaleX >= TreeItemIteration[2].x && _scaleX <= TreeItemIteration[3].x && !_isThirdIteration)
+        {
+            _isThirdIteration = true;
+            CheckIteration(3);
+        }
+        if(_scaleX >= TreeItemIteration[3].x && _scaleX <= TreeItemIteration[4].x && !_isFourthIteration)
+        {
+            _isFourthIteration = true;
+            CheckIteration(4);
+        }
+        if(_scaleX >= TreeItemIteration[4].x  && !_isFifthIteration)
+        {
+            _isFifthIteration = true;
+            CheckIteration(5);
+        }
     }
     void CheckIteration(int _iteration)
     {
