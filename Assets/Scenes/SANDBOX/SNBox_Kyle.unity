@@ -576,6 +576,26 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 1350965553}
+    - target: {fileID: 6032630007690079854, guid: 232dab7ac16766d4a8c80909dcdf2244,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6032667800166905894, guid: 232dab7ac16766d4a8c80909dcdf2244,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6033369172320315988, guid: 232dab7ac16766d4a8c80909dcdf2244,
+        type: 3}
+      propertyPath: m_Name
+      value: Slingshot
+      objectReference: {fileID: 0}
+    - target: {fileID: 6237313216991139191, guid: 232dab7ac16766d4a8c80909dcdf2244,
+        type: 3}
+      propertyPath: m_Name
+      value: Pitchfork
+      objectReference: {fileID: 0}
     - target: {fileID: 6551195700240813566, guid: 232dab7ac16766d4a8c80909dcdf2244,
         type: 3}
       propertyPath: m_Name
@@ -585,7 +605,7 @@ PrefabInstance:
         type: 3}
       propertyPath: InventoryUI
       value: 
-      objectReference: {fileID: 8278847584384883079}
+      objectReference: {fileID: 6672646489169622092}
     - target: {fileID: 7721217969023240091, guid: 232dab7ac16766d4a8c80909dcdf2244,
         type: 3}
       propertyPath: Slots.Array.size
@@ -654,6 +674,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1585436149}
     m_Modifications:
+    - target: {fileID: 7305908226693853636, guid: 50bcb6f2b2b5ce8409d3556398320f80,
+        type: 3}
+      propertyPath: Slingshot
+      value: 
+      objectReference: {fileID: 1735289092}
     - target: {fileID: 7462546571017307697, guid: 50bcb6f2b2b5ce8409d3556398320f80,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -864,6 +889,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1996758150}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1735289092 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5920624850823632780, guid: 232dab7ac16766d4a8c80909dcdf2244,
+    type: 3}
+  m_PrefabInstance: {fileID: 1411600439}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12f01b5a237e7b948b4cd23ad9e62698, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1740370478 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7462546571017307697, guid: 50bcb6f2b2b5ce8409d3556398320f80,
@@ -959,6 +996,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8367932675746915074, guid: 74b3cffac6034b54fa9310ff3b00cea0,
     type: 3}
   m_PrefabInstance: {fileID: 147898615}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1820664478 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7907255077123263835, guid: 232dab7ac16766d4a8c80909dcdf2244,
+    type: 3}
+  m_PrefabInstance: {fileID: 1411600439}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1996758150
 PrefabInstance:
@@ -1631,7 +1674,7 @@ PrefabInstance:
         type: 3}
       propertyPath: PlayerItems
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1820664478}
     - target: {fileID: 9187477805023875514, guid: 7701f3d4e7fc8974997b92fc984f2dc6,
         type: 3}
       propertyPath: m_Name
@@ -1654,6 +1697,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6516285fa4c98f647a222c1260b011d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &6672646489169622092 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4029015191904641373, guid: 0f2ee295e4108cb47a01cb1474db9e38,
+    type: 3}
+  m_PrefabInstance: {fileID: 9184369398319213310}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &6773812442544532814 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4688804737212441427, guid: 0f2ee295e4108cb47a01cb1474db9e38,

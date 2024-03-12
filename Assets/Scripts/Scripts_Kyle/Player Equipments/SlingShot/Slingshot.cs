@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Slingshot : MonoBehaviour {
+public class Slingshot : MonoBehaviour
+{
 
     public float metalSphereVelocity;
 
@@ -23,9 +22,8 @@ public class Slingshot : MonoBehaviour {
     public PlayerItems playerItems;
     public float attackdamage = 1.0f;
 
-
-    void Start ()
-    {      
+    void Start()
+    {
         i = 1;
         z = -2;
         if (this.GetComponent<ElasticManager>() != null)
@@ -48,7 +46,7 @@ public class Slingshot : MonoBehaviour {
                 metalSphere = Instantiate(metalSphere, new Vector3(metalSphere.transform.position.x, metalSphere.transform.position.y, -3), Quaternion.identity);
                 rb = metalSphere.GetComponent<Rigidbody>();
                 metalSphere.transform.parent = this.transform;
-                i = 0;                           
+                i = 0;
             }
 
             rightElastic.GetComponent<SkinnedMeshRenderer>().enabled = false;
@@ -65,9 +63,9 @@ public class Slingshot : MonoBehaviour {
             if (z >= pulled)
             {
                 rightElasticLine.SetPosition(1, new Vector3(0, 0, z));
-      
+
                 leftElasticLine.SetPosition(1, new Vector3(0, 0, z));
-     
+
                 metalSphere.transform.localPosition = new Vector3(-1.42f, 2.286f, z + 1.7f);
                 leather.transform.localPosition = new Vector3(-1.42f, 2.286f, z + 1.2f);
                 leatherLine.transform.localPosition = new Vector3(-1.42f, 2.286f, z + 1.2f);
@@ -76,9 +74,9 @@ public class Slingshot : MonoBehaviour {
             {
                 rightElasticLine.SetPosition(1, new Vector3(0, 0, pulled));
                 leftElasticLine.SetPosition(1, new Vector3(0, 0, pulled));
-                metalSphere.transform.localPosition = new Vector3(-1.42f, 2.286f, pulled + 1.7f); 
-                leather.transform.localPosition = new Vector3(-1.42f, 2.286f, pulled + 1.2f); 
-                leatherLine.transform.localPosition = new Vector3(-1.42f, 2.286f, pulled + 1.2f); 
+                metalSphere.transform.localPosition = new Vector3(-1.42f, 2.286f, pulled + 1.7f);
+                leather.transform.localPosition = new Vector3(-1.42f, 2.286f, pulled + 1.2f);
+                leatherLine.transform.localPosition = new Vector3(-1.42f, 2.286f, pulled + 1.2f);
             }
 
         }
@@ -99,12 +97,13 @@ public class Slingshot : MonoBehaviour {
             if (z >= -7)
             {
                 rb.AddForce(transform.forward * metalSphereVelocity * -z, ForceMode.Impulse);
-            }else
+            }
+            else
             {
                 rb.AddForce(transform.forward * metalSphereVelocity * 15, ForceMode.Impulse);
             }
             metalSphere.transform.parent = null;
-            z = -2;                      
+            z = -2;
         }
     }
 }

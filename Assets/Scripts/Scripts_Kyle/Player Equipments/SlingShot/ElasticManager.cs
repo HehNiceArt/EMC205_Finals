@@ -28,7 +28,6 @@ public class ElasticManager : MonoBehaviour
     private FixedJoint[] leatherJoints;
     private FixedJoint[] leatherLineJoints;
 
-    
     [SerializeField] private LineRenderer rightElasticLine;
     [SerializeField] private LineRenderer leftElasticLine;
     
@@ -39,8 +38,11 @@ public class ElasticManager : MonoBehaviour
         leatherJoints = leather.GetComponents<FixedJoint>();
         leatherLineJoints = leatherLine.GetComponents<FixedJoint>();
 
-        rightElasticLine.SetWidth(elasticLinesWidth, elasticLinesWidth);
-        leftElasticLine.SetWidth(elasticLinesWidth, elasticLinesWidth);
+        rightElasticLine.startWidth = elasticLinesWidth;
+        rightElasticLine.endWidth = elasticLinesWidth;
+
+        leftElasticLine.startWidth = elasticLinesWidth;
+        leftElasticLine.endWidth = elasticLinesWidth;
 
         foreach (GameObject bone in rightBones)
         {
