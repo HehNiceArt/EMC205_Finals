@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4108510455420042081}
   - component: {fileID: 9163196410064186924}
   - component: {fileID: 1044552835757591768}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -367,7 +367,7 @@ GameObject:
   - component: {fileID: 8146221405944027739}
   - component: {fileID: 2759749151440637904}
   - component: {fileID: 6400207042654563302}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -720,7 +720,7 @@ GameObject:
   - component: {fileID: 6229317739655072580}
   - component: {fileID: 8047276041943787409}
   - component: {fileID: 4682254817503470210}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1070,7 +1070,7 @@ GameObject:
   - component: {fileID: 7935831268707819722}
   - component: {fileID: 3274833389118032525}
   - component: {fileID: 4312653628264442401}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Spot Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1191,7 +1191,8 @@ GameObject:
   - component: {fileID: 7859393510104591668}
   - component: {fileID: 549069758732240539}
   - component: {fileID: 3075216076091106838}
-  m_Layer: 0
+  - component: {fileID: 302485400683875745}
+  m_Layer: 8
   m_Name: LampPost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1855,3 +1856,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!208 &302485400683875745
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8267059299832676386}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1, y: 23.639002, z: 0.86600006}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -2.444, y: 54.742004, z: 2.2340002}
+  m_TimeToStationary: 0.5

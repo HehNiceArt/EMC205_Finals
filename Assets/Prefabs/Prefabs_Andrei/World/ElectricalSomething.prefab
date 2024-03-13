@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7902091921415051157}
   - component: {fileID: 2119323061244382203}
   - component: {fileID: 6250054832338977724}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1186,7 +1186,7 @@ GameObject:
   - component: {fileID: 3007070593107843005}
   - component: {fileID: 7242876869435398159}
   - component: {fileID: 1858248260637783241}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1539,7 +1539,7 @@ GameObject:
   - component: {fileID: 4458090057503209451}
   - component: {fileID: 3784684078758302932}
   - component: {fileID: 6551711794864291123}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: New Game Object
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5557,7 +5557,8 @@ GameObject:
   - component: {fileID: 1083145875235493214}
   - component: {fileID: 526963228777182468}
   - component: {fileID: 8352016315386561552}
-  m_Layer: 0
+  - component: {fileID: 1899450341430534689}
+  m_Layer: 8
   m_Name: ElectricalSomething
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6719,6 +6720,22 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &1899450341430534689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4399546463152245469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35e95dc5ff2b64380880dd7ac5922847, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Size: {x: 8.171341, y: 89.552826, z: 7.797817}
+  m_Center: {x: 0.09711456, y: 0.6830692, z: -0.10308695}
+  m_Area: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &7909960133877233666
 GameObject:
   m_ObjectHideFlags: 0
@@ -6733,7 +6750,7 @@ GameObject:
   - component: {fileID: 759370109304428607}
   - component: {fileID: 725507525507368941}
   - component: {fileID: 7487298041234781956}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

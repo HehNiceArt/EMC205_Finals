@@ -19,6 +19,8 @@ MonoBehaviour:
   AttackTime: 5
   AttackRange: 10
   AttackDistance: 8
-  MovementSpeed: 1
+  AttackCount: 0
+  MovementSpeed: 10
   AngularSpeed: 100
-  Acceleration: 3
+  Acceleration: 10
+  IsOvershooting: 1

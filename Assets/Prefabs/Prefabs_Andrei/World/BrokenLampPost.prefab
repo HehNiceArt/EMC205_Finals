@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4527959491311516497}
   - component: {fileID: 9124214567989581814}
   - component: {fileID: 4139887130174767269}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -364,7 +364,7 @@ GameObject:
   - component: {fileID: 1093389508805154015}
   - component: {fileID: 6342730012833062969}
   - component: {fileID: 405527560238517229}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Spot Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -485,7 +485,7 @@ GameObject:
   - component: {fileID: 1522761954813925885}
   - component: {fileID: 621726904504001559}
   - component: {fileID: 4613777487594107362}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -838,7 +838,8 @@ GameObject:
   - component: {fileID: 1592152328056483186}
   - component: {fileID: 6929986204761849104}
   - component: {fileID: 4923254082451286469}
-  m_Layer: 0
+  - component: {fileID: 8560274389384208276}
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1177,6 +1178,22 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &8560274389384208276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7292818870038143581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35e95dc5ff2b64380880dd7ac5922847, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Size: {x: 2.3925703, y: 19.593494, z: 4.9602995}
+  m_Center: {x: -0.8037149, y: 16.674704, z: -0.48014963}
+  m_Area: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &8534414863303342228
 GameObject:
   m_ObjectHideFlags: 0
@@ -1191,7 +1208,8 @@ GameObject:
   - component: {fileID: 7437042883397528237}
   - component: {fileID: 6847297203301064362}
   - component: {fileID: 7515998279150857211}
-  m_Layer: 0
+  - component: {fileID: 163630138560460403}
+  m_Layer: 8
   m_Name: BrokenLampPost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1855,3 +1873,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &163630138560460403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8534414863303342228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35e95dc5ff2b64380880dd7ac5922847, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Size: {x: 3.4067545, y: 48.865776, z: 5.565638}
+  m_Center: {x: -2.4072838, y: 54.358517, z: 2.425381}
+  m_Area: 0
+  m_AffectedAgents: ffffffff

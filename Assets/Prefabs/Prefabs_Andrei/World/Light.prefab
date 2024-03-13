@@ -14,7 +14,8 @@ GameObject:
   - component: {fileID: 180014156074075199}
   - component: {fileID: 2350867216073392133}
   - component: {fileID: 7990620742036403557}
-  m_Layer: 0
+  - component: {fileID: 9038210887715839428}
+  m_Layer: 8
   m_Name: Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -460,6 +461,22 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &9038210887715839428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3464039333654371341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35e95dc5ff2b64380880dd7ac5922847, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Size: {x: 2.2531128, y: 2.8292987, z: 2.414734}
+  m_Center: {x: -0.015655518, y: -0.592502, z: -0.08163452}
+  m_Area: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &3630938680777830120
 GameObject:
   m_ObjectHideFlags: 0
@@ -474,7 +491,7 @@ GameObject:
   - component: {fileID: 168245874221811243}
   - component: {fileID: 4961454070474534936}
   - component: {fileID: 2279671062885241537}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -772,7 +789,7 @@ GameObject:
   - component: {fileID: 6736414671363286449}
   - component: {fileID: 5090495606330525372}
   - component: {fileID: 3686923737308779875}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1474,7 +1491,7 @@ GameObject:
   - component: {fileID: 2670865849488333103}
   - component: {fileID: 7178979891117566799}
   - component: {fileID: 8114871954726342161}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Spot Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
