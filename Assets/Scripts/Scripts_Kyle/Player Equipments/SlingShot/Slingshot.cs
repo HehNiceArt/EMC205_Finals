@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class Slingshot : MonoBehaviour
 {
@@ -6,7 +7,6 @@ public class Slingshot : MonoBehaviour
     public float metalSphereVelocity;
 
     private Rigidbody rb;
-
     public GameObject metalSphere;
     public GameObject rightElastic;
     public GameObject leftElastic;
@@ -19,8 +19,6 @@ public class Slingshot : MonoBehaviour
     private float pulled;
     private int i;
     private float z;
-    public PlayerItems playerItems;
-    public float attackdamage = 1.0f;
 
     void Start()
     {
@@ -45,6 +43,7 @@ public class Slingshot : MonoBehaviour
             {
                 metalSphere = Instantiate(metalSphere, new Vector3(metalSphere.transform.position.x, metalSphere.transform.position.y, -3), Quaternion.identity);
                 rb = metalSphere.GetComponent<Rigidbody>();
+                metalSphere.SetActive(true);
                 metalSphere.transform.parent = this.transform;
                 i = 0;
             }

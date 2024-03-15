@@ -23,7 +23,6 @@ public class EnemyHealth : MonoBehaviour
     {
         Health -= damage;
         _isGettingAttacked = true;
-        //Debug.Log($"Enemy {EnemyStats.EnemyName} took {damage} damage.");
         Debug.Log($"Current {EnemyStats.EnemyName} Health: {Health}");
         if (Health <= 0 )
         {

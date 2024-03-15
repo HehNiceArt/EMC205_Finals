@@ -12,7 +12,7 @@ public class EnemyDamage : MonoBehaviour
     {
         if (Slingshot != null)
         {
-            attackDamage = Slingshot.attackdamage;
+            //attackDamage = Slingshot.attackdamage;
         }
         else
         {

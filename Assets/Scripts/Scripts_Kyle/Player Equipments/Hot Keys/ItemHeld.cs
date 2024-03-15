@@ -8,23 +8,30 @@ public class ItemHeld : MonoBehaviour
 {
     public GameObject pitchfork, slingshot, water_sprinkler;
     public Scrollbar scrollbar;
-
+    PlayerRaycast _playerRay;
     private KeyCode[] _keyCodes =
     {
         KeyCode.Alpha1,
         KeyCode.Alpha2,
         KeyCode.Alpha3
     };
-
+    private void Start()
+    {
+        _playerRay = GetComponent<PlayerRaycast>();
+    }
     private void Update()
     {
         // Handle item selection via number keys
         if (Input.GetKeyDown(_keyCodes[0]))
         {
+            _playerRay.IsPitchfork = true;
+            _playerRay.IsSlingshot = false;
             SetActiveItem(pitchfork);
         }
         else if (Input.GetKeyDown(_keyCodes[1]))
         {
+            _playerRay.IsPitchfork = false;
+            _playerRay.IsSlingshot = true;
             SetActiveItem(slingshot);
         }
         else if (Input.GetKeyDown(_keyCodes[2]))
