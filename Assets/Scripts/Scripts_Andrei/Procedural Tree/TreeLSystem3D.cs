@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
 using System;
+using Unity.VisualScripting;
 
 //author: @HehNice
+[System.Serializable]
 public class TransformInfo3D
 {
     public Vector3 Position3D;
@@ -22,8 +24,8 @@ public class TreeLSystem3D : MonoBehaviour
     public float LeafProbability = 0.5f;
 
     [Header("Tree Parents")]
-    [SerializeField] private GameObject _treeParentBranch;
-    [SerializeField] private GameObject _treeParentLeaf;
+    [SerializeField] private GameObject[] _treeParentBranch;
+    [SerializeField] private GameObject[] _treeParentLeaf;
 
     [Header("Tree Parts")]
     public GameObject _treeBranch;
@@ -41,9 +43,6 @@ public class TreeLSystem3D : MonoBehaviour
     private Stack<TransformInfo3D> _transformStack;
     private string _currentString = string.Empty;
 
-    //F[-F[a]aa][+&[a]F[a][^FFa]]a
-    //F[-F[a]aa][+&[a]F[a][-Fa]]a
-    //F[-F[a]aa][^F[a][&Fa]]a
     public static TreeLSystem3D Instance { get; private set; }
     private void Awake()
     {
@@ -73,22 +72,8 @@ public class TreeLSystem3D : MonoBehaviour
         Generate(_iteration);
     }
 
-    private void Update()
-    {
-        //if (_iteration <= 5)
-        //{
-        //    if(_iteration > 4)
-        //    {
-        //        return;
-        //    }
-        //    _iteration++;
-        //    Generate(_iteration);
-        //}
-    }
-
     public void Generate(int _updateIteration)
     {
-        // _tree = _parent;
         _currentString = _axiom;
 
         StringBuilder sb = new StringBuilder();
@@ -102,10 +87,10 @@ public class TreeLSystem3D : MonoBehaviour
             _currentString = sb.ToString();
             sb = new StringBuilder();
         }
-        //print(_currentString);
 
         for (int i = 0; i < _currentString.Length; i++)
         {
+            //Symbols and their functions
             switch (_currentString[i])
             {
                 case 'F':   // Move forward a step of length d. A line segment between points (X,Y,Z) and (X', Y', Z') is drawn;
@@ -164,7 +149,29 @@ public class TreeLSystem3D : MonoBehaviour
 
         transform.Translate(Vector3.up * _maxLength);
 
-        _branch.transform.parent = _treeParentBranch.transform;
+        switch (_iteration)
+        {
+            case 0:
+                _branch.transform.parent = _treeParentBranch[0].transform;
+                break;
+            case 1:
+                _branch.transform.parent = _treeParentBranch[1].transform;
+                break;
+            case 2:
+                _branch.transform.parent = _treeParentBranch[2].transform;
+                break;
+            case 3:
+                _branch.transform.parent = _treeParentBranch[3].transform;
+                break;
+            case 4:
+                _branch.transform.parent = _treeParentBranch[4].transform;
+                break;
+            case 5:
+                _branch.transform.parent = _treeParentBranch[5].transform;
+                break;
+            default:
+                return;
+        }
 
         _maxLength -= UnityEngine.Random.Range(0, 0.5f);
         _diameter -= 0.01f;
@@ -186,8 +193,30 @@ public class TreeLSystem3D : MonoBehaviour
         if(_randomValue < LeafProbability)
         {
             GameObject _leaf = Instantiate(_treeLeaf, transform.position, Quaternion.Euler(_randomRange, _randomRange, _randomRange));
-            _leaf.transform.localScale = new Vector3(_rand, _rand, _rand);  
-            _leaf.transform.parent = _treeParentLeaf.transform;
+            _leaf.transform.localScale = new Vector3(_rand, _rand, _rand);
+            switch(_iteration)
+            {
+                case 0:
+                    _leaf.transform.parent = _treeParentLeaf[0].transform;
+                    break;
+                case 1:
+                    _leaf.transform.parent = _treeParentLeaf[1].transform;
+                    break;
+                case 2:
+                    _leaf.transform.parent = _treeParentLeaf[2].transform;
+                    break;
+                case 3:
+                    _leaf.transform.parent = _treeParentLeaf[3].transform;
+                    break;
+                case 4:
+                    _leaf.transform.parent = _treeParentLeaf[4].transform;
+                    break;
+                case 5:
+                    _leaf.transform.parent = _treeParentLeaf[5].transform;
+                    break;
+                default:
+                    return;
+            }
         }
     }
 

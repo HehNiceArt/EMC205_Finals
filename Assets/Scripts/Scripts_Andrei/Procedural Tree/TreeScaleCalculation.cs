@@ -1,14 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
-using Unity.VisualScripting;
 using UnityEngine;
 
 
 public class TreeScaleCalculation : MonoBehaviour
 {
     public List<Vector3> TreeItemIteration = new List<Vector3>();
-    public int ScaleCapacity;
     public float _growthRate = 1f;
     TreePoint _treePoint;
 
