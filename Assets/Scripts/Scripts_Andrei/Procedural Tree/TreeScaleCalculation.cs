@@ -4,19 +4,12 @@ using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 
-[System.Serializable]
-public class TreeItems 
-{
-    public string Name;
-    public TreeGrowthItems ItemsSO;
-}
 
 public class TreeScaleCalculation : MonoBehaviour
 {
-    public List<TreeItems> TreeItem = new List<TreeItems>();
-
     public List<Vector3> TreeItemIteration = new List<Vector3>();
     public int ScaleCapacity;
+    public float _growthRate = 1f;
     TreePoint _treePoint;
 
     Vector3 _treeScale = Vector3.one;
@@ -24,13 +17,15 @@ public class TreeScaleCalculation : MonoBehaviour
     public bool _isThirdIteration;
     public bool _isFourthIteration;
     public bool _isFifthIteration;
+
+    public static TreeScaleCalculation Instance { get; private set; }
     private void Awake()
     {
+        Instance = GetComponent<TreeScaleCalculation>();
         _treePoint = GetComponent<TreePoint>();
     }
     private void Update()
     {
-        //Second Iteration
         CheckScale();
     }
 
@@ -97,5 +92,26 @@ public class TreeScaleCalculation : MonoBehaviour
         TreeLSystem3D.Instance._iteration = _index;
 
         transform.localScale = _queue.Dequeue();
+    }
+
+    public void IncreaseScale(TreeGrowthItems _itemScaleValue)
+    {
+        //Calculation
+        Debug.Log($"{_itemScaleValue.ItemName}, {_itemScaleValue.ItemValue * 0.1f}");
+        float _calc = _itemScaleValue.ItemValue * 0.1f;
+        Vector3 _changeScale = new Vector3(_calc, _calc, _calc);
+        Vector3 _currentScale = transform.localScale;
+        StartCoroutine(ScaleOverTime(_changeScale, _currentScale));
+    }
+
+    IEnumerator ScaleOverTime(Vector3 _calcScale, Vector3 _currentScale)
+    {
+        Vector3 _desiredScale = _currentScale + _calcScale;
+        while (_currentScale.x < _desiredScale.x)
+        {
+            _currentScale += _calcScale * Time.deltaTime * _growthRate;
+            transform.localScale = _currentScale;
+            yield return null; 
+        }
     }
 }

@@ -10,8 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 21ada877ed6c0ba4c99643b8904ecea7, type: 3}
-  m_Name: Sprinkler
+  m_Name: Water
   m_EditorClassIdentifier: 
   ItemName: Sprinkler
   ItemID: 3
+  ItemPrefab: {fileID: 0}
+  Icon: {fileID: 2800000, guid: bd1d21d1332a6ea4bb44dd654c542403, type: 3}
+  MaxQuantity: 999
   ItemValue: 3

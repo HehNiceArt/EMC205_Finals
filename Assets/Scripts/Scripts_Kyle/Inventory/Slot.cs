@@ -19,8 +19,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler
     private void Start()
     {
         inventorySystem = FindObjectOfType<InventorySystem>();
-        
-}
+    }
 
     public void SetStats()
     {
@@ -52,7 +51,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler
             if (ItemInSlot != null && AmountInSlot > 0)
             {
                 AmountInSlot--;
-
+                TreeScaleCalculation.Instance.IncreaseScale(ItemInSlot);
                 SetStats();
             }
         }

@@ -153,7 +153,6 @@ public class TreeLSystem3D : MonoBehaviour
     }
     Quaternion _initialRotation;
     GameObject _branch;
-    Quaternion _rotation;
     void CreateBranch() //Create the tree branch
     {
         _branch = Instantiate(_treeBranch, transform.position, transform.rotation);              //Instantiate the branch at (0,0 + _posOffset,0)
