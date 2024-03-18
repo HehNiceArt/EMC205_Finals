@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
-
+//Andrei Quirante
 public class TreeScaleCalculation : MonoBehaviour
 {
     public List<Vector3> TreeItemIteration = new List<Vector3>();

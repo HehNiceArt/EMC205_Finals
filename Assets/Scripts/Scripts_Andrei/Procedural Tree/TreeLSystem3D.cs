@@ -5,8 +5,7 @@ using UnityEngine;
 using System;
 using Unity.VisualScripting;
 
-//author: @HehNice
-[System.Serializable]
+//Andrei Quirante
 public class TransformInfo3D
 {
     public Vector3 Position3D;
