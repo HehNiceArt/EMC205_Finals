@@ -49,9 +49,8 @@ public class TreePoint : MonoBehaviour
         Vector3 _minScale = new Vector3(0.5f, 0.5f, 0.5f);
         while(_elapsedTime < _time && DetectEnemies)
         {
-            transform.localScale -= _reduceScale * (Time.deltaTime);
-            transform.localScale = Vector3.Max(transform.localScale, _minScale);
-            _detectionRange -= 0.01f;
+            transform.localScale -= _reduceScale * (Time.deltaTime * _time);
+            if(transform.localScale.x < _minScale.x) { transform.localScale = _minScale; }
             _elapsedTime += Time.deltaTime;
             yield return null;
         }

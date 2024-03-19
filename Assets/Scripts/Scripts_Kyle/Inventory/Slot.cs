@@ -64,7 +64,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler
     {
         while (IsClicked)
         {
-           yield return new WaitForSeconds(TreeScaleCalculation.Instance._growthRate);
+           yield return new WaitForSeconds(1f);
            IsClicked = false; 
            Debug.Log($"IsClicked {IsClicked}");
         }

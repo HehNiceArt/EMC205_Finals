@@ -16,7 +16,7 @@ MonoBehaviour:
   EnemyID: 0
   Health: 100
   AttackDamage: 10
-  AttackTime: 1
+  AttackTime: 2
   AttackRange: 30
   AttackDistance: 5
   AttackCount: 3

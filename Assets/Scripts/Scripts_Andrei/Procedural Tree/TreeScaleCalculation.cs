@@ -103,7 +103,7 @@ public class TreeScaleCalculation : MonoBehaviour
         {
             _currentScale += _calcScale * Time.deltaTime * _growthRate;
             transform.localScale = _currentScale;
-            _treePoint._detectionRange += TreeItemValue * 0.01f;
+            //_treePoint._detectionRange += TreeItemValue * 0.01f;
 
             IsGrowing = false;
             yield return null; 

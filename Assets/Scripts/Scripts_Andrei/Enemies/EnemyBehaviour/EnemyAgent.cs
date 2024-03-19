@@ -82,7 +82,7 @@ public class EnemyAgent : MonoBehaviour
         }
         else
         {
-            TreePoint.Instance.DetectEnemies= false;
+            //TreePoint.Instance.DetectEnemies= false;
             //Debug.Log($"Detect Tree {TreePoint.Instance.DetectEnemies}");
         }
     }
