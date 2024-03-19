@@ -16,10 +16,10 @@ MonoBehaviour:
   EnemyID: 2
   Health: 100
   AttackDamage: 20
-  AttackTime: 5
+  AttackTime: 1
   AttackRange: 10
   AttackDistance: 8
-  AttackCount: 0
+  AttackCount: 2
   MovementSpeed: 10
   AngularSpeed: 100
   Acceleration: 10

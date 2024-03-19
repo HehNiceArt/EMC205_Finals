@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+//Andrei Quirante
 [RequireComponent(typeof(NavMeshAgent))]
 public class EnemyAgent : MonoBehaviour
 {

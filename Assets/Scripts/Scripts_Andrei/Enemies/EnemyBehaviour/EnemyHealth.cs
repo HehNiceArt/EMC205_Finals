@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Andrei Quirante
 public class EnemyHealth : MonoBehaviour
 {
     public static EnemyHealth Instance { get; private set; }

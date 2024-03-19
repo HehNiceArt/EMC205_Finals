@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//author: @HehNice
+//Andrei Quirante
 public class TreeRotations : MonoBehaviour
 {
     /// <summary> 3x3 RotationUp

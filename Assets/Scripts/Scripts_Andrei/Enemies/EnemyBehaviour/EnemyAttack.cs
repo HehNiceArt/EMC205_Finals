@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.AI;
-using System.Runtime.CompilerServices;
-using TMPro;
 
+//Andrei Quirante
 public class EnemyAttack : MonoBehaviour
 {
     [SerializeField] private GameObject _enemyHead;

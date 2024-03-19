@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Andrei Quirante
 [CreateAssetMenu(fileName = "Player Items", menuName ="ScriptableObject/Player Items", order = 1)]
 public class PlayerItems : ScriptableObject
 {

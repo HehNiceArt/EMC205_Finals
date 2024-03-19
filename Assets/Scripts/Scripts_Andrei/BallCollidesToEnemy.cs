@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Andrei Quirante
 public class BallCollidesToEnemy : MonoBehaviour
 {
     public LayerMask _enemyLayer;
