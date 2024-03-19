@@ -31,6 +31,7 @@ public class FPSCam : MonoBehaviour
         _targetXRotation -= Input.GetAxisRaw("Mouse Y");
         _targetYRotation += Input.GetAxisRaw("Mouse X");
 
+        _targetXRotation = Mathf.Clamp(_targetXRotation, -90f, 90f);
         _parent.eulerAngles = new Vector3(0, _targetYRotation, 0);
         _cam.localEulerAngles = new Vector3(_targetXRotation, 0, 0);
     }

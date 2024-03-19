@@ -61,7 +61,8 @@ public class InventorySystem : MonoBehaviour
                 if (!WillHitMaxStack(i, obj.Amount))
                 {
                     Slots[i].AmountInSlot += obj.Amount;
-                    Destroy(obj.gameObject);
+                    //Destroy(obj.gameObject);
+                    SpawnItem.Instance.DeactivateItem(obj.gameObject);
                     Slots[i].SetStats();
                     return;
                 }
@@ -79,7 +80,8 @@ public class InventorySystem : MonoBehaviour
             {
                 Slots[i].ItemInSlot = obj.ItemStats;
                 Slots[i].AmountInSlot += obj.Amount;
-                Destroy(obj.gameObject);
+                //Destroy(obj.gameObject);
+                SpawnItem.Instance.DeactivateItem(obj.gameObject);
                 Slots[i].SetStats();
                 return;
 

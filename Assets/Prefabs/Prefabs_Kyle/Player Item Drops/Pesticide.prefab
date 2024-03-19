@@ -94,7 +94,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1037223283721720901}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 0.3
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -125,8 +125,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 427313eb69ae0e941839058c51bbf25a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemStats: {fileID: 11400000, guid: 41e6dbd858eeeb647b3a494267083e03, type: 2}
-  Amount: 0
+  ItemStats: {fileID: 11400000, guid: d3197d71949d0804087732fb520e96f8, type: 2}
+  Amount: 10
 --- !u!64 &1570105776373525432
 MeshCollider:
   m_ObjectHideFlags: 0

@@ -21,8 +21,6 @@ public class Slingshot : MonoBehaviour
     private int i;
     private float z;
 
-    [SerializeField] private float _cooldown;
-    [SerializeField] private bool _justShoot;
     void Start()
     {
         i = 1;

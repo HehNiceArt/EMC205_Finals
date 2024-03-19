@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//Andrei Quirantej
 [System.Serializable]
 public class EnemyType
 {
