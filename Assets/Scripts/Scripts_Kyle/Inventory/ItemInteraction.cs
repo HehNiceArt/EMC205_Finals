@@ -22,7 +22,7 @@ public class ItemInteraction : MonoBehaviour
     {
         RaycastHit hit;
 
-        if (Physics.Raycast(cam.position, cam.forward, out hit, 2, ItemLayer))
+        if (Physics.Raycast(cam.position, cam.forward, out hit, 5, ItemLayer))
         {
             if (!hit.collider.GetComponent<ItemObject>())
                 return;
