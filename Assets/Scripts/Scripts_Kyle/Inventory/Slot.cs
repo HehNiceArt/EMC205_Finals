@@ -10,7 +10,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler
 {
     public TreeGrowthItems ItemInSlot;
     public int AmountInSlot;
-
+    public bool IsClicked = false;
     RawImage _icon;
     TextMeshProUGUI _textAmount;
 
@@ -46,14 +46,27 @@ public class Slot : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (eventData.button == PointerEventData.InputButton.Left)
+        if (eventData.button == PointerEventData.InputButton.Left && !IsClicked)
         {
+            IsClicked = true;
             if (ItemInSlot != null && AmountInSlot > 0)
             {
                 AmountInSlot--;
                 TreeScaleCalculation.Instance.IncreaseScale(ItemInSlot);
+                TreeScaleCalculation.Instance.TreeItemValue = ItemInSlot.ItemValue;
+                StartCoroutine(FinishTreeGrow());
                 SetStats();
             }
+        }
+    }
+
+    IEnumerator FinishTreeGrow()
+    {
+        while (IsClicked)
+        {
+           yield return new WaitForSeconds(TreeScaleCalculation.Instance._growthRate);
+           IsClicked = false; 
+           Debug.Log($"IsClicked {IsClicked}");
         }
     }
 }

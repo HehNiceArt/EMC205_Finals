@@ -26,6 +26,7 @@ public class EnemyHealth : MonoBehaviour
         Debug.Log($"Current {EnemyStats.EnemyName} Health: {Health}");
         if (Health <= 0 )
         {
+            TreePoint.Instance.DetectEnemies = false;
             Die(Self);
         }
     }

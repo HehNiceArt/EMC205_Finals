@@ -13,7 +13,7 @@ public class TransformInfo3D
 }
 public class TreeLSystem3D : MonoBehaviour
 {
-    [Range(0, 5)] public int _iteration = 1;
+    [Range(0, 5)] public int _iteration = 0;
 
     [Header("Tree Values")]
     [SerializeField] [Range(0, 2)] private float _maxLength;
@@ -41,7 +41,6 @@ public class TreeLSystem3D : MonoBehaviour
     private Dictionary<char, string> _rules;
     private Stack<TransformInfo3D> _transformStack;
     private string _currentString = string.Empty;
-
     public static TreeLSystem3D Instance { get; private set; }
     private void Awake()
     {

@@ -11,12 +11,13 @@ public class EnemyToTree : MonoBehaviour
     }
     public void EnemyAttackPlayer(int _damage)
     {
-        Debug.Log($"Attacking Player {_attack.IsAttackingPlayer}");
+        //Debug.Log($"Attacking Player {_attack.IsAttackingPlayer}");
         PlayerPoint.Instance.PlayerTakesDamage(_damage);
     }
     public void EnemyAttackTree(int _damage)
     {
-        Debug.Log($"Attacking Tree {_attack.IsAttackingTree}");
+        //Debug.Log($"Attacking Tree {_attack.IsAttackingTree}");
+        
         TreePoint.Instance.EnemyAttackTree(_damage);
     }
 }

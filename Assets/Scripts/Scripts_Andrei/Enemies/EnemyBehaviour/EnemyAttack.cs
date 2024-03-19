@@ -80,7 +80,7 @@ public class EnemyAttack : MonoBehaviour
         {
             _isFollowingTree = false;
             IsAttackingTree = false;
-            Debug.Log($"Enemy follows player {_isGettingAttacked}");
+            //Debug.Log($"Enemy follows player {_isGettingAttacked}");
             EnemyAgent.Instance.FacePlayer();
             EnemyAttacksPlayer();
             EnemyAgent.Instance.ResumeAgent();
@@ -90,7 +90,7 @@ public class EnemyAttack : MonoBehaviour
         {
             IsAttackingPlayer = false;
             _isFollowingTree = true;
-            Debug.Log($"Enemy follows tree {_isFollowingTree}");
+            //Debug.Log($"Enemy follows tree {_isFollowingTree}");
             EnemyAgent.Instance.FaceTree();
             EnemyAttacksTree();
             AttackTreeTime();

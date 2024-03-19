@@ -18,12 +18,15 @@ public class SkyBoChange : MonoBehaviour
     float _detectionRange;
     private  bool _playerInsideArea = false;
 
+    private void Start()
+    {
+        SphereCollider = GetComponent<SphereCollider>();
+    }
     private void Update()
     {
-        _detectionRange = SphereCollider.radius;
 
         float _playerToTree = Vector3.Distance(TreePos.transform.position, PlayerPos.transform.position);
-        if(_playerToTree <= _detectionRange)
+        if(_playerToTree <= SphereCollider.radius)
         {
             if (!_playerInsideArea)
             {
@@ -43,6 +46,7 @@ public class SkyBoChange : MonoBehaviour
                 RenderSettings.fogDensity = 0.03f;
             }
         }
+        //Debug.Log($"Player Inside? {_playerInsideArea}");
     }
 
 }

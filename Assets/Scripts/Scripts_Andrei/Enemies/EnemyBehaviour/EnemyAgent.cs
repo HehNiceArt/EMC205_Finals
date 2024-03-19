@@ -77,12 +77,12 @@ public class EnemyAgent : MonoBehaviour
         if(_distance < TreePoint.Instance._detectionRange)
         {
             TreePoint.Instance.DetectEnemies = true;
-            Debug.Log($"Detect Tree {TreePoint.Instance.DetectEnemies}");
+            //Debug.Log($"Detect Tree {TreePoint.Instance.DetectEnemies}");
         }
         else
         {
             TreePoint.Instance.DetectEnemies= false;
-            Debug.Log($"Detect Tree {TreePoint.Instance.DetectEnemies}");
+            //Debug.Log($"Detect Tree {TreePoint.Instance.DetectEnemies}");
         }
     }
 }
