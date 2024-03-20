@@ -6,17 +6,20 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     public static EnemyHealth Instance { get; private set; }
-    public EnemyStats EnemyStats;
-    public int Health = 0;
+    EnemyStats _enemyStats;
+    [HideInInspector] public int Health = 0;
     public GameObject Self;
-    public bool _isGettingAttacked = false;
+    [HideInInspector] public bool _isGettingAttacked = false;
 
     [HideInInspector]
     public int _initialHealth;
+    EnemyAgent _enemyAgent;
     private void Awake()
     {
         Instance = GetComponent<EnemyHealth>();
-        _initialHealth = EnemyStats.Health;
+        _enemyAgent = GetComponent<EnemyAgent>();
+        _enemyStats = _enemyAgent.Stats;
+        _initialHealth = _enemyStats.Health;
         ResetHealth();
     }
 
@@ -24,7 +27,7 @@ public class EnemyHealth : MonoBehaviour
     {
         Health -= damage;
         _isGettingAttacked = true;
-        Debug.Log($"Current {EnemyStats.EnemyName} Health: {Health}");
+        Debug.Log($"Current {_enemyStats.EnemyName} Health: {Health}");
         if (Health <= 0 )
         {
             TreePoint.Instance.DetectEnemies = false;
