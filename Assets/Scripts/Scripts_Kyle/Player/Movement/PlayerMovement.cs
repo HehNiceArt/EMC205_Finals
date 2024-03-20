@@ -20,6 +20,9 @@ public class PlayerMovement : MonoBehaviour
     public float StaminaRecoveryRate = 5f;
     public float StaminaThreshold = 20f;
     AudioManage audioManager;
+    
+    public StaminaBar staminaBar;
+   
 
     float _xAxis;
     float _zAxis;
@@ -30,10 +33,13 @@ public class PlayerMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         audioManager = AudioManage.instance;
+        staminaBar.SetMaxStamina(MaxStamina);
     }
 
     void Update()
     {
+        staminaBar.SetStamina(Stamina);
+
         if (IsInterrupted && !Cursor.visible)
         {
             Cursor.visible = true;
@@ -51,10 +57,8 @@ public class PlayerMovement : MonoBehaviour
         _xAxis = Input.GetAxisRaw("Horizontal");
         _zAxis = Input.GetAxisRaw("Vertical");
 
-        // Check for running input
         IsRunning = canRun && Input.GetKey(runningKey);
 
-        // Update stamina
         UpdateStamina();
     }
 

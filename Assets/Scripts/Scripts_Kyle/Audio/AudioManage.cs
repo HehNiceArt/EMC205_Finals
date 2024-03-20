@@ -9,15 +9,19 @@ public class AudioManage : MonoBehaviour
     public AudioSource runningAudioSource;
     public AudioSource pickupAudioSource;
     public AudioSource jumpAudioSource;
-   
+
     public AudioClip walkingSound;
     public AudioClip runningSound;
     public AudioClip pickupSound;
     public AudioClip jumpSound;
-   
+
     [Header("Player Weapons")]
-    public AudioSource meleeAttackAudioSource; 
-    public AudioClip meleeAttackSound; 
+    public AudioSource meleeAttackAudioSource;
+    public AudioClip meleeAttackSound;
+
+    [Header("Inventory")]
+    public AudioSource OpenInventoryAudioSource;
+    public AudioClip OpenInventorySound; 
 
     private void Awake()
     {
@@ -38,7 +42,10 @@ public class AudioManage : MonoBehaviour
         pickupAudioSource.clip = pickupSound;
         jumpAudioSource.clip = jumpSound;
 
-        meleeAttackAudioSource.clip = meleeAttackSound; 
+        meleeAttackAudioSource.clip = meleeAttackSound;
+
+        // Assigning freeze sound clip to the freeze audio source
+        OpenInventoryAudioSource.clip = OpenInventorySound;
     }
 
     public void PlayWalkingSound(bool isWalking)
@@ -81,8 +88,13 @@ public class AudioManage : MonoBehaviour
         jumpAudioSource.Play();
     }
 
-    public void PlayMeleeAttackSound() // New method to play melee attack sound
+    public void PlayMeleeAttackSound()
     {
         meleeAttackAudioSource.Play();
+    }
+
+    public void PlayFreezeSound() 
+    {
+        OpenInventoryAudioSource.Play();
     }
 }
