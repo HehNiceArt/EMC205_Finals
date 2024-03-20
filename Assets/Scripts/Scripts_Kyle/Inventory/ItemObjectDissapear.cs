@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ItemObjectDissapear : MonoBehaviour
@@ -31,6 +29,7 @@ public class ItemObjectDissapear : MonoBehaviour
                 inventoryActive = !inventoryActive;
                 Inventory.SetActive(inventoryActive);
             }
+            AudioManage.instance.PlayFreezeSound();
         }
     }
 }
