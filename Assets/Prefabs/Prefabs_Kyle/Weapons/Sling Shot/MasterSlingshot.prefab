@@ -5180,6 +5180,8 @@ MonoBehaviour:
   leftLine: {fileID: 1920895929162660}
   leather: {fileID: 1647356458259798}
   leatherLine: {fileID: 1276201425130750}
+  pullSoundClip: {fileID: 0}
+  fireSoundClip: {fileID: 8300000, guid: 63183496899ea654bb57a094b12c91a8, type: 3}
 --- !u!114 &1035333501
 MonoBehaviour:
   m_ObjectHideFlags: 0

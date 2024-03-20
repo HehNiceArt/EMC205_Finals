@@ -17,12 +17,20 @@ public class Slingshot : MonoBehaviour
     public GameObject leatherLine;
     private LineRenderer rightElasticLine;
     private LineRenderer leftElasticLine;
+    public AudioClip fireSoundClip;
+    private AudioSource fireAudioSource;
     private float pulled;
     private int i;
     private float z;
 
     void Start()
     {
+ 
+        fireAudioSource = gameObject.AddComponent<AudioSource>();
+
+     
+        fireAudioSource.clip = fireSoundClip;
+
         i = 1;
         z = -2;
         if (this.GetComponent<ElasticManager>() != null)
@@ -39,7 +47,8 @@ public class Slingshot : MonoBehaviour
     {
         if (Input.GetMouseButton(0))
         {
-                z -= 0.1f;
+           
+            z -= 0.1f;
                 if (i == 1)
                 {
                     metalSphere = Instantiate(metalSphere, new Vector3(metalSphere.transform.position.x, metalSphere.transform.position.y, -3), Quaternion.identity);
@@ -82,6 +91,7 @@ public class Slingshot : MonoBehaviour
         }
         if (Input.GetMouseButtonUp(0))
         {
+            fireAudioSource.Play();
             i = 1;
 
             rightElastic.GetComponent<SkinnedMeshRenderer>().enabled = true;

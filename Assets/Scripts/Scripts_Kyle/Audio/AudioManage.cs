@@ -16,8 +16,8 @@ public class AudioManage : MonoBehaviour
     public AudioClip jumpSound;
    
     [Header("Player Weapons")]
-    public AudioSource meleeAttackAudioSource; // New AudioSource for melee attack
-    public AudioClip meleeAttackSound; // New AudioClip for melee attack
+    public AudioSource meleeAttackAudioSource; 
+    public AudioClip meleeAttackSound; 
 
     private void Awake()
     {
@@ -38,7 +38,7 @@ public class AudioManage : MonoBehaviour
         pickupAudioSource.clip = pickupSound;
         jumpAudioSource.clip = jumpSound;
 
-        meleeAttackAudioSource.clip = meleeAttackSound; // Initialize melee attack audio
+        meleeAttackAudioSource.clip = meleeAttackSound; 
     }
 
     public void PlayWalkingSound(bool isWalking)
