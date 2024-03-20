@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     public float StaminaDepletionRate = 10f;
     public float StaminaRecoveryRate = 5f;
     public float StaminaThreshold = 20f;
+    AudioManage audioManager;
 
     float _xAxis;
     float _zAxis;
@@ -28,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        audioManager = AudioManage.instance;
     }
 
     void Update()
@@ -62,7 +64,15 @@ public class PlayerMovement : MonoBehaviour
             return;
 
         Movement();
+
+        // Play walking or running sounds based on player's movement
+        bool isWalking = _xAxis != 0 || _zAxis != 0;
+        audioManager.PlayWalkingSound(isWalking);
+
+        bool isRunning = IsRunning && Stamina > StaminaThreshold;
+        audioManager.PlayRunningSound(isRunning);
     }
+
 
     void Movement()
     {

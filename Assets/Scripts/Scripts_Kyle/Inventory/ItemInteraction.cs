@@ -9,15 +9,17 @@ public class ItemInteraction : MonoBehaviour
     Transform cam;
     [SerializeField] LayerMask ItemLayer;
     InventorySystem inventorySystem;
+    AudioManage audioManager;
 
     [SerializeField] TextMeshProUGUI TextHoveredItem;
     void Start()
     {
         cam = Camera.main.transform;
         inventorySystem = GetComponent<InventorySystem>();
+        audioManager = AudioManage.instance;
     }
 
-    
+
     void Update()
     {
         RaycastHit hit;
@@ -31,6 +33,7 @@ public class ItemInteraction : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.F))
             {
                 inventorySystem.PickUpItem(hit.collider.GetComponent<ItemObject>());
+                audioManager.PlayPickupSound();
             }
         }
         else
