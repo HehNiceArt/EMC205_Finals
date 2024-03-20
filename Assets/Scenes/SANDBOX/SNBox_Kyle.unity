@@ -281,6 +281,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 7071563389079856866}
   m_PrefabAsset: {fileID: 0}
+--- !u!82 &532443274 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 2120611512391068530, guid: 1d318a36297e032408c725ef2af747ce,
+    type: 3}
+  m_PrefabInstance: {fileID: 948671117957492075}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &553536248 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8367932675746915074, guid: 74b3cffac6034b54fa9310ff3b00cea0,
@@ -583,6 +589,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1644958499086742411, guid: 232dab7ac16766d4a8c80909dcdf2244,
+        type: 3}
+      propertyPath: meleeAudioSource
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2596466356435319843, guid: 232dab7ac16766d4a8c80909dcdf2244,
+        type: 3}
+      propertyPath: audioManager
+      value: 
+      objectReference: {fileID: 8888943086150182397}
     - target: {fileID: 3446552009889600564, guid: 232dab7ac16766d4a8c80909dcdf2244,
         type: 3}
       propertyPath: healthBar
@@ -721,7 +737,6 @@ Transform:
   - {fileID: 1142277788}
   - {fileID: 509628573}
   - {fileID: 2450632018492934313}
-  - {fileID: 2366651655766879051}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 168.381, z: 0}
 --- !u!1 &1619122446
@@ -1089,6 +1104,84 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b07eaa13ef3fec549af90b25f89fe7b3, type: 3}
+--- !u!1001 &948671117957492075
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2462507384714529738, guid: 1d318a36297e032408c725ef2af747ce,
+        type: 3}
+      propertyPath: m_Name
+      value: '@AudioManager'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4431810621332601513, guid: 1d318a36297e032408c725ef2af747ce,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4431810621332601513, guid: 1d318a36297e032408c725ef2af747ce,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4431810621332601513, guid: 1d318a36297e032408c725ef2af747ce,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4431810621332601513, guid: 1d318a36297e032408c725ef2af747ce,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4431810621332601513, guid: 1d318a36297e032408c725ef2af747ce,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4431810621332601513, guid: 1d318a36297e032408c725ef2af747ce,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4431810621332601513, guid: 1d318a36297e032408c725ef2af747ce,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4431810621332601513, guid: 1d318a36297e032408c725ef2af747ce,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4431810621332601513, guid: 1d318a36297e032408c725ef2af747ce,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4431810621332601513, guid: 1d318a36297e032408c725ef2af747ce,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4797565631102407366, guid: 1d318a36297e032408c725ef2af747ce,
+        type: 3}
+      propertyPath: meleeAttackSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 3c732d908ffac8e418adf1855bbde387, type: 3}
+    - target: {fileID: 4797565631102407366, guid: 1d318a36297e032408c725ef2af747ce,
+        type: 3}
+      propertyPath: meleeAttackAudioSource
+      value: 
+      objectReference: {fileID: 532443274}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1d318a36297e032408c725ef2af747ce, type: 3}
 --- !u!114 &1359492583237549897 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7902349973070548575, guid: 0f2ee295e4108cb47a01cb1474db9e38,
@@ -1185,12 +1278,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7ba494c5484ada41920be83d1ad8daf, type: 3}
---- !u!4 &2366651655766879051 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4279915195360943787, guid: 3e2a0f3adeffa224cbbe785c444e3e48,
-    type: 3}
-  m_PrefabInstance: {fileID: 7565078991340271232}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2450632018492934313 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2455856302097241247, guid: b07eaa13ef3fec549af90b25f89fe7b3,
@@ -2891,6 +2978,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 9184369398319213310}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8888943086150182397 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4797565631102407366, guid: 1d318a36297e032408c725ef2af747ce,
+    type: 3}
+  m_PrefabInstance: {fileID: 948671117957492075}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea1df428cb937334bb4540d0e59ff7ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &9184369398319213310
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3021,3 +3120,5 @@ SceneRoots:
   - {fileID: 2688060382863123032}
   - {fileID: 1585436149}
   - {fileID: 1411600439}
+  - {fileID: 7565078991340271232}
+  - {fileID: 948671117957492075}

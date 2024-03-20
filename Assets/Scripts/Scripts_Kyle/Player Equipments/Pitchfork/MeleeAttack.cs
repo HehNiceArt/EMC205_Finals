@@ -15,9 +15,12 @@ public class MeleeAttack : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButtonDown(0)) // Change to GetMouseButtonDown to play sound only once per click
         {
             animator.SetBool("attacking", true);
+
+            // Play the melee attack sound
+            AudioManage.instance.PlayMeleeAttackSound();
 
             if (Physics.Raycast(_cam.transform.position, _cam.transform.forward, out RaycastHit hit, attackRange, layerMask))
             {
@@ -27,13 +30,13 @@ public class MeleeAttack : MonoBehaviour
                     if (enemy != null && !enemiesInRange.Contains(enemy))
                     {
                         enemiesInRange.Add(enemy);
-                        enemy.TakeMeleeDamage(attackDamage); 
+                        enemy.TakeMeleeDamage(attackDamage);
                         Debug.Log($"Enemy hit! {hit.collider.name}");
                     }
                 }
             }
         }
-        else
+        else if (Input.GetMouseButtonUp(0)) // Stop attacking when the mouse button is released
         {
             animator.SetBool("attacking", false);
             enemiesInRange.Clear();

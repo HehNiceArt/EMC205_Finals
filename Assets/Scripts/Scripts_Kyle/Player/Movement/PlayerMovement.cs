@@ -65,7 +65,6 @@ public class PlayerMovement : MonoBehaviour
 
         Movement();
 
-        // Play walking or running sounds based on player's movement
         bool isWalking = _xAxis != 0 || _zAxis != 0;
         audioManager.PlayWalkingSound(isWalking);
 
@@ -76,15 +75,13 @@ public class PlayerMovement : MonoBehaviour
 
     void Movement()
     {
-        // Calculate movement direction based on input
         Vector3 movement = transform.forward * _zAxis + transform.right * _xAxis;
         movement.Normalize();
 
-        // Apply speed based on whether running or walking
         if (IsRunning && Stamina > StaminaThreshold)
         {
             movement *= RunSpeed;
-            Stamina -= StaminaDepletionRate * Time.deltaTime; // Reduce stamina while running
+            Stamina -= StaminaDepletionRate * Time.deltaTime; 
             Stamina = Mathf.Clamp(Stamina, 0f, MaxStamina);
         }
         else
@@ -92,10 +89,8 @@ public class PlayerMovement : MonoBehaviour
             movement *= Speed;
         }
 
-        // Maintain vertical velocity
         movement += new Vector3(0, rb.velocity.y, 0);
 
-        // Apply movement to rigidbody
         rb.velocity = movement;
     }
 

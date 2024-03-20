@@ -1,4 +1,3 @@
-//@Kyle Rafael
 using UnityEngine;
 
 public class Jump : MonoBehaviour
@@ -10,6 +9,7 @@ public class Jump : MonoBehaviour
     [SerializeField, Tooltip("Prevents jumping when the transform is in mid-air.")]
     GroundCheck _groundCheck;
 
+    public AudioManage audioManager;
 
     void Reset()
     {
@@ -19,6 +19,8 @@ public class Jump : MonoBehaviour
     void Awake()
     {
         Rigidbody = GetComponent<Rigidbody>();
+   
+        audioManager = FindObjectOfType<AudioManage>();
     }
 
     void LateUpdate()
@@ -27,6 +29,11 @@ public class Jump : MonoBehaviour
         {
             Rigidbody.AddForce(Vector3.up * 100 * JumpStrength);
             Jumped?.Invoke();
+
+            if (audioManager != null)
+            {
+                audioManager.PlayJumpSound();
+            }
         }
     }
 }
