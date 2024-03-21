@@ -34,7 +34,7 @@ public class AudioSourcePlayerManager : MonoBehaviour
     void Update()
     {
         // Check for scene changes
-        if (SceneManager.GetActiveScene().name == "MainMenu" && audio.clip != mainMenuBGM)
+        if (SceneManager.GetActiveScene().name == "MASTER_Start" && audio.clip != mainMenuBGM)
         {
             audio.clip = mainMenuBGM;
             PlaySceneBGM();

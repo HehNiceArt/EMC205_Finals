@@ -13,6 +13,7 @@ public class SettingsMenu : MonoBehaviour
 
     [SerializeField] private Slider musicSlider;
     public AudioMixer audioMixer;
+    public Camera Cam;
 
     private void Start()
     {
@@ -80,6 +81,6 @@ public class SettingsMenu : MonoBehaviour
     //back button
     public void Back()
     {
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("MASTER_Start");
     }
 }
