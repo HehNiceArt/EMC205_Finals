@@ -43,14 +43,14 @@ public class InventorySystem : MonoBehaviour
             InventoryUI.SetActive(false);
            
         }
-        else if (InventoryUI.activeInHierarchy && Input.GetKeyDown(KeyCode.Escape))
-        {
-            pm.IsInterrupted = false;
-            InventoryUI.SetActive(false); 
-        }
+        //else if (InventoryUI.activeInHierarchy && Input.GetKeyDown(KeyCode.Escape))
+        //{
+        //    pm.IsInterrupted = false;
+        //    InventoryUI.SetActive(false); 
+        //}
 
     }
- 
+
     public void PickUpItem(ItemObject obj)
     {
 

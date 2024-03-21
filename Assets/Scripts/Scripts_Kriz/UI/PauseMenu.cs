@@ -6,7 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
-    private bool menuActivated;
+    public bool menuActivated;
+    public GameObject Inventory, Hud;
+
     public static bool GameIsPaused = false;
     [SerializeField] GameObject pauseMenuUI;
     public PlayerMovement PlayerMove;
@@ -15,24 +17,22 @@ public class PauseMenu : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.Escape) && menuActivated)
         {
-            PlayerMove.IsInterrupted = false;
-                Time.timeScale = 1;
-                pauseMenuUI.SetActive(false);
-                menuActivated = false;
-            }
-
-            else if (Input.GetKeyUp(KeyCode.Escape) && !menuActivated)
-            {
-            PlayerMove.IsInterrupted = true;
-                Time.timeScale = 0;
-                pauseMenuUI.SetActive(true);
-                menuActivated = true;
-            }
+            Time.timeScale = 1;
+            Cursor.lockState = CursorLockMode.Locked;
+            pauseMenuUI.SetActive(false);
+            menuActivated = false;
+            Inventory.SetActive(true);
+            Hud.SetActive(true);
         }
-
-    public void Settings()
-    {
-        SceneManager.LoadScene("Settings");
+        else if (Input.GetKeyUp(KeyCode.Escape) && !menuActivated)
+        {
+            Time.timeScale = 0;
+            Cursor.lockState = CursorLockMode.None;
+            pauseMenuUI.SetActive(true);
+            menuActivated = true;
+            Hud.SetActive(false);
+            Inventory.SetActive(false);
+        }
     }
 
     public void Home()

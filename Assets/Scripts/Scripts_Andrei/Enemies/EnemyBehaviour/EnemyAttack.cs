@@ -34,6 +34,7 @@ public class EnemyAttack : MonoBehaviour
     EnemyToTree _enemyDMG;
     EnemyAgent _enemyAgent;
     EnemyAnimations _anim;
+    public PlayerPoint PlayerPoints;
     private void Awake()
     {
         _health = GetComponent<EnemyHealth>();

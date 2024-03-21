@@ -5,11 +5,16 @@ using UnityEngine;
 public class PlayerPoint : MonoBehaviour
 {
     public GameObject Self;
+    public Camera Player;
+    public Camera Tree;
+
     public int MaxHP = 100;
     public int CurrentHP;
     public int RegenPerSecond;
     public bool PlayerGettingAttacked = false;
     public HealthBar HealthBar;
+    Rigidbody _rb;
+    PlayerMovement _move;
     public static PlayerPoint Instance { get; private set; }
     private void Awake()
     {
@@ -20,8 +25,14 @@ public class PlayerPoint : MonoBehaviour
         CurrentHP = MaxHP;
         HealthBar.SetHealth(MaxHP);
         StartCoroutine(Regen());
+        _rb = GetComponent<Rigidbody>();
+        _move = GetComponent<PlayerMovement>();
     }
 
+    private void Update()
+    {
+        IfPlayerIsDead();
+    }
     public void PlayerTakesDamage(int _damage)
     {
         CurrentHP -= _damage;
@@ -56,4 +67,19 @@ public class PlayerPoint : MonoBehaviour
 
     }
 
+    void IfPlayerIsDead()
+    {
+        if(CurrentHP <= 0)
+        {
+            _rb.constraints = RigidbodyConstraints.FreezeAll;
+            Player.gameObject.SetActive(false);
+            Tree.gameObject.SetActive(true);
+        }
+        else
+        {
+            _rb.constraints = RigidbodyConstraints.None;
+            Tree.gameObject.SetActive(false);
+            Player.gameObject.SetActive(true);
+        }
+    }
 }

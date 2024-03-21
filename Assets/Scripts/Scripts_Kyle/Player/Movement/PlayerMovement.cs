@@ -40,16 +40,14 @@ public class PlayerMovement : MonoBehaviour
     {
         staminaBar.SetStamina(Stamina);
 
-        if (IsInterrupted && !Cursor.visible)
-        {
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
-        }
-        else if (!IsInterrupted && Cursor.visible)
-        {
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
-        }
+        //if (IsInterrupted )
+        //{
+        //    Cursor.lockState = CursorLockMode.None;
+        //}
+        //else if (!IsInterrupted)
+        //{
+        //    Cursor.lockState = CursorLockMode.Locked;
+        //}
 
         if (IsInterrupted)
             return;

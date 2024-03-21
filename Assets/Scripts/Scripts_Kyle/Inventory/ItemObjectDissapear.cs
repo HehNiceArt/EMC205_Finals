@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class ItemObjectDissapear : MonoBehaviour
 {
-    public GameObject PlayerItems, Inventory;
+    public GameObject Inventory;
 
     private bool playerActive = true;
     private bool inventoryActive = false;
@@ -17,7 +17,6 @@ public class ItemObjectDissapear : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             playerActive = !playerActive;
-            PlayerItems.SetActive(playerActive);
 
             if (playerActive)
             {

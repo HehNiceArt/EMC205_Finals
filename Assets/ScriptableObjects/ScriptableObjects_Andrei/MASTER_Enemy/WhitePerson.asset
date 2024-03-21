@@ -15,12 +15,12 @@ MonoBehaviour:
   EnemyName: White Person
   EnemyID: 4
   Health: 200
-  AttackDamage: 5
+  AttackDamage: 10
   AttackTime: 6
   AttackRange: 15
   AttackDistance: 5
   AttackCount: 2
   MovementSpeed: 3.53
   AngularSpeed: 100
-  Acceleration: 0.4
+  Acceleration: 1.07
   IsOvershooting: 0

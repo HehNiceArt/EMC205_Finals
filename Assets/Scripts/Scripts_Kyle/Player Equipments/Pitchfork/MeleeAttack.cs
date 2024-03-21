@@ -11,11 +11,12 @@ public class MeleeAttack : MonoBehaviour
     public LayerMask layerMask;
     public Animator animator;
 
+    public PauseMenu pauseMenu;
     private List<EnemyDamage> enemiesInRange = new List<EnemyDamage>();
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0)) // Change to GetMouseButtonDown to play sound only once per click
+        if (Input.GetMouseButtonDown(0) && !pauseMenu.menuActivated) // Change to GetMouseButtonDown to play sound only once per click
         {
             animator.SetBool("attacking", true);
 

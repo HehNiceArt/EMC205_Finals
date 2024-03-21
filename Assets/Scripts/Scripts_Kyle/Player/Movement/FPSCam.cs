@@ -6,6 +6,7 @@ using UnityEngine;
 public class FPSCam : MonoBehaviour
 {
     public float Sensitivity;
+    public PauseMenu Pause;
 
     float _targetXRotation;
     float _targetYRotation;
@@ -26,7 +27,7 @@ public class FPSCam : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (pm.IsInterrupted)
+        if (pm.IsInterrupted || Pause.menuActivated )
             return;
         _targetXRotation -= Input.GetAxisRaw("Mouse Y");
         _targetYRotation += Input.GetAxisRaw("Mouse X");
