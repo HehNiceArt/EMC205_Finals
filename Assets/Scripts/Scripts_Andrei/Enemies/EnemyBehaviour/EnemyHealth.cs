@@ -14,10 +14,12 @@ public class EnemyHealth : MonoBehaviour
     [HideInInspector]
     public int _initialHealth;
     EnemyAgent _enemyAgent;
+    EnemyAnimations _anim;
     private void Awake()
     {
         Instance = GetComponent<EnemyHealth>();
         _enemyAgent = GetComponent<EnemyAgent>();
+        _anim = GetComponentInChildren<EnemyAnimations>();
         _enemyStats = _enemyAgent.Stats;
         _initialHealth = _enemyStats.Health;
         ResetHealth();
@@ -31,7 +33,8 @@ public class EnemyHealth : MonoBehaviour
         if (Health <= 0 )
         {
             TreePoint.Instance.DetectEnemies = false;
-            Die(Self);
+            _anim.Anim.SetBool("IsDead", true);
+            //Die(Self);
         }
     }
 

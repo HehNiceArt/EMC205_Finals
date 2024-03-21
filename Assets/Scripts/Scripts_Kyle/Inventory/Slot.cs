@@ -44,6 +44,10 @@ public class Slot : MonoBehaviour, IPointerClickHandler
         _textAmount.text = $"{AmountInSlot}x";
     }
 
+    private void Update()
+    {
+        StartCoroutine(FinishTreeGrow());
+    }
     public void OnPointerClick(PointerEventData eventData)
     {
         if (eventData.button == PointerEventData.InputButton.Left && !IsClicked)
@@ -64,7 +68,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler
     {
         while (IsClicked)
         {
-           yield return new WaitForSeconds(1f);
+           yield return new WaitForSeconds(1.5f);
            IsClicked = false; 
            Debug.Log($"IsClicked {IsClicked}");
         }

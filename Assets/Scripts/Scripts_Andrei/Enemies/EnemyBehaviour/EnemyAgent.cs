@@ -12,10 +12,10 @@ public class EnemyAgent : MonoBehaviour
     [Header("Enemy Parameters")]
     private float _speed;
     private float _angularSpeed;
-    private float _acceleration;
+    public float _acceleration;
     public float StoppingDistance;
     private bool _isOvershooting;
-    private Rigidbody _rigidBody;
+    public Rigidbody _rigidBody;
 
     public static EnemyAgent Instance { get; private set; }
     private void Awake()
@@ -25,7 +25,6 @@ public class EnemyAgent : MonoBehaviour
     private void Start()
     {
         Agent = GetComponent<NavMeshAgent>();
-        _rigidBody = GetComponent<Rigidbody>();
     }
     private void Update()
     {

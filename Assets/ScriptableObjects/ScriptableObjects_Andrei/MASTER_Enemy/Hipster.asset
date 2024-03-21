@@ -15,12 +15,12 @@ MonoBehaviour:
   EnemyName: Hipster
   EnemyID: 0
   Health: 100
-  AttackDamage: 10
+  AttackDamage: 1
   AttackTime: 2
   AttackRange: 12
   AttackDistance: 5
   AttackCount: 0
   MovementSpeed: 5.05
   AngularSpeed: 100
-  Acceleration: 1.83
+  Acceleration: 2.89
   IsOvershooting: 0

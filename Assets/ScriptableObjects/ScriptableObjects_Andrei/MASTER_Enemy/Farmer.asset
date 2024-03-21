@@ -15,12 +15,12 @@ MonoBehaviour:
   EnemyName: Farmer
   EnemyID: 1
   Health: 125
-  AttackDamage: 15
+  AttackDamage: 2
   AttackTime: 2
   AttackRange: 12
   AttackDistance: 5
   AttackCount: 2
-  MovementSpeed: 2.53
+  MovementSpeed: 4.86
   AngularSpeed: 100
-  Acceleration: 0.97
+  Acceleration: 1.16
   IsOvershooting: 1

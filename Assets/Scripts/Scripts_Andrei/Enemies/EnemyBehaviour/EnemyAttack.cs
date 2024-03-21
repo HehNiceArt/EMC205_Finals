@@ -29,15 +29,17 @@ public class EnemyAttack : MonoBehaviour
     float _distanceToPlayer;
     float _attackTime;
 
-    EnemyStats _enemyStats;
+    [HideInInspector]public EnemyStats _enemyStats;
     EnemyHealth _health;
     EnemyToTree _enemyDMG;
     EnemyAgent _enemyAgent;
+    EnemyAnimations _anim;
     private void Awake()
     {
         _health = GetComponent<EnemyHealth>();
         _enemyDMG = GetComponent<EnemyToTree>();
         _enemyAgent = GetComponent<EnemyAgent>();
+        _anim = GetComponentInChildren<EnemyAnimations>();
         _enemyStats = _enemyAgent.Stats;
     }
     void Start()
@@ -106,11 +108,11 @@ public class EnemyAttack : MonoBehaviour
     {
         if (_distanceToTree < _enemyAttackDistance)
         {
+            _anim.Anim.SetBool("IsAttackingTree", true);
             IsAttackingTree = true;
             _attackTime -= Time.deltaTime;
             if (_attackTime <= 0)
             {
-                _enemyDMG.EnemyAttackTree(_enemyStats.AttackDamage);
                 _attackTime = _enemyStats.AttackTime;
                 _count += 1;
                 Perish(_count); 
@@ -129,14 +131,15 @@ public class EnemyAttack : MonoBehaviour
     {
         if (_distanceToPlayer < _enemyAttackDistance)
         {
+            _anim.Anim.SetBool("IsAttackingPlayer", true);
             IsAttackingPlayer = true;
             _attackTime -= Time.deltaTime;
             if (_attackTime <= 0)
             {
-                _enemyDMG.EnemyAttackPlayer(_enemyStats.AttackDamage);
                 _attackTime = _enemyStats.AttackTime;
             }
         }
+        else { _anim.Anim.SetBool("IsAttackingPlayer", false); }
     }
     #region Which to follow?
     void EnemyAttacksTree() => EnemyNavMeshAgent.Agent.destination = TreePoint.Instance.Self.transform.position;
@@ -157,5 +160,6 @@ public class EnemyAttack : MonoBehaviour
         _isGettingAttacked = false;
         IsAttackingPlayer = false;
         IsAttackingTree = false;
+        _enemyAgent._rigidBody.constraints = RigidbodyConstraints.None;
     }
 } 

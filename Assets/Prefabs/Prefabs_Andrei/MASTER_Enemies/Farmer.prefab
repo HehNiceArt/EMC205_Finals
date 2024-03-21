@@ -96,6 +96,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2957629460749224695}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &498174567412363550
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4065054739389047455}
+  m_Layer: 7
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4065054739389047455
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 498174567412363550}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.495, z: 0.244}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 741767816676422781}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &824795647853327553
 GameObject:
   m_ObjectHideFlags: 0
@@ -861,7 +892,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.75
+  m_Radius: 1.14
   m_Height: 2.2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
@@ -928,7 +959,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Agent: {fileID: 1257032923769782381}
   Stats: {fileID: 11400000, guid: 1fc9732fc8f606a40add2e9e2ffdb344, type: 2}
+  _acceleration: 0
   StoppingDistance: 3
+  _rigidBody: {fileID: 7330610138065979329}
 --- !u!114 &3427598995064405271
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -941,10 +974,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36d86395dcda5784b9a35023ddb6bbc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyHead: {fileID: 4630749685085637433}
+  _enemyHead: {fileID: 498174567412363550}
   EnemyNavMeshAgent: {fileID: 413834041263429223}
   IsAttackingPlayer: 0
   IsAttackingTree: 0
+  _enemyStats: {fileID: 0}
 --- !u!114 &4708531740067921225
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -983,6 +1017,7 @@ GameObject:
   m_Component:
   - component: {fileID: 741767816676422781}
   - component: {fileID: 8006540014035545761}
+  - component: {fileID: 2525513426099799400}
   m_Layer: 7
   m_Name: Farmer_Walk
   m_TagString: Untagged
@@ -1003,6 +1038,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 4065054739389047455}
   - {fileID: 505484524701163032}
   - {fileID: 6305742956525469155}
   m_Father: {fileID: 3793898638923998454}
@@ -1028,6 +1064,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2525513426099799400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4630749685085637433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f5836fa5b49fe24d8e111472c6e2bf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Anim: {fileID: 0}
 --- !u!1 &4766107703248309729
 GameObject:
   m_ObjectHideFlags: 0

@@ -157,6 +157,6 @@ public class EnemyPoolManager : MonoBehaviour
     }
     public void DeactivateEnemy(GameObject enemy)
     {
-        if(enemy != null && enemy.activeInHierarchy) { enemy.SetActive(false); }
+        if(enemy != null && enemy.activeInHierarchy ) { enemy.SetActive(false); }
     }
 }
